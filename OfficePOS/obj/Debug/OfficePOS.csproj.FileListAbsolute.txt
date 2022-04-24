@@ -1,0 +1,10 @@
+D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\OfficePOS.exe.config
+D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\OfficePOS.exe
+D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\OfficePOS.pdb
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.csproj.AssemblyReference.cache
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.LoginForm.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Properties.Resources.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.csproj.GenerateResource.cache
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.csproj.CoreCompileInputs.cache
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.exe
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.pdb
