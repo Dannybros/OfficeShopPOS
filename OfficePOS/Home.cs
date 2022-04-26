@@ -16,24 +16,61 @@ namespace OfficePOS
         {
             InitializeComponent();
 
-            foreach (Label lbl in this.panelMenu.Controls)
+            startForm();
+
+            foreach (Label lbl in panelMenu.Controls.OfType<Label>())
             {
-                mouseHover(lbl);
+                lbl.Width = panelMenu.Width;
+
+                lbl.Click += (s, e) =>
+                {
+                    foreach (Label label in panelMenu.Controls.OfType<Label>())
+                    {
+                        label.ForeColor = Color.Gray;
+                    };
+
+                    lbl.ForeColor = Color.White;
+                    activePanel.Height = lbl.Height;
+                    activePanel.Top = lbl.Top;
+                };
             }
         }
 
-        private void mouseHover(Label cont)
+        private void startForm()
         {
-            cont.MouseEnter += (s, e) =>
-            {
-                cont.ForeColor = Color.White;
-            };
+            lblHome.ForeColor = Color.White;
+            activePanel.Height = lblHome.Height;
+            activePanel.Top = lblHome.Top;
 
-            cont.MouseLeave += (s, e) =>
-            {
-                cont.ForeColor = Color.Gray;
-            };
+            Dashboard dashboard = new Dashboard();
+            switchPanel(dashboard);
         }
 
+        private void switchPanel(UserControl panel)
+        {
+            panelContent.Controls.Clear();
+            //panel.TopLevel = false;
+            panel.Dock = DockStyle.Fill;
+            panelContent.Controls.Add(panel);
+            panel.Show();
+        }
+
+        private void lblProducts_Click(object sender, EventArgs e)
+        {
+            Products pd = new Products();
+            switchPanel(pd);
+        }
+
+        private void lblHome_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            switchPanel(dashboard);
+        }
+
+        private void lblSale_Click(object sender, EventArgs e)
+        {
+            Sale sale = new Sale();
+            switchPanel(sale);
+        }
     }
 }

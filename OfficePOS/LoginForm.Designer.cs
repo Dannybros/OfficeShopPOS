@@ -89,10 +89,10 @@ namespace OfficePOS
             this.btnSave.IdleFillColor = System.Drawing.Color.White;
             this.btnSave.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(94)))), ((int)(((byte)(215)))));
             this.btnSave.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(94)))), ((int)(((byte)(215)))));
-            this.btnSave.Location = new System.Drawing.Point(661, 472);
+            this.btnSave.Location = new System.Drawing.Point(694, 472);
             this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(184, 57);
+            this.btnSave.Size = new System.Drawing.Size(151, 57);
             this.btnSave.TabIndex = 15;
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -168,31 +168,31 @@ namespace OfficePOS
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cooper Black", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(108)))), ((int)(((byte)(224)))));
             this.label2.Location = new System.Drawing.Point(697, 346);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 27);
+            this.label2.Size = new System.Drawing.Size(124, 26);
             this.label2.TabIndex = 11;
             this.label2.Text = "Password :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cooper Black", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(108)))), ((int)(((byte)(224)))));
             this.label1.Location = new System.Drawing.Point(697, 223);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 27);
+            this.label1.Size = new System.Drawing.Size(129, 26);
             this.label1.TabIndex = 10;
             this.label1.Text = "Username :";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::OfficePOS.Properties.Resources._lock;
-            this.pictureBox3.Location = new System.Drawing.Point(636, 332);
+            this.pictureBox3.Location = new System.Drawing.Point(664, 344);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(43, 41);
+            this.pictureBox3.Size = new System.Drawing.Size(27, 28);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
@@ -200,9 +200,9 @@ namespace OfficePOS
             // pictureBox2
             // 
             this.pictureBox2.Image = global::OfficePOS.Properties.Resources.user;
-            this.pictureBox2.Location = new System.Drawing.Point(636, 210);
+            this.pictureBox2.Location = new System.Drawing.Point(664, 222);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 40);
+            this.pictureBox2.Size = new System.Drawing.Size(27, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
@@ -210,11 +210,11 @@ namespace OfficePOS
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Cooper Black", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(108)))), ((int)(((byte)(224)))));
             this.label3.Location = new System.Drawing.Point(558, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(304, 49);
+            this.label3.Size = new System.Drawing.Size(268, 51);
             this.label3.TabIndex = 2;
             this.label3.Text = "Admin Login";
             // 
