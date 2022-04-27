@@ -111,6 +111,7 @@ namespace OfficePOS
             // 
             // picSearchIcon
             // 
+            this.picSearchIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picSearchIcon.BackColor = System.Drawing.Color.Transparent;
             this.picSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("picSearchIcon.Image")));
             this.picSearchIcon.Location = new System.Drawing.Point(42, 30);

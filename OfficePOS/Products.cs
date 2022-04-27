@@ -12,6 +12,8 @@ namespace OfficePOS
 {
     public partial class Products : UserControl
     {
+        public static string SingleProductID = "";
+
         public Products()
         {
             InitializeComponent();
@@ -27,9 +29,19 @@ namespace OfficePOS
             pic.BackgroundImageLayout = ImageLayout.Stretch;
             pic.Image = OfficePOS.Properties.Resources.logo;
             pic.Click += new EventHandler(picture_Click);
+            pic.Tag = "Text";
+
+            Label price = new Label();
+            price.Text = "$33";
+            price.Font = new Font("Times news Roman", 10, FontStyle.Regular);
+            price.TextAlign = ContentAlignment.MiddleCenter;
+            price.BackColor = Color.IndianRed;
+            price.ForeColor = Color.White;
+            pic.Controls.Add(price);
 
             Label title = new Label();
             title.Text = "Test";
+            title.Tag = "Test";
             title.AutoSize = false;
             title.Dock = DockStyle.Bottom;
             title.Height = 30;
@@ -47,7 +59,6 @@ namespace OfficePOS
             marginproduct.Top = 30;
             marginproduct.Bottom = 30;
             product.Margin = marginproduct;
-            product.Tag = title.Text;
             product.Controls.Add(pic);
             product.Controls.Add(title);
 
@@ -64,12 +75,16 @@ namespace OfficePOS
 
         private void picture_Click(object sender, EventArgs e)
         {
-
+            SingleProductID = ((PictureBox)sender).Tag.ToString();
+            EditProduct ep = new EditProduct();
+            ep.Show();
         }
 
         private void title_Click(object sender, EventArgs e)
         {
-
+            SingleProductID = ((Label)sender).Text;
+            EditProduct ep = new EditProduct();
+            ep.Show();
         }
 
         private void txtSearch_Enter(object sender, EventArgs e)

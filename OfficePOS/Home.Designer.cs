@@ -32,7 +32,6 @@ namespace OfficePOS
             this.SideBar = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.lblReport = new System.Windows.Forms.Label();
-            this.lblEmplyee = new System.Windows.Forms.Label();
             this.lblImportProduct = new System.Windows.Forms.Label();
             this.lblSale = new System.Windows.Forms.Label();
             this.activePanel = new System.Windows.Forms.Panel();
@@ -68,7 +67,6 @@ namespace OfficePOS
             // 
             this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMenu.Controls.Add(this.lblReport);
-            this.panelMenu.Controls.Add(this.lblEmplyee);
             this.panelMenu.Controls.Add(this.lblImportProduct);
             this.panelMenu.Controls.Add(this.lblSale);
             this.panelMenu.Controls.Add(this.activePanel);
@@ -85,26 +83,13 @@ namespace OfficePOS
             this.lblReport.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReport.ForeColor = System.Drawing.Color.Gray;
             this.lblReport.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblReport.Location = new System.Drawing.Point(11, 426);
+            this.lblReport.Location = new System.Drawing.Point(15, 350);
             this.lblReport.Name = "lblReport";
             this.lblReport.Padding = new System.Windows.Forms.Padding(10);
             this.lblReport.Size = new System.Drawing.Size(364, 73);
             this.lblReport.TabIndex = 6;
             this.lblReport.Text = "Report";
             this.lblReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblEmplyee
-            // 
-            this.lblEmplyee.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmplyee.ForeColor = System.Drawing.Color.Gray;
-            this.lblEmplyee.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblEmplyee.Location = new System.Drawing.Point(17, 344);
-            this.lblEmplyee.Name = "lblEmplyee";
-            this.lblEmplyee.Padding = new System.Windows.Forms.Padding(10);
-            this.lblEmplyee.Size = new System.Drawing.Size(357, 73);
-            this.lblEmplyee.TabIndex = 5;
-            this.lblEmplyee.Text = "Employee";
-            this.lblEmplyee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblImportProduct
             // 
@@ -185,17 +170,17 @@ namespace OfficePOS
             this.panelIntro.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelIntro.Location = new System.Drawing.Point(0, 0);
             this.panelIntro.Name = "panelIntro";
-            this.panelIntro.Size = new System.Drawing.Size(932, 52);
+            this.panelIntro.Size = new System.Drawing.Size(932, 64);
             this.panelIntro.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(23, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(340, 23);
+            this.label1.Size = new System.Drawing.Size(510, 35);
             this.label1.TabIndex = 0;
             this.label1.Text = "Office Equipment Management System";
             // 
@@ -214,9 +199,9 @@ namespace OfficePOS
             // panelContent
             // 
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(0, 52);
+            this.panelContent.Location = new System.Drawing.Point(0, 64);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(932, 808);
+            this.panelContent.Size = new System.Drawing.Size(932, 796);
             this.panelContent.TabIndex = 2;
             // 
             // pictureBox1
@@ -263,7 +248,6 @@ namespace OfficePOS
         private System.Windows.Forms.Label lblHome;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label lblReport;
-        private System.Windows.Forms.Label lblEmplyee;
         private System.Windows.Forms.Label lblImportProduct;
         private System.Windows.Forms.Label lblSale;
         private System.Windows.Forms.Panel panelContent;
