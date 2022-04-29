@@ -155,6 +155,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddProduct.Designer.cs">
+      <DependentUpon>AddProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,42 +173,84 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="UseControl\Sales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseControl\Sales.Designer.cs">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyItemInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplyItemInfo.Designer.cs">
+      <DependentUpon>SupplyItemInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UseControl\SupplyProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseControl\SupplyProducts.Designer.cs">
+      <DependentUpon>SupplyProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UseControl\SupplierInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseControl\SupplierInfo.Designer.cs">
+      <DependentUpon>SupplierInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UseControl\Supplier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseControl\Supplier.Designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Products.cs">
+    <Compile Include="UseControl\Products.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Products.Designer.cs">
+    <Compile Include="UseControl\Products.Designer.cs">
       <DependentUpon>Products.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DashBoard.cs">
+    <Compile Include="UseControl\DashBoard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DashBoard.Designer.cs">
+    <Compile Include="UseControl\DashBoard.Designer.cs">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sale.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Sale.Designer.cs">
-      <DependentUpon>Sale.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="AddProduct.resx">
+      <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditProduct.resx">
       <DependentUpon>EditProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UseControl\Sales.resx">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplyItemInfo.resx">
+      <DependentUpon>SupplyItemInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UseControl\SupplyProducts.resx">
+      <DependentUpon>SupplyProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UseControl\SupplierInfo.resx">
+      <DependentUpon>SupplierInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UseControl\Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Products.resx">
+    <EmbeddedResource Include="UseControl\Products.resx">
       <DependentUpon>Products.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -215,11 +263,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="DashBoard.resx">
+    <EmbeddedResource Include="UseControl\DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sale.resx">
-      <DependentUpon>Sale.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

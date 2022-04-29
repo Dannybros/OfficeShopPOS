@@ -10,28 +10,18 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class EditProduct : Form
+    public partial class AddProduct : Form
     {
-        public EditProduct()
+        public AddProduct()
         {
             InitializeComponent();
         }
 
-        private void refresh()
+        private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            foreach(TextBox text in product_Info.Controls.OfType<TextBox>()) {text.Text = "";}
+            foreach (TextBox text in product_Info.Controls.OfType<TextBox>()) { text.Text = ""; }
             combo_type.Text = "";
             product_image.Image = null;
-        }
-
-        private void btn_cancel_Click(object sender, EventArgs e)
-        {
-            refresh();
-        }
-
-        private void EditProduct_Load(object sender, EventArgs e)
-        {
-            txt_id.Text = Products.SingleProductID;
         }
 
         private void btn_upload_Click(object sender, EventArgs e)

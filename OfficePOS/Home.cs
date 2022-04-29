@@ -37,7 +37,7 @@ namespace OfficePOS
         }
 
         private void startForm()
-        {
+        { 
             lblHome.ForeColor = Color.White;
             activePanel.Height = lblHome.Height;
             activePanel.Top = lblHome.Top;
@@ -69,8 +69,14 @@ namespace OfficePOS
 
         private void lblSale_Click(object sender, EventArgs e)
         {
-            Sale sale = new Sale();
+            Sales sale = new Sales();
             switchPanel(sale);
+        }
+
+        private void lblImportProduct_Click(object sender, EventArgs e)
+        {
+            SupplyForm sf = new SupplyForm();
+            switchPanel(sf);
         }
     }
 }

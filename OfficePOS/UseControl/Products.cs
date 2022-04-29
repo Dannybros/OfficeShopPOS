@@ -13,11 +13,10 @@ namespace OfficePOS
     public partial class Products : UserControl
     {
         public static string SingleProductID = "";
-
         public Products()
         {
             InitializeComponent();
-            label1.Focus();
+            btnAddProduct.Focus();
             cmbCategory.Text = "All";
         }
 
@@ -97,8 +96,7 @@ namespace OfficePOS
         }
 
         private void txtSearch_Leave(object sender, EventArgs e)
-        {
-
+        { 
             if (txtSearch.Text == "")
             {
                 txtSearch.Text = "Search...";
@@ -110,5 +108,12 @@ namespace OfficePOS
         {
             txtSearch.ForeColor = Color.Black;
         }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            AddProduct ap = new AddProduct();
+            ap.Show();
+        }
+
     }
 }

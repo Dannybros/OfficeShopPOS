@@ -10,24 +10,28 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class Sale : UserControl
+    public partial class Sales : UserControl
     {
-        public Sale()
+        public Sales()
         {
             InitializeComponent();
             btn_Bill.Focus();
-           
+            for (var i = 0; i < 10; i++)
+            {
+                popItems(i.ToString());
+            }
         }
 
-        private void popItems()
+        private void popItems(string i)
         {
             PictureBox pic = new PictureBox();
             pic.Width = 150;
             pic.Height = 120;
+            pic.Cursor = Cursors.Hand;
             pic.BackgroundImageLayout = ImageLayout.Stretch;
             pic.BackgroundImage = OfficePOS.Properties.Resources.download;
             pic.Click += new EventHandler(picture_Click);
-            pic.Tag = "Text";
+            pic.Tag = i;
 
             Label price = new Label();
             price.Text = "$33";
@@ -38,8 +42,8 @@ namespace OfficePOS
             pic.Controls.Add(price);
 
             Label title = new Label();
-            title.Text = "Test";
-            title.Tag = "Test";
+            title.Text = i;
+            title.Cursor = Cursors.Hand;
             title.AutoSize = false;
             title.Dock = DockStyle.Bottom;
             title.Height = 30;
@@ -63,16 +67,16 @@ namespace OfficePOS
             panelItems.Controls.Add(product);
         }
 
-        private void addOrderList()
+        private void addOrderList(string s)
         {
             FlowLayoutPanel orderPanel = new FlowLayoutPanel();
             orderPanel.Width = panelOrderList.Width - 5;
             orderPanel.Height = 70;
             orderPanel.Dock = DockStyle.Top;
             orderPanel.BorderStyle = BorderStyle.FixedSingle;
-            orderPanel.Padding = new Padding(0,0,0,0);
+            orderPanel.Padding = new Padding(0, 0, 0, 0);
 
-            PictureBox picOrder= new PictureBox();
+            PictureBox picOrder = new PictureBox();
             picOrder.Size = new Size(100, 60);
             picOrder.BackgroundImage = OfficePOS.Properties.Resources.download;
             picOrder.BackgroundImageLayout = ImageLayout.Stretch;
@@ -80,20 +84,21 @@ namespace OfficePOS
             orderPanel.Controls.Add(picOrder);
 
             Label title = new Label();
-            title.Text = "Test dafdf de sxdfadad";
+            title.Text = s;
             title.Font = new Font("Times new Roman", 14, FontStyle.Regular);
             title.AutoSize = false;
             title.Width = 150;
             title.Height = 70;
             var titleMargin = title.Margin;
             titleMargin.Left = 20;
-            titleMargin.Right =10;
+            titleMargin.Right = 10;
             title.Margin = titleMargin;
             title.TextAlign = ContentAlignment.MiddleCenter;
             orderPanel.Controls.Add(title);
 
             PictureBox picLess = new PictureBox();
             picLess.Size = new Size(25, 25);
+            picLess.Cursor = Cursors.Hand;
             var picLessMargin = picLess.Margin;
             picLessMargin.Top = 20;
             picLessMargin.Bottom = 20;
@@ -119,6 +124,7 @@ namespace OfficePOS
 
             PictureBox picGreat = new PictureBox();
             picGreat.Size = new Size(25, 25);
+            picGreat.Cursor = Cursors.Hand;
             var picGreatMargin = picGreat.Margin;
             picGreatMargin.Top = 20;
             picGreatMargin.Bottom = 20;
@@ -128,7 +134,9 @@ namespace OfficePOS
             orderPanel.Controls.Add(picGreat);
 
             PictureBox picDel = new PictureBox();
+            picDel.Cursor = Cursors.Hand;
             picDel.Size = new Size(30, 30);
+            picDel.Tag = s;
             picDel.Dock = DockStyle.Right;
             var picDelMargin = picGreat.Margin;
             picDelMargin.Top = 20;
@@ -137,6 +145,7 @@ namespace OfficePOS
             picDel.Margin = picDelMargin;
             picDel.BackgroundImage = OfficePOS.Properties.Resources.delete;
             picDel.BackgroundImageLayout = ImageLayout.Stretch;
+            picDel.Click += new EventHandler(picDel_Click);
             orderPanel.Controls.Add(picDel);
 
             panelOrderList.Controls.Add(orderPanel);
@@ -145,26 +154,69 @@ namespace OfficePOS
         private void picture_Click(object sender, EventArgs e)
         {
             string s = ((PictureBox)sender).Tag.ToString();
-            ((PictureBox)sender).Enabled = false;
+            disenableItem(s);
 
-            addOrderList();
+            addOrderList(s);
         }
 
         private void title_Click(object sender, EventArgs e)
         {
-            string s = ((Label)sender).Tag.ToString();
-            ((Label)sender).Enabled = false;
+            string s = ((Label)sender).Text;
+            disenableItem(s);
 
-            addOrderList();
+            addOrderList(s);
 
         }
 
-        private void Sale_Load(object sender, EventArgs e)
+        private void picDel_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < 10; i++)
+            string s = ((PictureBox)sender).Tag.ToString();
+            cancelItem(s);
+            enableItem(s);
+        }
+
+        private void enableItem(string s)
+        {
+            foreach(Panel p in panelItems.Controls.OfType<Panel>())
             {
-                popItems();
+                foreach(Label lbl in p.Controls.OfType<Label>())
+                {
+                    if(lbl.Text == s)
+                    {
+                        p.Enabled = true;
+                    }
+                }
             }
         }
+
+        private void disenableItem(string s)
+        {
+            foreach (Panel p in panelItems.Controls.OfType<Panel>())
+            {
+                foreach (Label lbl in p.Controls.OfType<Label>())
+                {
+                    if (lbl.Text == s)
+                    {
+                        p.Enabled = false;
+                    }
+                }
+            }
+        }
+
+        private void cancelItem(string s)
+        {
+            foreach (FlowLayoutPanel flp in panelOrderList.Controls.OfType<FlowLayoutPanel>())
+            {
+                foreach (Label lbl in flp.Controls.OfType<Label>())
+                {
+                    if (lbl.Text == s)
+                    {
+                        panelOrderList.Controls.Remove(flp);
+                    }
+                }
+            }
+
+        }
+
     }
 }
