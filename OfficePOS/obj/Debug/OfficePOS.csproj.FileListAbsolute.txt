@@ -87,3 +87,11 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplierInfo.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplyProducts.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplyItemInfo.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Sales.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Report.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Inventory.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Product_Report.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleForm.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleReport.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplyReport.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Security.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CustomerInfo.resources

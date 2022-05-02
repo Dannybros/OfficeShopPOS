@@ -31,7 +31,7 @@ namespace OfficePOS
 
         private void EditProduct_Load(object sender, EventArgs e)
         {
-            txt_id.Text = Products.SingleProductID;
+            txt_id.Text = Inventory.SingleProductID;
         }
 
         private void btn_upload_Click(object sender, EventArgs e)

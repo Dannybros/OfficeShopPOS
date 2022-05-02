@@ -12,16 +12,21 @@ namespace OfficePOS
 {
     public partial class SupplyItemInfo : Form
     {
+        public static string Amount = "";
+
         public SupplyItemInfo()
         {
             InitializeComponent();
-            txt_id.Text = "dd0";
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             txtAmount.Text = null;
-            txt_price.Text = null;
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            Amount = txtAmount.Text;
         }
     }
 }

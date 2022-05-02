@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class Products : UserControl
-    {   
-        public Products()
+    public partial class SaleForm : UserControl
+    {
+        public SaleForm()
         {
             InitializeComponent();
-
             foreach (Label lbl in panelMenu.Controls.OfType<Label>())
             {
                 lbl.Cursor = Cursors.Hand;
@@ -30,7 +29,7 @@ namespace OfficePOS
                 };
             }
         }
-       
+
         private void switchPanel(UserControl panel)
         {
             panelContent.Controls.Clear();
@@ -40,24 +39,29 @@ namespace OfficePOS
             panel.Show();
         }
 
-        private void Products_Load(object sender, EventArgs e)
+        private void SaleForm_Load(object sender, EventArgs e)
         {
-            lblInventory.ForeColor = Color.White;
-            Inventory inv = new Inventory();
-            switchPanel(inv);
+            lblSale.ForeColor = Color.White;
+            Sales sales = new Sales();
+            switchPanel(sales);
         }
 
-        private void lblInventory_Click(object sender, EventArgs e)
+        private void lblSale_Click(object sender, EventArgs e)
         {
-            Inventory inv = new Inventory();
-            switchPanel(inv);
-
+            Sales sales = new Sales();
+            switchPanel(sales);
         }
 
-        private void lblProdReport_Click(object sender, EventArgs e)
+        private void lblSaleReport_Click(object sender, EventArgs e)
         {
-            Product_Report pr = new Product_Report();
-            switchPanel(pr);
+            SaleReport sp = new SaleReport();
+            switchPanel(sp);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            CustomerInfo cinfo = new CustomerInfo();
+            switchPanel(cinfo);
         }
     }
 }

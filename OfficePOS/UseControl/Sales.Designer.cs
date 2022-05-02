@@ -33,25 +33,27 @@ namespace OfficePOS
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelItems = new System.Windows.Forms.FlowLayoutPanel();
             this.panelSearchItems = new System.Windows.Forms.Panel();
+            this.picSearchIcon = new System.Windows.Forms.PictureBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.txt_sum = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelOrderList = new System.Windows.Forms.FlowLayoutPanel();
             this.panelOrderTotal = new System.Windows.Forms.Panel();
-            this.btn_Bill = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelOrder = new System.Windows.Forms.Panel();
-            this.picSearchIcon = new System.Windows.Forms.PictureBox();
+            this.cmb_supplier = new System.Windows.Forms.ComboBox();
+            this.Label3 = new System.Windows.Forms.Label();
+            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_Bill = new System.Windows.Forms.Button();
+            this.txt_sum_supply = new System.Windows.Forms.TextBox();
             this.panelSearchItems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).BeginInit();
             this.panel4.SuspendLayout();
             this.panelOrderTotal.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelOrder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSearch
@@ -94,6 +96,18 @@ namespace OfficePOS
             this.panelSearchItems.Name = "panelSearchItems";
             this.panelSearchItems.Size = new System.Drawing.Size(688, 90);
             this.panelSearchItems.TabIndex = 0;
+            // 
+            // picSearchIcon
+            // 
+            this.picSearchIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picSearchIcon.BackColor = System.Drawing.Color.Transparent;
+            this.picSearchIcon.Image = global::OfficePOS.Properties.Resources.search;
+            this.picSearchIcon.Location = new System.Drawing.Point(452, 31);
+            this.picSearchIcon.Name = "picSearchIcon";
+            this.picSearchIcon.Size = new System.Drawing.Size(30, 30);
+            this.picSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picSearchIcon.TabIndex = 4;
+            this.picSearchIcon.TabStop = false;
             // 
             // cmbCategory
             // 
@@ -146,35 +160,6 @@ namespace OfficePOS
             this.label1.TabIndex = 0;
             this.label1.Text = "Order List";
             // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.BackColor = System.Drawing.Color.IndianRed;
-            this.btn_Cancel.FlatAppearance.BorderSize = 0;
-            this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Cancel.Location = new System.Drawing.Point(91, 146);
-            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(136, 57);
-            this.btn_Cancel.TabIndex = 31;
-            this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = false;
-            // 
-            // txt_sum
-            // 
-            this.txt_sum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_sum.BackColor = System.Drawing.SystemColors.InfoText;
-            this.txt_sum.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_sum.ForeColor = System.Drawing.SystemColors.Window;
-            this.txt_sum.Location = new System.Drawing.Point(91, 44);
-            this.txt_sum.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_sum.Name = "txt_sum";
-            this.txt_sum.Size = new System.Drawing.Size(474, 75);
-            this.txt_sum.TabIndex = 33;
-            this.txt_sum.Text = " 0.00";
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.ForestGreen;
@@ -190,35 +175,22 @@ namespace OfficePOS
             this.panelOrderList.Location = new System.Drawing.Point(0, 89);
             this.panelOrderList.Name = "panelOrderList";
             this.panelOrderList.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.panelOrderList.Size = new System.Drawing.Size(639, 315);
+            this.panelOrderList.Size = new System.Drawing.Size(639, 308);
             this.panelOrderList.TabIndex = 4;
             // 
             // panelOrderTotal
             // 
-            this.panelOrderTotal.Controls.Add(this.txt_sum);
+            this.panelOrderTotal.Controls.Add(this.cmb_supplier);
             this.panelOrderTotal.Controls.Add(this.panel3);
-            this.panelOrderTotal.Controls.Add(this.btn_Cancel);
+            this.panelOrderTotal.Controls.Add(this.Label3);
             this.panelOrderTotal.Controls.Add(this.btn_Bill);
+            this.panelOrderTotal.Controls.Add(this.btn_Cancel);
+            this.panelOrderTotal.Controls.Add(this.txt_sum_supply);
             this.panelOrderTotal.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelOrderTotal.Location = new System.Drawing.Point(0, 404);
+            this.panelOrderTotal.Location = new System.Drawing.Point(0, 397);
             this.panelOrderTotal.Name = "panelOrderTotal";
-            this.panelOrderTotal.Size = new System.Drawing.Size(639, 248);
+            this.panelOrderTotal.Size = new System.Drawing.Size(639, 255);
             this.panelOrderTotal.TabIndex = 0;
-            // 
-            // btn_Bill
-            // 
-            this.btn_Bill.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_Bill.FlatAppearance.BorderSize = 0;
-            this.btn_Bill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Bill.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Bill.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Bill.Location = new System.Drawing.Point(429, 146);
-            this.btn_Bill.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Bill.Name = "btn_Bill";
-            this.btn_Bill.Size = new System.Drawing.Size(136, 57);
-            this.btn_Bill.TabIndex = 30;
-            this.btn_Bill.Text = "Get Bill";
-            this.btn_Bill.UseVisualStyleBackColor = false;
             // 
             // panelMenu
             // 
@@ -242,17 +214,74 @@ namespace OfficePOS
             this.panelOrder.Size = new System.Drawing.Size(641, 654);
             this.panelOrder.TabIndex = 6;
             // 
-            // picSearchIcon
+            // cmb_supplier
             // 
-            this.picSearchIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picSearchIcon.BackColor = System.Drawing.Color.Transparent;
-            this.picSearchIcon.Image = global::OfficePOS.Properties.Resources.search;
-            this.picSearchIcon.Location = new System.Drawing.Point(452, 31);
-            this.picSearchIcon.Name = "picSearchIcon";
-            this.picSearchIcon.Size = new System.Drawing.Size(30, 30);
-            this.picSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSearchIcon.TabIndex = 4;
-            this.picSearchIcon.TabStop = false;
+            this.cmb_supplier.BackColor = System.Drawing.Color.White;
+            this.cmb_supplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_supplier.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_supplier.ForeColor = System.Drawing.Color.Black;
+            this.cmb_supplier.FormattingEnabled = true;
+            this.cmb_supplier.Location = new System.Drawing.Point(216, 38);
+            this.cmb_supplier.Margin = new System.Windows.Forms.Padding(4);
+            this.cmb_supplier.Name = "cmb_supplier";
+            this.cmb_supplier.Size = new System.Drawing.Size(362, 30);
+            this.cmb_supplier.TabIndex = 39;
+            // 
+            // Label3
+            // 
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.ForeColor = System.Drawing.Color.Black;
+            this.Label3.Location = new System.Drawing.Point(68, 41);
+            this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(115, 22);
+            this.Label3.TabIndex = 38;
+            this.Label3.Text = "Client Name:";
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_Cancel.FlatAppearance.BorderSize = 0;
+            this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cancel.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_Cancel.Location = new System.Drawing.Point(67, 188);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(117, 45);
+            this.btn_Cancel.TabIndex = 37;
+            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = false;
+            // 
+            // btn_Bill
+            // 
+            this.btn_Bill.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_Bill.FlatAppearance.BorderSize = 0;
+            this.btn_Bill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Bill.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Bill.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_Bill.Location = new System.Drawing.Point(461, 188);
+            this.btn_Bill.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Bill.Name = "btn_Bill";
+            this.btn_Bill.Size = new System.Drawing.Size(117, 45);
+            this.btn_Bill.TabIndex = 36;
+            this.btn_Bill.Text = "Get Bill";
+            this.btn_Bill.UseVisualStyleBackColor = false;
+            // 
+            // txt_sum_supply
+            // 
+            this.txt_sum_supply.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_sum_supply.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txt_sum_supply.Font = new System.Drawing.Font("Microsoft Sans Serif", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_sum_supply.ForeColor = System.Drawing.SystemColors.Window;
+            this.txt_sum_supply.Location = new System.Drawing.Point(67, 94);
+            this.txt_sum_supply.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_sum_supply.Name = "txt_sum_supply";
+            this.txt_sum_supply.Size = new System.Drawing.Size(511, 67);
+            this.txt_sum_supply.TabIndex = 35;
+            this.txt_sum_supply.Text = " 0.00";
             // 
             // Sales
             // 
@@ -264,13 +293,13 @@ namespace OfficePOS
             this.Size = new System.Drawing.Size(1329, 654);
             this.panelSearchItems.ResumeLayout(false);
             this.panelSearchItems.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panelOrderTotal.ResumeLayout(false);
             this.panelOrderTotal.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             this.panelOrder.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -286,13 +315,15 @@ namespace OfficePOS
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        internal System.Windows.Forms.Button btn_Cancel;
-        internal System.Windows.Forms.TextBox txt_sum;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.FlowLayoutPanel panelOrderList;
         private System.Windows.Forms.Panel panelOrderTotal;
-        internal System.Windows.Forms.Button btn_Bill;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelOrder;
+        internal System.Windows.Forms.ComboBox cmb_supplier;
+        internal System.Windows.Forms.Label Label3;
+        internal System.Windows.Forms.Button btn_Bill;
+        internal System.Windows.Forms.Button btn_Cancel;
+        internal System.Windows.Forms.TextBox txt_sum_supply;
     }
 }

@@ -69,7 +69,7 @@ namespace OfficePOS
 
         private void lblSale_Click(object sender, EventArgs e)
         {
-            Sales sale = new Sales();
+            SaleForm sale = new SaleForm();
             switchPanel(sale);
         }
 
@@ -77,6 +77,12 @@ namespace OfficePOS
         {
             SupplyForm sf = new SupplyForm();
             switchPanel(sf);
+        }
+
+        private void lblSecurity_Click(object sender, EventArgs e)
+        {
+            Security security = new Security();
+            switchPanel(security);
         }
     }
 }

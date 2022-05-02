@@ -60,5 +60,11 @@ namespace OfficePOS
             SupplyProducts sprod = new SupplyProducts();
             switchPanel(sprod);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            SupplyReport sreport = new SupplyReport();
+            switchPanel(sreport);
+        }
     }
 }
