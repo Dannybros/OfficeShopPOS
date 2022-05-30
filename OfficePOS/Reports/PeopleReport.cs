@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class Product_Report : UserControl
+    public partial class PeopleReport : UserControl
     {
-        public Product_Report()
+        public PeopleReport()
         {
             InitializeComponent();
+            cmbType.SelectedIndex = 0;
         }
     }
 }

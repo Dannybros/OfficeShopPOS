@@ -41,9 +41,9 @@ namespace OfficePOS
 
         private void SaleForm_Load(object sender, EventArgs e)
         {
-            lblSale.ForeColor = Color.White;
-            Sales sales = new Sales();
-            switchPanel(sales);
+            lblCustomerInfo.ForeColor = Color.White;
+            CustomerInfo cinfo = new CustomerInfo();
+            switchPanel(cinfo);
         }
 
         private void lblSale_Click(object sender, EventArgs e)

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class Report : UserControl
+    public partial class Employee : UserControl
     {
-        public Report()
+        public Employee()
         {
             InitializeComponent();
         }

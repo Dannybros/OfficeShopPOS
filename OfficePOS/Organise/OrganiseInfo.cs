@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class SupplyForm : UserControl
-    { 
-        public SupplyForm()
+    public partial class OrganiseInfo : UserControl
+    {
+        public OrganiseInfo()
         {
             InitializeComponent();
 
             loadForm();
-            
-            foreach(Label lbl in panelTop.Controls.OfType<Label>())
+
+            foreach (Label lbl in panelTop.Controls.OfType<Label>())
             {
                 lbl.Cursor = Cursors.Hand;
                 lbl.Click += (s, e) =>
@@ -32,12 +32,11 @@ namespace OfficePOS
                 };
             }
         }
-
         private void loadForm()
         {
-            label1.ForeColor = Color.White;
-            SupplierInfo sinfo = new SupplierInfo();
-            switchPanel(sinfo);
+            lbl_product.ForeColor = Color.White;
+            Inventory Inv = new Inventory();
+            switchPanel(Inv);
         }
 
         private void switchPanel(UserControl panel)
@@ -49,22 +48,28 @@ namespace OfficePOS
             panel.Show();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void lbl_product_Click(object sender, EventArgs e)
         {
-            SupplierInfo sinfo = new SupplierInfo();
+            Inventory Inv = new Inventory();
+            switchPanel(Inv);
+        }
+
+        private void lbl_customer_Click(object sender, EventArgs e)
+        {
+            CustomerInfo sinfo = new CustomerInfo();
             switchPanel(sinfo);
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void lbl_Employee_Click(object sender, EventArgs e)
         {
-            SupplyProducts sprod = new SupplyProducts();
-            switchPanel(sprod);
+            Employee sEmp = new Employee();
+            switchPanel(sEmp);
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void lbl_supplier_Click(object sender, EventArgs e)
         {
-            SupplyReport sreport = new SupplyReport();
-            switchPanel(sreport);
+            SupplierInfo sSupp = new SupplierInfo();
+            switchPanel(sSupp);
         }
     }
 }

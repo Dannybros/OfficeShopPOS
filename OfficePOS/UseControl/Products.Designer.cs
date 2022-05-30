@@ -51,25 +51,25 @@ namespace OfficePOS
             // lblProdReport
             // 
             this.lblProdReport.AutoSize = true;
-            this.lblProdReport.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProdReport.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProdReport.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblProdReport.Location = new System.Drawing.Point(252, 21);
+            this.lblProdReport.Location = new System.Drawing.Point(252, 16);
             this.lblProdReport.Name = "lblProdReport";
-            this.lblProdReport.Size = new System.Drawing.Size(182, 26);
+            this.lblProdReport.Size = new System.Drawing.Size(145, 35);
             this.lblProdReport.TabIndex = 1;
-            this.lblProdReport.Text = "Products Report";
+            this.lblProdReport.Text = "ລາຍງານສິນຄ້າ";
             this.lblProdReport.Click += new System.EventHandler(this.lblProdReport_Click);
             // 
             // lblInventory
             // 
             this.lblInventory.AutoSize = true;
-            this.lblInventory.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInventory.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInventory.ForeColor = System.Drawing.Color.White;
-            this.lblInventory.Location = new System.Drawing.Point(58, 21);
+            this.lblInventory.Location = new System.Drawing.Point(58, 16);
             this.lblInventory.Name = "lblInventory";
-            this.lblInventory.Size = new System.Drawing.Size(112, 26);
+            this.lblInventory.Size = new System.Drawing.Size(114, 35);
             this.lblInventory.TabIndex = 0;
-            this.lblInventory.Text = "Inventory";
+            this.lblInventory.Text = "ບັນຊີສິນຄ້າ";
             this.lblInventory.Click += new System.EventHandler(this.lblInventory_Click);
             // 
             // panelContent

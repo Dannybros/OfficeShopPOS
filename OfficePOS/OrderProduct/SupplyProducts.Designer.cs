@@ -98,12 +98,12 @@ namespace OfficePOS
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(160, 16);
+            this.label1.Font = new System.Drawing.Font("Phetsarath OT", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(160, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 45);
+            this.label1.Size = new System.Drawing.Size(310, 58);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Supply List";
+            this.label1.Text = "ລາຍການສັ່ງຊື້ສິນຄ້າ";
             // 
             // panelTotal
             // 
@@ -135,14 +135,14 @@ namespace OfficePOS
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
             this.Label3.Location = new System.Drawing.Point(62, 41);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(140, 22);
+            this.Label3.Size = new System.Drawing.Size(140, 29);
             this.Label3.TabIndex = 33;
-            this.Label3.Text = "Supplier Name: ";
+            this.Label3.Text = "ຊື່ຜູ້ສະໜອງສິນຄ້າ:";
             // 
             // panel6
             // 
@@ -158,14 +158,14 @@ namespace OfficePOS
             this.btn_Cancel.BackColor = System.Drawing.Color.IndianRed;
             this.btn_Cancel.FlatAppearance.BorderSize = 0;
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Cancel.Location = new System.Drawing.Point(61, 190);
+            this.btn_Cancel.Location = new System.Drawing.Point(61, 196);
             this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(117, 45);
             this.btn_Cancel.TabIndex = 31;
-            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.Text = "ຍົກເລີກ";
             this.btn_Cancel.UseVisualStyleBackColor = false;
             // 
             // btn_Bill
@@ -173,14 +173,14 @@ namespace OfficePOS
             this.btn_Bill.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_Bill.FlatAppearance.BorderSize = 0;
             this.btn_Bill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Bill.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Bill.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Bill.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Bill.Location = new System.Drawing.Point(455, 190);
+            this.btn_Bill.Location = new System.Drawing.Point(455, 196);
             this.btn_Bill.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Bill.Name = "btn_Bill";
             this.btn_Bill.Size = new System.Drawing.Size(117, 45);
             this.btn_Bill.TabIndex = 30;
-            this.btn_Bill.Text = "Get Bill";
+            this.btn_Bill.Text = "ພິມໃບບິນ";
             this.btn_Bill.UseVisualStyleBackColor = false;
             // 
             // txt_sum_supply
@@ -234,14 +234,14 @@ namespace OfficePOS
             this.btnAddProduct.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnAddProduct.FlatAppearance.BorderSize = 0;
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddProduct.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddProduct.Location = new System.Drawing.Point(32, 18);
+            this.btnAddProduct.Location = new System.Drawing.Point(29, 21);
             this.btnAddProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(132, 45);
+            this.btnAddProduct.Size = new System.Drawing.Size(160, 39);
             this.btnAddProduct.TabIndex = 31;
-            this.btnAddProduct.Text = "Add Product";
+            this.btnAddProduct.Text = "ເພີ່ມສິນຄ້າໃຫມ່";
             this.btnAddProduct.UseVisualStyleBackColor = false;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
@@ -272,7 +272,7 @@ namespace OfficePOS
             "Chair",
             "Desk",
             "Lamp"});
-            this.cmbCategory.Location = new System.Drawing.Point(196, 23);
+            this.cmbCategory.Location = new System.Drawing.Point(211, 23);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbCategory.Size = new System.Drawing.Size(164, 34);
@@ -316,7 +316,6 @@ namespace OfficePOS
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel panelSupplyList;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label1;
@@ -328,5 +327,6 @@ namespace OfficePOS
         internal System.Windows.Forms.ComboBox cmb_supplier;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.FlowLayoutPanel panelSupplyList;
     }
 }

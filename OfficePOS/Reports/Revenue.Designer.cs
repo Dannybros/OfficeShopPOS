@@ -1,7 +1,7 @@
 ﻿
 namespace OfficePOS
 {
-    partial class Dashboard
+    partial class Revenue
     {
         /// <summary> 
         /// Required designer variable.

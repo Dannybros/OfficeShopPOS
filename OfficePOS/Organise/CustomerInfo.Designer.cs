@@ -63,28 +63,28 @@ namespace OfficePOS
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(333, 152);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 22);
+            this.label4.Size = new System.Drawing.Size(133, 29);
             this.label4.TabIndex = 25;
-            this.label4.Text = "Phone: ";
+            this.label4.Text = "ເບີໂທຂອງລູກຄ້າ:";
             // 
             // btn_Del
             // 
             this.btn_Del.BackColor = System.Drawing.Color.IndianRed;
             this.btn_Del.FlatAppearance.BorderSize = 0;
             this.btn_Del.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Del.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Del.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Del.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_Del.Location = new System.Drawing.Point(377, 302);
             this.btn_Del.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Del.Name = "btn_Del";
             this.btn_Del.Size = new System.Drawing.Size(136, 40);
             this.btn_Del.TabIndex = 32;
-            this.btn_Del.Text = "Delete";
+            this.btn_Del.Text = "ລຶບ";
             this.btn_Del.UseVisualStyleBackColor = false;
             // 
             // groupBox1
@@ -105,13 +105,14 @@ namespace OfficePOS
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.Label1);
             this.groupBox1.Controls.Add(this.Label2);
+            this.groupBox1.Font = new System.Drawing.Font("Phetsarath OT", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(45, 23);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1071, 261);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "INFO";
+            this.groupBox1.Text = "ຂໍ້ມູນລູກຄ້າ";
             // 
             // textBox6
             // 
@@ -127,25 +128,25 @@ namespace OfficePOS
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(639, 104);
+            this.label6.Location = new System.Drawing.Point(634, 99);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 22);
+            this.label6.Size = new System.Drawing.Size(87, 29);
             this.label6.TabIndex = 29;
-            this.label6.Text = "Address:";
+            this.label6.Text = "ທີ່ຢູ່ລູກຄ້າ:";
             // 
             // btn_upload
             // 
-            this.btn_upload.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_upload.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_upload.ForeColor = System.Drawing.Color.Black;
             this.btn_upload.Location = new System.Drawing.Point(37, 202);
             this.btn_upload.Margin = new System.Windows.Forms.Padding(4);
             this.btn_upload.Name = "btn_upload";
             this.btn_upload.Size = new System.Drawing.Size(200, 39);
             this.btn_upload.TabIndex = 14;
-            this.btn_upload.Text = "Upload";
+            this.btn_upload.Text = "ເລືອກຮູບ";
             this.btn_upload.UseVisualStyleBackColor = true;
             // 
             // product_image
@@ -162,7 +163,7 @@ namespace OfficePOS
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.textBox3.Location = new System.Drawing.Point(728, 36);
+            this.textBox3.Location = new System.Drawing.Point(728, 41);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(105, 30);
             this.textBox3.TabIndex = 24;
@@ -171,14 +172,14 @@ namespace OfficePOS
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(640, 44);
+            this.label3.Location = new System.Drawing.Point(628, 42);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 22);
+            this.label3.Size = new System.Drawing.Size(98, 29);
             this.label3.TabIndex = 23;
-            this.label3.Text = "Age: ";
+            this.label3.Text = "ອາຍຸລູກຄ້າ: ";
             // 
             // textBox5
             // 
@@ -193,14 +194,14 @@ namespace OfficePOS
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(333, 205);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 22);
+            this.label5.Size = new System.Drawing.Size(111, 29);
             this.label5.TabIndex = 27;
-            this.label5.Text = "Email:";
+            this.label5.Text = "ອີເມວລູກຄ້າ: ";
             // 
             // textBox4
             // 
@@ -247,28 +248,28 @@ namespace OfficePOS
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.ForeColor = System.Drawing.Color.White;
             this.Label2.Location = new System.Drawing.Point(333, 99);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(142, 22);
+            this.Label2.Size = new System.Drawing.Size(74, 29);
             this.Label2.TabIndex = 19;
-            this.Label2.Text = "Customer Name:";
+            this.Label2.Text = "ຊື່ລູກຄ້າ:";
             // 
             // btn_add
             // 
             this.btn_add.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_add.FlatAppearance.BorderSize = 0;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_add.Location = new System.Drawing.Point(45, 302);
             this.btn_add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(136, 40);
             this.btn_add.TabIndex = 30;
-            this.btn_add.Text = "Save";
+            this.btn_add.Text = "ບັນທຶກ";
             this.btn_add.UseVisualStyleBackColor = false;
             // 
             // txtSearch
@@ -318,14 +319,14 @@ namespace OfficePOS
             this.btn_cancel.BackColor = System.Drawing.Color.DarkKhaki;
             this.btn_cancel.FlatAppearance.BorderSize = 0;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancel.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
             this.btn_cancel.Location = new System.Drawing.Point(211, 302);
             this.btn_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(136, 40);
             this.btn_cancel.TabIndex = 31;
-            this.btn_cancel.Text = "Cancel";
+            this.btn_cancel.Text = "ຍົກເລີກ";
             this.btn_cancel.UseVisualStyleBackColor = false;
             // 
             // panelSupplierInfo

@@ -11,9 +11,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace OfficePOS
 {
-    public partial class Dashboard : UserControl
+    public partial class Revenue : UserControl
     {
-        public Dashboard()
+        public Revenue()
         {
             InitializeComponent();
             addPanels();
@@ -27,9 +27,9 @@ namespace OfficePOS
         private void chartSetting()
         {
             Title title = new Title();
-            title.Font = new Font("Times New Roman", 24, FontStyle.Bold);
+            title.Font = new Font("Phetsarath OT", 24, FontStyle.Bold);
             title.Alignment = ContentAlignment.TopLeft;
-            title.Text = "Sales for this Week";
+            title.Text = "ການຂາຍສໍາລັບອາທິດນີ້";
             chart1.Titles.Add(title);
 
             chart1.ChartAreas[0].AxisX.IsMarginVisible = false;
@@ -68,22 +68,22 @@ namespace OfficePOS
         private void addLabel(TableLayoutPanel p, string t, string mainNumber, string description)
         {
             var title = new Label() { Text = t };
-            title.Font = new Font("Times New Roman", 15);
-            title.AutoSize = false;
+            title.Font = new Font("Phetsarath OT", 15);
+            title.AutoSize = true;
             title.Height = p.Height / 3;
             title.TextAlign = ContentAlignment.BottomLeft;
             p.Controls.Add(title);
 
             Label content = new Label() { Text = mainNumber};
             content.Font = new Font("Times New Roman", 22, FontStyle.Bold);
-            content.AutoSize = false;
+            content.AutoSize = true;
             content.Height = p.Height / 3;
             content.TextAlign = ContentAlignment.MiddleLeft;
             p.Controls.Add(content);
 
             Label des = new Label() { Text = description };
-            des.Font = new Font("Times New Roman", 12);
-            des.AutoSize = false;
+            des.Font = new Font("Phetsarath OT", 12);
+            des.AutoSize = true;
             des.Height = p.Height / 3;
             des.TextAlign = ContentAlignment.TopLeft;
             p.Controls.Add(des);
@@ -95,13 +95,13 @@ namespace OfficePOS
             TableLayoutPanel p2 = new TableLayoutPanel();
             TableLayoutPanel p3 = new TableLayoutPanel();
             createPanel(p1, Color.FromArgb(11, 94, 215));
-            addLabel(p1, "Order", "20", "Total Products Saled On Today");
+            addLabel(p1, "ລາຍ​ຮັບ​ສໍາ​ລັບ​ອາ​ທິດ​", "3,000,000 KIP", "ລາຄາລວມຂອງສິນຄ້າທີ່ຂາຍໃນອາທິດນີ້");
 
             createPanel(p2, Color.FromArgb(167, 42, 43));
-            addLabel(p2, "Order", "20", "Total Products Saled On Today");
+            addLabel(p2, "ລາຍຈ່າຍສິນຄ້າ", "1,000,000 KIP", "ລາຄາລວມຂອງສິນຄ້າທີ່ສັ່ງຊື້ໃນອາທິດນີ້");
 
             createPanel(p3, Color.FromArgb(254, 178, 8));
-            addLabel(p3, "Order", "20", "Total Products Saled On Today");
+            addLabel(p3, "ລາຍຈ່າຍພະນັກງານ", "500,000 KIP", "ລາຍຈ່າຍທັງໝົດຂອງຂອງເງິນເດືອນພະນັກງານ");
         }
 
     }

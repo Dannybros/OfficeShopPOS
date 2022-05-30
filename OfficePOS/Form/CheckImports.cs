@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class SupplyReport : UserControl
+    public partial class CheckImports : Form
     {
-        public SupplyReport()
+        public CheckImports()
         {
             InitializeComponent();
+        }
+
+        private void lbl_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

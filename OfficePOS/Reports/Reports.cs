@@ -10,18 +10,20 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class Products : UserControl
-    {   
-        public Products()
+    public partial class Reports : UserControl
+    { 
+        public Reports()
         {
             InitializeComponent();
 
-            foreach (Label lbl in panelMenu.Controls.OfType<Label>())
+            loadForm();
+            
+            foreach(Label lbl in panelTop.Controls.OfType<Label>())
             {
                 lbl.Cursor = Cursors.Hand;
                 lbl.Click += (s, e) =>
                 {
-                    foreach (Label label in panelMenu.Controls.OfType<Label>())
+                    foreach (Label label in panelTop.Controls.OfType<Label>())
                     {
                         label.ForeColor = Color.Gray;
                     };
@@ -30,7 +32,14 @@ namespace OfficePOS
                 };
             }
         }
-       
+
+        private void loadForm()
+        {
+            lbl_report_sale.ForeColor = Color.White;
+            SaleReport sr = new SaleReport();
+            switchPanel(sr);
+        }
+
         private void switchPanel(UserControl panel)
         {
             panelContent.Controls.Clear();
@@ -40,21 +49,25 @@ namespace OfficePOS
             panel.Show();
         }
 
-        private void Products_Load(object sender, EventArgs e)
+        private void lbl_report_sale_Click(object sender, EventArgs e)
         {
-            lblInventory.ForeColor = Color.White;
-            Inventory inv = new Inventory();
-            switchPanel(inv);
+            SaleReport sr = new SaleReport();
+            switchPanel(sr);
         }
 
-        private void lblInventory_Click(object sender, EventArgs e)
+        private void lbl_report_revenue_Click(object sender, EventArgs e)
         {
-            Inventory inv = new Inventory();
-            switchPanel(inv);
-
+            Revenue rev = new Revenue();
+            switchPanel(rev);
         }
 
-        private void lblProdReport_Click(object sender, EventArgs e)
+        private void lbl_report_people_Click(object sender, EventArgs e)
+        {
+            PeopleReport peReport = new PeopleReport();
+            switchPanel(peReport);
+        }
+
+        private void lbl_report_products_Click(object sender, EventArgs e)
         {
             ProductReport pr = new ProductReport();
             switchPanel(pr);

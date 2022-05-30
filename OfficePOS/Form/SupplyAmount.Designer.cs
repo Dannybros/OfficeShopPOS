@@ -70,14 +70,14 @@ namespace OfficePOS
             this.btn_Cancel.BackColor = System.Drawing.Color.IndianRed;
             this.btn_Cancel.FlatAppearance.BorderSize = 0;
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_Cancel.Location = new System.Drawing.Point(88, 134);
             this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(118, 35);
             this.btn_Cancel.TabIndex = 31;
-            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.Text = "ຍົກເລີກ";
             this.btn_Cancel.UseVisualStyleBackColor = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
@@ -88,14 +88,14 @@ namespace OfficePOS
             this.btn_add.BackColor = System.Drawing.SystemColors.Highlight;
             this.btn_add.FlatAppearance.BorderSize = 0;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_add.Location = new System.Drawing.Point(353, 134);
             this.btn_add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(118, 35);
             this.btn_add.TabIndex = 30;
-            this.btn_add.Text = "Add";
+            this.btn_add.Text = "ບັນທຶກ";
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
@@ -115,14 +115,14 @@ namespace OfficePOS
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(60, 64);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 22);
+            this.label5.Size = new System.Drawing.Size(117, 29);
             this.label5.TabIndex = 23;
-            this.label5.Text = "Buying Amount: ";
+            this.label5.Text = "ຈໍາ​ນວນ​ການ​ຊື້​:";
             // 
             // SupplyItemInfo
             // 

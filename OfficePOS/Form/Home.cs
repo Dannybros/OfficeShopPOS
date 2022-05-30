@@ -42,8 +42,8 @@ namespace OfficePOS
             activePanel.Height = lblHome.Height;
             activePanel.Top = lblHome.Top;
 
-            Dashboard dashboard = new Dashboard();
-            switchPanel(dashboard);
+            OrganiseInfo organise = new OrganiseInfo();
+            switchPanel(organise);
         }
 
         private void switchPanel(UserControl panel)
@@ -55,34 +55,34 @@ namespace OfficePOS
             panel.Show();
         }
 
-        private void lblProducts_Click(object sender, EventArgs e)
-        {
-            Products pd = new Products();
-            switchPanel(pd);
-        }
-
         private void lblHome_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard();
-            switchPanel(dashboard);
+            OrganiseInfo organise = new OrganiseInfo();
+            switchPanel(organise);
         }
 
         private void lblSale_Click(object sender, EventArgs e)
         {
-            SaleForm sale = new SaleForm();
+            Sales sale = new Sales();
             switchPanel(sale);
         }
 
-        private void lblImportProduct_Click(object sender, EventArgs e)
+        private void lbl_order_product_Click(object sender, EventArgs e)
         {
-            SupplyForm sf = new SupplyForm();
-            switchPanel(sf);
+            SupplyProducts sp = new SupplyProducts();
+            switchPanel(sp);
         }
 
-        private void lblSecurity_Click(object sender, EventArgs e)
+        private void lbl_report_Click(object sender, EventArgs e)
         {
-            Security security = new Security();
-            switchPanel(security);
+            Reports report = new Reports();
+            switchPanel(report);
+        }
+
+        private void lbl_import_Click(object sender, EventArgs e)
+        {
+            CheckImportProduct cip = new CheckImportProduct();
+            switchPanel(cip);
         }
     }
 }

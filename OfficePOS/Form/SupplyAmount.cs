@@ -27,6 +27,8 @@ namespace OfficePOS
         private void btn_add_Click(object sender, EventArgs e)
         {
             Amount = txtAmount.Text;
+            //SupplyProducts.addOrderList("ss");
+            this.Close();
         }
     }
 }
