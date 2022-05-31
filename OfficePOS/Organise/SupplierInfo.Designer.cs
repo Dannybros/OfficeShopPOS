@@ -29,51 +29,51 @@ namespace OfficePOS
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridSupplier = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelDataView = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_sup_address = new System.Windows.Forms.TextBox();
             this.btn_upload = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_sup_email = new System.Windows.Forms.TextBox();
+            this.txt_sup_phone = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_sup_ID = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.btn_Del = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.product_image = new System.Windows.Forms.PictureBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.panelSupplierInfo = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btn_GUID = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSupplier)).BeginInit();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pb_supplier = new System.Windows.Forms.PictureBox();
+            this.txt_sup_name = new System.Windows.Forms.TextBox();
+            this.panelSupplierInfo = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelDataView.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.product_image)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_supplier)).BeginInit();
             this.panelSupplierInfo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridSupplier
+            // dataGridView1
             // 
-            this.dataGridSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridSupplier.Location = new System.Drawing.Point(20, 95);
-            this.dataGridSupplier.Name = "dataGridSupplier";
-            this.dataGridSupplier.RowHeadersWidth = 51;
-            this.dataGridSupplier.RowTemplate.Height = 24;
-            this.dataGridSupplier.Size = new System.Drawing.Size(1294, 194);
-            this.dataGridSupplier.TabIndex = 2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 95);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1294, 194);
+            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // panelDataView
             // 
-            this.panelDataView.Controls.Add(this.dataGridSupplier);
+            this.panelDataView.Controls.Add(this.dataGridView1);
             this.panelDataView.Controls.Add(this.panel2);
             this.panelDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDataView.Location = new System.Drawing.Point(0, 378);
@@ -105,54 +105,56 @@ namespace OfficePOS
             this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
-            // textBox6
+            // txt_sup_address
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.textBox6.Location = new System.Drawing.Point(902, 96);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(304, 136);
-            this.textBox6.TabIndex = 30;
+            this.txt_sup_address.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_sup_address.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txt_sup_address.Location = new System.Drawing.Point(897, 41);
+            this.txt_sup_address.Multiline = true;
+            this.txt_sup_address.Name = "txt_sup_address";
+            this.txt_sup_address.Size = new System.Drawing.Size(304, 191);
+            this.txt_sup_address.TabIndex = 30;
             // 
             // btn_upload
             // 
             this.btn_upload.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_upload.ForeColor = System.Drawing.Color.Black;
-            this.btn_upload.Location = new System.Drawing.Point(37, 202);
+            this.btn_upload.Location = new System.Drawing.Point(37, 205);
             this.btn_upload.Margin = new System.Windows.Forms.Padding(4);
             this.btn_upload.Name = "btn_upload";
             this.btn_upload.Size = new System.Drawing.Size(200, 39);
             this.btn_upload.TabIndex = 14;
             this.btn_upload.Text = "ເລືອກຮູບ";
             this.btn_upload.UseVisualStyleBackColor = true;
+            this.btn_upload.Click += new System.EventHandler(this.btn_upload_Click);
             // 
-            // textBox5
+            // txt_sup_email
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txt_sup_email.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.textBox5.Location = new System.Drawing.Point(501, 202);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(279, 30);
-            this.textBox5.TabIndex = 28;
+            this.txt_sup_email.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txt_sup_email.Location = new System.Drawing.Point(501, 202);
+            this.txt_sup_email.Name = "txt_sup_email";
+            this.txt_sup_email.Size = new System.Drawing.Size(279, 30);
+            this.txt_sup_email.TabIndex = 28;
             // 
-            // textBox4
+            // txt_sup_phone
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.textBox4.Location = new System.Drawing.Point(902, 41);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(304, 30);
-            this.textBox4.TabIndex = 26;
+            this.txt_sup_phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_sup_phone.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txt_sup_phone.Location = new System.Drawing.Point(501, 155);
+            this.txt_sup_phone.Name = "txt_sup_phone";
+            this.txt_sup_phone.Size = new System.Drawing.Size(279, 30);
+            this.txt_sup_phone.TabIndex = 26;
+            this.txt_sup_phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_sup_phone_KeyPress);
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(828, 42);
+            this.label4.Location = new System.Drawing.Point(335, 155);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 29);
@@ -173,6 +175,7 @@ namespace OfficePOS
             this.btn_cancel.TabIndex = 31;
             this.btn_cancel.Text = "ຍົກເລີກ";
             this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_add
             // 
@@ -188,38 +191,16 @@ namespace OfficePOS
             this.btn_add.TabIndex = 30;
             this.btn_add.Text = "ບັນທຶກ";
             this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // textBox3
+            // txt_sup_ID
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.textBox3.Location = new System.Drawing.Point(501, 148);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(279, 30);
-            this.textBox3.TabIndex = 24;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(333, 151);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 29);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "ບໍລິສັດຜູ້ສະຫນອງ:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.textBox1.Location = new System.Drawing.Point(501, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 30);
-            this.textBox1.TabIndex = 21;
+            this.txt_sup_ID.Enabled = false;
+            this.txt_sup_ID.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txt_sup_ID.Location = new System.Drawing.Point(501, 41);
+            this.txt_sup_ID.Name = "txt_sup_ID";
+            this.txt_sup_ID.Size = new System.Drawing.Size(207, 30);
+            this.txt_sup_ID.TabIndex = 21;
             // 
             // Label1
             // 
@@ -259,23 +240,23 @@ namespace OfficePOS
             this.btn_Del.TabIndex = 32;
             this.btn_Del.Text = "ລຶບ";
             this.btn_Del.UseVisualStyleBackColor = false;
+            this.btn_Del.Click += new System.EventHandler(this.btn_Del_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_GUID);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.txt_sup_address);
             this.groupBox1.Controls.Add(this.btn_upload);
-            this.groupBox1.Controls.Add(this.product_image);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.pb_supplier);
+            this.groupBox1.Controls.Add(this.txt_sup_email);
+            this.groupBox1.Controls.Add(this.txt_sup_phone);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txt_sup_name);
+            this.groupBox1.Controls.Add(this.txt_sup_ID);
             this.groupBox1.Controls.Add(this.Label1);
             this.groupBox1.Controls.Add(this.Label2);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
@@ -286,25 +267,64 @@ namespace OfficePOS
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ຂໍ້ມູນຜູ້ສະໜອງສິນຄ້າ";
             // 
-            // product_image
+            // btn_GUID
             // 
-            this.product_image.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.product_image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.product_image.Location = new System.Drawing.Point(37, 41);
-            this.product_image.Name = "product_image";
-            this.product_image.Size = new System.Drawing.Size(200, 157);
-            this.product_image.TabIndex = 13;
-            this.product_image.TabStop = false;
+            this.btn_GUID.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_GUID.ForeColor = System.Drawing.Color.Black;
+            this.btn_GUID.Location = new System.Drawing.Point(724, 43);
+            this.btn_GUID.Name = "btn_GUID";
+            this.btn_GUID.Size = new System.Drawing.Size(95, 28);
+            this.btn_GUID.TabIndex = 33;
+            this.btn_GUID.Text = "Generate ID";
+            this.btn_GUID.UseVisualStyleBackColor = true;
+            this.btn_GUID.Click += new System.EventHandler(this.btn_GUID_Click);
             // 
-            // textBox2
+            // label5
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(332, 201);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 29);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "ອີເມວ:";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(835, 49);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 29);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "ທີ່ຢູ່:";
+            // 
+            // pb_supplier
+            // 
+            this.pb_supplier.BackColor = System.Drawing.Color.White;
+            this.pb_supplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pb_supplier.Image = global::OfficePOS.Properties.Resources.supplier;
+            this.pb_supplier.Location = new System.Drawing.Point(51, 41);
+            this.pb_supplier.Name = "pb_supplier";
+            this.pb_supplier.Size = new System.Drawing.Size(173, 157);
+            this.pb_supplier.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_supplier.TabIndex = 13;
+            this.pb_supplier.TabStop = false;
+            // 
+            // txt_sup_name
+            // 
+            this.txt_sup_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.textBox2.Location = new System.Drawing.Point(501, 96);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(279, 30);
-            this.textBox2.TabIndex = 22;
+            this.txt_sup_name.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txt_sup_name.Location = new System.Drawing.Point(501, 96);
+            this.txt_sup_name.Name = "txt_sup_name";
+            this.txt_sup_name.Size = new System.Drawing.Size(279, 30);
+            this.txt_sup_name.TabIndex = 22;
             // 
             // panelSupplierInfo
             // 
@@ -321,31 +341,6 @@ namespace OfficePOS
             this.panelSupplierInfo.Size = new System.Drawing.Size(1334, 378);
             this.panelSupplierInfo.TabIndex = 6;
             // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(828, 88);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 29);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "ທີ່ຢູ່:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(332, 201);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 29);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "ອີເມວ:";
-            // 
             // SupplierInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -354,13 +349,13 @@ namespace OfficePOS
             this.Controls.Add(this.panelSupplierInfo);
             this.Name = "SupplierInfo";
             this.Size = new System.Drawing.Size(1334, 707);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSupplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelDataView.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.product_image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_supplier)).EndInit();
             this.panelSupplierInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -368,28 +363,27 @@ namespace OfficePOS
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridSupplier;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panelDataView;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_sup_address;
         internal System.Windows.Forms.Button btn_upload;
-        private System.Windows.Forms.PictureBox product_image;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.PictureBox pb_supplier;
+        private System.Windows.Forms.TextBox txt_sup_email;
+        private System.Windows.Forms.TextBox txt_sup_phone;
         internal System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Button btn_cancel;
         internal System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.TextBox textBox3;
-        internal System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_sup_ID;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Button btn_Del;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_sup_name;
         private System.Windows.Forms.Panel panelSupplierInfo;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_GUID;
     }
 }

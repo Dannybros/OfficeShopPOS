@@ -22,6 +22,7 @@ namespace OfficePOS
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             txtAmount.Text = null;
+            this.Close();
         }
 
         private void btn_add_Click(object sender, EventArgs e)

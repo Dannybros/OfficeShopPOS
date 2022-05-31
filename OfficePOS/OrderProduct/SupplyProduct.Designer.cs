@@ -1,9 +1,9 @@
 ﻿
 namespace OfficePOS
 {
-    partial class SupplyProducts
+    partial class SupplyProduct
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
@@ -61,9 +61,9 @@ namespace OfficePOS
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panelTotal);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(596, 0);
+            this.panel1.Location = new System.Drawing.Point(578, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(632, 701);
+            this.panel1.Size = new System.Drawing.Size(632, 654);
             this.panel1.TabIndex = 0;
             // 
             // panelSupplyList
@@ -72,7 +72,7 @@ namespace OfficePOS
             this.panelSupplyList.Location = new System.Drawing.Point(0, 90);
             this.panelSupplyList.Name = "panelSupplyList";
             this.panelSupplyList.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.panelSupplyList.Size = new System.Drawing.Size(632, 346);
+            this.panelSupplyList.Size = new System.Drawing.Size(632, 299);
             this.panelSupplyList.TabIndex = 7;
             // 
             // panel4
@@ -114,7 +114,7 @@ namespace OfficePOS
             this.panelTotal.Controls.Add(this.btn_Bill);
             this.panelTotal.Controls.Add(this.txt_sum_supply);
             this.panelTotal.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelTotal.Location = new System.Drawing.Point(0, 436);
+            this.panelTotal.Location = new System.Drawing.Point(0, 389);
             this.panelTotal.Name = "panelTotal";
             this.panelTotal.Size = new System.Drawing.Size(632, 265);
             this.panelTotal.TabIndex = 5;
@@ -204,7 +204,7 @@ namespace OfficePOS
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(596, 701);
+            this.panel2.Size = new System.Drawing.Size(578, 654);
             this.panel2.TabIndex = 1;
             // 
             // panelSupplyItems
@@ -213,7 +213,7 @@ namespace OfficePOS
             this.panelSupplyItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSupplyItems.Location = new System.Drawing.Point(0, 90);
             this.panelSupplyItems.Name = "panelSupplyItems";
-            this.panelSupplyItems.Size = new System.Drawing.Size(596, 611);
+            this.panelSupplyItems.Size = new System.Drawing.Size(578, 564);
             this.panelSupplyItems.TabIndex = 3;
             // 
             // panelSearchItem
@@ -226,7 +226,7 @@ namespace OfficePOS
             this.panelSearchItem.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearchItem.Location = new System.Drawing.Point(0, 0);
             this.panelSearchItem.Name = "panelSearchItem";
-            this.panelSearchItem.Size = new System.Drawing.Size(596, 90);
+            this.panelSearchItem.Size = new System.Drawing.Size(578, 90);
             this.panelSearchItem.TabIndex = 2;
             // 
             // btnAddProduct
@@ -250,11 +250,14 @@ namespace OfficePOS
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearch.Location = new System.Drawing.Point(408, 27);
+            this.txtSearch.Location = new System.Drawing.Point(390, 27);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(164, 30);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.Text = "Search...";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // cmbCategory
             // 
@@ -267,12 +270,8 @@ namespace OfficePOS
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.IntegralHeight = false;
             this.cmbCategory.Items.AddRange(new object[] {
-            "All",
-            "Computer",
-            "Chair",
-            "Desk",
-            "Lamp"});
-            this.cmbCategory.Location = new System.Drawing.Point(211, 23);
+            "All"});
+            this.cmbCategory.Location = new System.Drawing.Point(193, 23);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbCategory.Size = new System.Drawing.Size(164, 34);
@@ -284,17 +283,18 @@ namespace OfficePOS
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 78);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(594, 10);
+            this.panel3.Size = new System.Drawing.Size(576, 10);
             this.panel3.TabIndex = 1;
             // 
-            // SupplyProducts
+            // SupplyProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1210, 654);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "SupplyProducts";
-            this.Size = new System.Drawing.Size(1228, 701);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "SupplyProduct";
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();

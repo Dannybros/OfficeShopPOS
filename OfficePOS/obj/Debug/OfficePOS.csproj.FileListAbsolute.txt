@@ -98,3 +98,5 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Reports.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Revenue.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CheckImports.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CheckImportProduct.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ErrorMsg.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplyProduct.resources

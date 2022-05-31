@@ -17,6 +17,11 @@ namespace OfficePOS
             InitializeComponent();
         }
 
+        public void function()
+        {
+            MessageBox.Show("Invoked");
+        }
+
         private void refresh()
         {
             foreach(TextBox text in product_Info.Controls.OfType<TextBox>()) {text.Text = "";}

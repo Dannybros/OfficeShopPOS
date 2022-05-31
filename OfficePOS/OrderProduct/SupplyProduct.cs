@@ -7,23 +7,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
-    public partial class SupplyProducts : UserControl
+    public partial class SupplyProduct : Form
     {
-        public SupplyProducts()
+        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+
+        public SupplyProduct()
         {
             InitializeComponent();
+            LoadProductType();
+            LoadProducts();
+            cmbCategory.SelectedIndex = 0;
+        }
 
-            for(var i= 0; i<10; i++)
+        private void LoadProductType()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT `Product_Type_Name` FROM `product_types`", conn);
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                popItems(i.ToString());
+                cmbCategory.Items.Add(reader.GetString("Product_Type_Name"));
+            }
+            conn.Close();
+        }
+
+        public void LoadProducts()
+        {
+            panelSupplyItems.Controls.Clear();
+
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM `products`", conn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
+            {
+                var dataRow = dt.Rows[i];
+                popItems(dataRow["Product_Name"].ToString(), (byte[])dataRow["Product_Img"]);
             }
         }
-        private void popItems(string i)
+
+        private void popItems(string i, byte[] picArray)
         {
             PictureBox pic = new PictureBox();
+            /*  MemoryStream ms = new MemoryStream(picArray);
+              pic.BackgroundImage = Image.FromStream(ms);*/
             pic.Width = 150;
             pic.Height = 120;
             pic.BackgroundImageLayout = ImageLayout.Stretch;
@@ -156,6 +189,29 @@ namespace OfficePOS
         {
             AddProduct ap = new AddProduct();
             ap.Show();
+        }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+
+            if (txtSearch.Text == "Search...")
+            {
+                txtSearch.Text = null;
+            }
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                txtSearch.Text = "Search...";
+                txtSearch.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            txtSearch.ForeColor = Color.Black;
         }
     }
 }

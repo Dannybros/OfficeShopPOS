@@ -155,6 +155,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB_Methods.cs" />
+    <Compile Include="Form\ErrorMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ErrorMsg.Designer.cs">
+      <DependentUpon>ErrorMsg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\CheckImports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +209,12 @@
     </Compile>
     <Compile Include="Form\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProduct\SupplyProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderProduct\SupplyProduct.Designer.cs">
+      <DependentUpon>SupplyProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="UseControl\Security.cs">
       <SubType>UserControl</SubType>
@@ -251,12 +264,6 @@
     <Compile Include="Form\SupplyAmount.Designer.cs">
       <DependentUpon>SupplyAmount.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderProduct\SupplyProducts.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="OrderProduct\SupplyProducts.Designer.cs">
-      <DependentUpon>SupplyProducts.cs</DependentUpon>
-    </Compile>
     <Compile Include="Organise\SupplierInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -289,6 +296,9 @@
     <Compile Include="Reports\Revenue.Designer.cs">
       <DependentUpon>Revenue.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\ErrorMsg.resx">
+      <DependentUpon>ErrorMsg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\CheckImports.resx">
       <DependentUpon>CheckImports.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +323,9 @@
     <EmbeddedResource Include="Form\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrderProduct\SupplyProduct.resx">
+      <DependentUpon>SupplyProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UseControl\Security.resx">
       <DependentUpon>Security.cs</DependentUpon>
     </EmbeddedResource>
@@ -336,9 +349,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\SupplyAmount.resx">
       <DependentUpon>SupplyAmount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrderProduct\SupplyProducts.resx">
-      <DependentUpon>SupplyProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\SupplierInfo.resx">
       <DependentUpon>SupplierInfo.cs</DependentUpon>
@@ -405,6 +415,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Resources\greater-than-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\supplier.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -95,7 +95,7 @@ namespace OfficePOS
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(118, 35);
             this.btn_add.TabIndex = 30;
-            this.btn_add.Text = "ບັນທຶກ";
+            this.btn_add.Text = "ເພີ່ມ";
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 

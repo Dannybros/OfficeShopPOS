@@ -55,6 +55,15 @@ namespace OfficePOS
             panel.Show();
         }
 
+        private void switchFormPanel(Form panel)
+        {
+            panelContent.Controls.Clear();
+            panel.TopLevel = false;
+            panel.Dock = DockStyle.Fill;
+            panelContent.Controls.Add(panel);
+            panel.Show();
+        }
+
         private void lblHome_Click(object sender, EventArgs e)
         {
             OrganiseInfo organise = new OrganiseInfo();
@@ -69,8 +78,8 @@ namespace OfficePOS
 
         private void lbl_order_product_Click(object sender, EventArgs e)
         {
-            SupplyProducts sp = new SupplyProducts();
-            switchPanel(sp);
+            SupplyProduct sp = new SupplyProduct();
+            switchFormPanel(sp);
         }
 
         private void lbl_report_Click(object sender, EventArgs e)
