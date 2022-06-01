@@ -16,12 +16,33 @@ namespace OfficePOS
     {
         MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
 
+        public string Order_ID;
+
         public SupplyProduct()
         {
             InitializeComponent();
+            startForm();
+        }
+
+        private void startForm()
+        {
             LoadProductType();
+            LoadSupplier();
             LoadProducts();
+            GenerateOrderID();
             cmbCategory.SelectedIndex = 0;
+        }
+
+        private void GenerateOrderID()
+        {
+            StringBuilder sb = new StringBuilder();
+            int numGuidsToConcat = (((8 - 1) / 32) + 1);
+            for (int i = 1; i <= numGuidsToConcat; i++)
+            {
+                sb.Append(Guid.NewGuid().ToString("N"));
+            }
+
+           Order_ID = "Order-" + sb.ToString(0, 8);
         }
 
         private void LoadProductType()
@@ -32,6 +53,18 @@ namespace OfficePOS
             while (reader.Read())
             {
                 cmbCategory.Items.Add(reader.GetString("Product_Type_Name"));
+            }
+            conn.Close();
+        }
+
+        private void LoadSupplier()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT `Supplier_Name` FROM `suppliers`", conn);
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                cmb_supplier.Items.Add(reader.GetString("Supplier_Name"));
             }
             conn.Close();
         }
@@ -48,24 +81,24 @@ namespace OfficePOS
             for (var i = 0; i < dt.Rows.Count; i++)
             {
                 var dataRow = dt.Rows[i];
-                popItems(dataRow["Product_Name"].ToString(), (byte[])dataRow["Product_Img"]);
+                popItems(dataRow["Product_Name"].ToString(), dataRow["Product_ID"].ToString(), (double)dataRow["Original_Price"], (byte[])dataRow["Product_Img"]);
             }
         }
 
-        private void popItems(string i, byte[] picArray)
+        private void popItems(string name, string ID, double price, byte[] picArray)
         {
             PictureBox pic = new PictureBox();
-            /*  MemoryStream ms = new MemoryStream(picArray);
-              pic.BackgroundImage = Image.FromStream(ms);*/
+            MemoryStream ms = new MemoryStream(picArray);
+            pic.BackgroundImage = Image.FromStream(ms);
             pic.Width = 150;
             pic.Height = 120;
             pic.BackgroundImageLayout = ImageLayout.Stretch;
-            pic.BackgroundImage = OfficePOS.Properties.Resources.download;
             pic.Click += new EventHandler(picture_Click);
-            pic.Tag = i;
+            pic.Tag = ID + "/" + price.ToString();
 
             Label title = new Label();
-            title.Text = i;
+            title.Text = name;
+            title.Tag = ID + "/" + price.ToString();
             title.AutoSize = false;
             title.Dock = DockStyle.Bottom;
             title.Height = 30;
@@ -91,18 +124,57 @@ namespace OfficePOS
 
         private void picture_Click(object sender, EventArgs e)
         {
-            SupplyItemInfo siinfo = new SupplyItemInfo();
-            siinfo.Show();
+            string parameters = ((PictureBox)sender).Tag.ToString();
+            string id = parameters.Split('/')[0];
+            double price = double.Parse(parameters.Split('/')[1]);
+
+            insertOrderDetail(id, price);
         }
 
         private void title_Click(object sender, EventArgs e)
         {
-            SupplyItemInfo siinfo = new SupplyItemInfo();
-            siinfo.Show();
+            string parameters = ((Label)sender).Tag.ToString();
+            string id = parameters.Split('/')[0];
+            double price = double.Parse(parameters.Split('/')[1]);
+
+            insertOrderDetail(id, price);
+        }
+
+        private void insertOrderDetail(string proId, double price)
+        {
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO `import_details`(`Order_ID`, `Product_ID`, `Original_Price`, `Amount`, `Total_Price`) VALUES (@orderId, @proId, @price, @amount, @total)", conn);
+            cmd.Parameters.AddWithValue("@orderId", Order_ID);
+            cmd.Parameters.AddWithValue("@proId", proId);
+            cmd.Parameters.AddWithValue("@price", price);
+            cmd.Parameters.AddWithValue("@amount", 1);
+            cmd.Parameters.AddWithValue("@total", price);
+
+            conn.Open();
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                LoadOrderList();
+            }
+            
+            conn.Close();
 
         }
 
-        public void addOrderList(string s)
+        public void LoadOrderList()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM `import_details` NATURAL JOIN `products` WHERE `Order_ID` = '"+Order_ID+"'", conn);
+
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
+            {
+                var dataRow = dt.Rows[i];
+                addOrderListToPanel(dataRow["Product_ID"].ToString(), dataRow["Product_Name"].ToString(), dataRow["Amount"].ToString(), (byte[])dataRow["Product_Img"]);
+            }
+        }
+
+        private void addOrderListToPanel(string proID, string name, string quantity, byte[] picArray)
         {
             FlowLayoutPanel orderPanel = new FlowLayoutPanel();
             orderPanel.Width = panelSupplyList.Width - 5;
@@ -113,13 +185,15 @@ namespace OfficePOS
 
             PictureBox picOrder = new PictureBox();
             picOrder.Size = new Size(100, 60);
-            picOrder.BackgroundImage = OfficePOS.Properties.Resources.download;
+            MemoryStream ms = new MemoryStream(picArray);
+            picOrder.BackgroundImage = Image.FromStream(ms);
             picOrder.BackgroundImageLayout = ImageLayout.Stretch;
             picOrder.Dock = DockStyle.Left;
             orderPanel.Controls.Add(picOrder);
 
             Label title = new Label();
-            title.Text = s;
+            title.Text = name;
+            title.Tag = proID;
             title.Font = new Font("Times new Roman", 14, FontStyle.Regular);
             title.AutoSize = false;
             title.Width = 150;
@@ -143,7 +217,8 @@ namespace OfficePOS
             orderPanel.Controls.Add(picLess);
 
             Label amount = new Label();
-            amount.Text = "1";
+            amount.Text = quantity;
+            amount.Tag = proID;
             amount.Font = new Font("Times new Roman", 14, FontStyle.Bold);
             amount.AutoSize = false;
             amount.Width = 30;
@@ -171,7 +246,7 @@ namespace OfficePOS
             PictureBox picDel = new PictureBox();
             picDel.Cursor = Cursors.Hand;
             picDel.Size = new Size(30, 30);
-            picDel.Tag = s;
+            picDel.Tag = proID;
             picDel.Dock = DockStyle.Right;
             var picDelMargin = picGreat.Margin;
             picDelMargin.Top = 20;

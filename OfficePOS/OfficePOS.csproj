@@ -162,10 +162,10 @@
     <Compile Include="Form\ErrorMsg.Designer.cs">
       <DependentUpon>ErrorMsg.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\CheckImports.cs">
+    <Compile Include="ImportProduct\CheckImports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\CheckImports.Designer.cs">
+    <Compile Include="ImportProduct\CheckImports.Designer.cs">
       <DependentUpon>CheckImports.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportProduct\CheckImportProduct.cs">
@@ -192,10 +192,10 @@
     <Compile Include="Organise\CustomerInfo.Designer.cs">
       <DependentUpon>CustomerInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\AddProduct.cs">
+    <Compile Include="OrderProduct\AddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\AddProduct.Designer.cs">
+    <Compile Include="OrderProduct\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\EditProduct.cs">
@@ -258,10 +258,10 @@
     <Compile Include="ProductSale\Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\SupplyAmount.cs">
+    <Compile Include="OrderProduct\SupplyAmount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\SupplyAmount.Designer.cs">
+    <Compile Include="OrderProduct\SupplyAmount.Designer.cs">
       <DependentUpon>SupplyAmount.cs</DependentUpon>
     </Compile>
     <Compile Include="Organise\SupplierInfo.cs">
@@ -299,7 +299,7 @@
     <EmbeddedResource Include="Form\ErrorMsg.resx">
       <DependentUpon>ErrorMsg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\CheckImports.resx">
+    <EmbeddedResource Include="ImportProduct\CheckImports.resx">
       <DependentUpon>CheckImports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportProduct\CheckImportProduct.resx">
@@ -314,7 +314,7 @@
     <EmbeddedResource Include="Organise\CustomerInfo.resx">
       <DependentUpon>CustomerInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\AddProduct.resx">
+    <EmbeddedResource Include="OrderProduct\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\EditProduct.resx">
@@ -347,7 +347,7 @@
     <EmbeddedResource Include="ProductSale\Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\SupplyAmount.resx">
+    <EmbeddedResource Include="OrderProduct\SupplyAmount.resx">
       <DependentUpon>SupplyAmount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\SupplierInfo.resx">

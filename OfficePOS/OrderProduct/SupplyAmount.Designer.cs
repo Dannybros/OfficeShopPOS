@@ -72,7 +72,7 @@ namespace OfficePOS
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Cancel.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Cancel.Location = new System.Drawing.Point(88, 134);
+            this.btn_Cancel.Location = new System.Drawing.Point(78, 119);
             this.btn_Cancel.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(118, 35);
@@ -90,7 +90,7 @@ namespace OfficePOS
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_add.Location = new System.Drawing.Point(353, 134);
+            this.btn_add.Location = new System.Drawing.Point(364, 119);
             this.btn_add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(118, 35);
@@ -104,7 +104,7 @@ namespace OfficePOS
             this.txtAmount.BackColor = System.Drawing.Color.White;
             this.txtAmount.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.Color.Black;
-            this.txtAmount.Location = new System.Drawing.Point(214, 60);
+            this.txtAmount.Location = new System.Drawing.Point(198, 50);
             this.txtAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(284, 30);
@@ -117,7 +117,7 @@ namespace OfficePOS
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(60, 64);
+            this.label5.Location = new System.Drawing.Point(73, 49);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(117, 29);

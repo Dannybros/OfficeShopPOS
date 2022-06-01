@@ -77,9 +77,7 @@ namespace OfficePOS
         }
 
         private void btn_cancel_Click_1(object sender, EventArgs e)
-        {
-            var sp = Application.OpenForms.OfType<SupplyProduct>().Single();
-            sp.LoadProducts();
+        {  
             this.Close();
         }
 
@@ -138,8 +136,10 @@ namespace OfficePOS
             conn.Open();
             if (cmd.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("You have successfully added new Employee", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("You have successfully added new Products", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearData();
+                var sp = Application.OpenForms.OfType<SupplyProduct>().Single();
+                sp.LoadProducts();
                 this.Close();
             }
             else
