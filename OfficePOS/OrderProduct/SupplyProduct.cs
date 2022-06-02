@@ -15,8 +15,12 @@ namespace OfficePOS
     public partial class SupplyProduct : Form
     {
         MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;
+
+        List<OrderItem> OrderItemList = new List<OrderItem>();
 
         public string Order_ID;
+        private double Total = 0;
 
         public SupplyProduct()
         {
@@ -47,7 +51,7 @@ namespace OfficePOS
 
         private void LoadProductType()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT `Product_Type_Name` FROM `product_types`", conn);
+            cmd = new MySqlCommand("SELECT `Product_Type_Name` FROM `product_types`", conn);
             conn.Open();
             var reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -59,7 +63,7 @@ namespace OfficePOS
 
         private void LoadSupplier()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT `Supplier_Name` FROM `suppliers`", conn);
+            cmd = new MySqlCommand("SELECT `Supplier_Name` FROM `suppliers`", conn);
             conn.Open();
             var reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -73,9 +77,24 @@ namespace OfficePOS
         {
             panelSupplyItems.Controls.Clear();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM `products`", conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            string searchTerm = "";
+            if(txtSearch.Text != "Search...")
+            {
+                searchTerm = txtSearch.Text;
+            }
+
+            if(cmbCategory.Text == "ທັງໝົດ")
+            {
+                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%'", conn);
+            }
+            else
+            {
+                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%' AND `Product_Type_Name` = @type", conn);
+                cmd.Parameters.AddWithValue("@type", cmbCategory.Text);
+            }
+
             DataTable dt = new DataTable();
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             adp.Fill(dt);
 
             for (var i = 0; i < dt.Rows.Count; i++)
@@ -94,11 +113,11 @@ namespace OfficePOS
             pic.Height = 120;
             pic.BackgroundImageLayout = ImageLayout.Stretch;
             pic.Click += new EventHandler(picture_Click);
-            pic.Tag = ID + "/" + price.ToString();
+            pic.Tag = ID + "/" + price.ToString() + "/" + name;
 
             Label title = new Label();
             title.Text = name;
-            title.Tag = ID + "/" + price.ToString();
+            title.Tag = ID + "/" + price.ToString() + "/" + name;
             title.AutoSize = false;
             title.Dock = DockStyle.Bottom;
             title.Height = 30;
@@ -127,8 +146,11 @@ namespace OfficePOS
             string parameters = ((PictureBox)sender).Tag.ToString();
             string id = parameters.Split('/')[0];
             double price = double.Parse(parameters.Split('/')[1]);
+            string name = parameters.Split('/')[2];
 
-            insertOrderDetail(id, price);
+            OrderItemList.Add(new OrderItem(id, name, price, 1));
+            LoadOrderList();
+            disenableItem(name);
         }
 
         private void title_Click(object sender, EventArgs e)
@@ -136,128 +158,196 @@ namespace OfficePOS
             string parameters = ((Label)sender).Tag.ToString();
             string id = parameters.Split('/')[0];
             double price = double.Parse(parameters.Split('/')[1]);
+            string name =  parameters.Split('/')[2];
 
-            insertOrderDetail(id, price);
+            OrderItemList.Add(new OrderItem(id, name, price, 1));
+            LoadOrderList();
+            disenableItem(name);
         }
 
-        private void insertOrderDetail(string proId, double price)
+        private void enableItem(string s)
         {
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO `import_details`(`Order_ID`, `Product_ID`, `Original_Price`, `Amount`, `Total_Price`) VALUES (@orderId, @proId, @price, @amount, @total)", conn);
-            cmd.Parameters.AddWithValue("@orderId", Order_ID);
-            cmd.Parameters.AddWithValue("@proId", proId);
-            cmd.Parameters.AddWithValue("@price", price);
-            cmd.Parameters.AddWithValue("@amount", 1);
-            cmd.Parameters.AddWithValue("@total", price);
-
-            conn.Open();
-            if (cmd.ExecuteNonQuery() == 1)
+            foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
             {
-                LoadOrderList();
+                foreach (Label lbl in p.Controls.OfType<Label>())
+                {
+                    if (lbl.Text == s)
+                    {
+                        p.Enabled = true;
+                    }
+                }
             }
-            
-            conn.Close();
+        }
 
+        private void disenableItem(string s)
+        {
+            foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
+            {
+                foreach (Label lbl in p.Controls.OfType<Label>())
+                {
+                    if (lbl.Text == s)
+                    {
+                        p.Enabled = false;
+                    }
+                }
+            }
         }
 
         public void LoadOrderList()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM `import_details` NATURAL JOIN `products` WHERE `Order_ID` = '"+Order_ID+"'", conn);
+            Total = 0;
+            panelSupplyList.Controls.Clear();
+
+            /*cmd = new MySqlCommand("SELECT * FROM `import_details` NATURAL JOIN `products` WHERE `Order_ID` = '"+Order_ID+"'", conn);
 
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
-
-            for (var i = 0; i < dt.Rows.Count; i++)
+*/
+            foreach (var item in OrderItemList)
             {
-                var dataRow = dt.Rows[i];
-                addOrderListToPanel(dataRow["Product_ID"].ToString(), dataRow["Product_Name"].ToString(), dataRow["Amount"].ToString(), (byte[])dataRow["Product_Img"]);
+                Total += item.Total;
+
+                addOrderListToPanel(item.ProID, item.Name, item.Amount.ToString());
             }
+
+            txt_sum_supply.Text = Math.Round(Total, 2).ToString();
         }
 
-        private void addOrderListToPanel(string proID, string name, string quantity, byte[] picArray)
+        private void addOrderListToPanel(string proID, string name, string quantity)
         {
             FlowLayoutPanel orderPanel = new FlowLayoutPanel();
             orderPanel.Width = panelSupplyList.Width - 5;
-            orderPanel.Height = 70;
+            orderPanel.Height = 40;
             orderPanel.Dock = DockStyle.Top;
             orderPanel.BorderStyle = BorderStyle.FixedSingle;
             orderPanel.Padding = new Padding(0, 0, 0, 0);
 
-            PictureBox picOrder = new PictureBox();
-            picOrder.Size = new Size(100, 60);
-            MemoryStream ms = new MemoryStream(picArray);
-            picOrder.BackgroundImage = Image.FromStream(ms);
-            picOrder.BackgroundImageLayout = ImageLayout.Stretch;
-            picOrder.Dock = DockStyle.Left;
-            orderPanel.Controls.Add(picOrder);
+            Label Id = new Label();
+            Id.Text = proID;
+            Id.Font = new Font("Times new Roman", 12, FontStyle.Regular);
+            Id.Height = 40;
+            Id.Width = (orderPanel.Width-40) / 4;
+            var idMargin = Id.Margin;
+            idMargin.Left = 20;
+            idMargin.Right = 10;
+            Id.Margin = idMargin;
+            Id.TextAlign = ContentAlignment.MiddleCenter;
+            orderPanel.Controls.Add(Id);
 
             Label title = new Label();
-            title.Text = name;
-            title.Tag = proID;
-            title.Font = new Font("Times new Roman", 14, FontStyle.Regular);
+            title.Text = "ເພີ່ມສິນຄ້າໃຫມ່";
+            title.Font = new Font("Phetsarath OT", 12, FontStyle.Regular);
             title.AutoSize = false;
-            title.Width = 150;
-            title.Height = 70;
+            title.Width = (orderPanel.Width - 40) / 4;
+            title.Height = 40;
             var titleMargin = title.Margin;
-            titleMargin.Left = 20;
             titleMargin.Right = 10;
             title.Margin = titleMargin;
             title.TextAlign = ContentAlignment.MiddleCenter;
             orderPanel.Controls.Add(title);
 
             PictureBox picLess = new PictureBox();
-            picLess.Size = new Size(25, 25);
+            picLess.Size = new Size(20,20);
             picLess.Cursor = Cursors.Hand;
             var picLessMargin = picLess.Margin;
-            picLessMargin.Top = 20;
-            picLessMargin.Bottom = 20;
+            picLessMargin.Top = 10;
+            picLessMargin.Bottom = 10;
             picLess.Margin = picLessMargin;
             picLess.BackgroundImage = OfficePOS.Properties.Resources.less_than_symbol;
             picLess.BackgroundImageLayout = ImageLayout.Stretch;
+            picLess.Tag = proID + "/" + name;
+            picLess.Click += new EventHandler(decrease_amount_click);
             orderPanel.Controls.Add(picLess);
 
             Label amount = new Label();
             amount.Text = quantity;
-            amount.Tag = proID;
             amount.Font = new Font("Times new Roman", 14, FontStyle.Bold);
             amount.AutoSize = false;
-            amount.Width = 30;
-            amount.Height = 30;
+            amount.Width = (orderPanel.Width - 40) / 8; 
+            amount.Height = 20;
             var amountMargin = amount.Margin;
-            amountMargin.Left = 5;
-            amountMargin.Right = 5;
-            amountMargin.Top = 20;
-            amountMargin.Bottom = 20;
+            amountMargin.Top = 10;
+            amountMargin.Bottom = 10;
             amount.Margin = amountMargin;
             amount.TextAlign = ContentAlignment.MiddleCenter;
             orderPanel.Controls.Add(amount);
 
             PictureBox picGreat = new PictureBox();
-            picGreat.Size = new Size(25, 25);
+            picGreat.Size = new Size(20, 20);
             picGreat.Cursor = Cursors.Hand;
             var picGreatMargin = picGreat.Margin;
-            picGreatMargin.Top = 20;
-            picGreatMargin.Bottom = 20;
+            picGreatMargin.Top = 10;
+            picGreatMargin.Bottom = 10;
             picGreat.Margin = picGreatMargin;
             picGreat.BackgroundImage = OfficePOS.Properties.Resources.greater_than_symbol;
             picGreat.BackgroundImageLayout = ImageLayout.Stretch;
+            picGreat.Tag = proID;
+            picGreat.Click += new EventHandler(increase_amount_click);
             orderPanel.Controls.Add(picGreat);
 
             PictureBox picDel = new PictureBox();
             picDel.Cursor = Cursors.Hand;
-            picDel.Size = new Size(30, 30);
-            picDel.Tag = proID;
+            picDel.Size = new Size(20, 20);
+            picDel.Tag = proID + "/" + name;
             picDel.Dock = DockStyle.Right;
             var picDelMargin = picGreat.Margin;
-            picDelMargin.Top = 20;
-            picDelMargin.Left = 30;
-            picDelMargin.Bottom = 20;
+            picDelMargin.Top = 10;
+            picDelMargin.Left = 40;
+            picDelMargin.Bottom = 10;
             picDel.Margin = picDelMargin;
             picDel.BackgroundImage = OfficePOS.Properties.Resources.delete;
             picDel.BackgroundImageLayout = ImageLayout.Stretch;
+            picDel.Click += new EventHandler(del_order_click);
             orderPanel.Controls.Add(picDel);
 
             panelSupplyList.Controls.Add(orderPanel);
+        }
+
+        private void del_order_click(object sender, EventArgs e)
+        {
+            string props = ((PictureBox)sender).Tag.ToString();
+            string proID = props.Split('/')[0];
+            string name = props.Split('/')[1];
+
+            var foundItem = OrderItemList.FirstOrDefault(c => c.ProID == proID);
+            OrderItemList.Remove(foundItem);
+            enableItem(name);
+            LoadOrderList();
+        }
+
+        private void decrease_amount_click(object sender, EventArgs e)
+        {
+            string props = ((PictureBox)sender).Tag.ToString();
+            string proID = props.Split('/')[0];
+            string name = props.Split('/')[1];
+
+            var foundItem = OrderItemList.FirstOrDefault(c => c.ProID == proID); 
+
+            if (foundItem.Amount <= 1)
+            {
+                OrderItemList.Remove(foundItem);
+                enableItem(name);
+            }
+            else
+            {
+                foundItem.Amount -= 1;
+                foundItem.Total = foundItem.Amount * foundItem.Price;
+            }
+
+            LoadOrderList();
+
+        }
+
+        private void increase_amount_click(object sender, EventArgs e)
+        {
+            string proID = ((PictureBox)sender).Tag.ToString();
+
+            var foundItem = OrderItemList.FirstOrDefault(c => c.ProID == proID);
+            foundItem.Amount += 1;
+            foundItem.Total = foundItem.Amount * foundItem.Price;
+
+            LoadOrderList();
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -268,7 +358,6 @@ namespace OfficePOS
 
         private void txtSearch_Enter(object sender, EventArgs e)
         {
-
             if (txtSearch.Text == "Search...")
             {
                 txtSearch.Text = null;
@@ -287,6 +376,23 @@ namespace OfficePOS
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             txtSearch.ForeColor = Color.Black;
+            LoadProducts();
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            OrderItemList.Clear();
+            LoadOrderList();
+
+            foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
+            {
+                p.Enabled = true;
+            }
+        }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadProducts();
         }
     }
 }

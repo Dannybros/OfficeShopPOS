@@ -174,6 +174,7 @@
     <Compile Include="ImportProduct\CheckImportProduct.Designer.cs">
       <DependentUpon>CheckImportProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderItem.cs" />
     <Compile Include="Organise\OrganiseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,12 +223,6 @@
     <Compile Include="UseControl\Security.Designer.cs">
       <DependentUpon>Security.cs</DependentUpon>
     </Compile>
-    <Compile Include="UseControl\SaleForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UseControl\SaleForm.Designer.cs">
-      <DependentUpon>SaleForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\SaleReport.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -258,12 +253,6 @@
     <Compile Include="ProductSale\Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderProduct\SupplyAmount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrderProduct\SupplyAmount.Designer.cs">
-      <DependentUpon>SupplyAmount.cs</DependentUpon>
-    </Compile>
     <Compile Include="Organise\SupplierInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -281,12 +270,6 @@
     </Compile>
     <Compile Include="Form\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UseControl\Products.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UseControl\Products.Designer.cs">
-      <DependentUpon>Products.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -329,9 +312,6 @@
     <EmbeddedResource Include="UseControl\Security.resx">
       <DependentUpon>Security.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UseControl\SaleForm.resx">
-      <DependentUpon>SaleForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\SaleReport.resx">
       <DependentUpon>SaleReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,9 +327,6 @@
     <EmbeddedResource Include="ProductSale\Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderProduct\SupplyAmount.resx">
-      <DependentUpon>SupplyAmount.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Organise\SupplierInfo.resx">
       <DependentUpon>SupplierInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,9 +335,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UseControl\Products.resx">
-      <DependentUpon>Products.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

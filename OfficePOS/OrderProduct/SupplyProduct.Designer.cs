@@ -167,6 +167,7 @@ namespace OfficePOS
             this.btn_Cancel.TabIndex = 31;
             this.btn_Cancel.Text = "ຍົກເລີກ";
             this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // btn_Bill
             // 
@@ -265,17 +266,18 @@ namespace OfficePOS
             this.cmbCategory.BackColor = System.Drawing.Color.White;
             this.cmbCategory.DropDownHeight = 120;
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategory.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.Black;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.IntegralHeight = false;
             this.cmbCategory.Items.AddRange(new object[] {
-            "All"});
+            "ທັງໝົດ"});
             this.cmbCategory.Location = new System.Drawing.Point(193, 23);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbCategory.Size = new System.Drawing.Size(164, 34);
+            this.cmbCategory.Size = new System.Drawing.Size(164, 42);
             this.cmbCategory.TabIndex = 3;
+            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // panel3
             // 
