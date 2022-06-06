@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class CheckImportProduct : UserControl
+    public partial class CheckImportProducts : Form
     {
-        public CheckImportProduct()
+        public CheckImportProducts()
         {
             InitializeComponent();
         }
 
-        private void dataGridView1_Click(object sender, EventArgs e)
+        private void DGV_orderList_Click(object sender, EventArgs e)
         {
             CheckImports ci = new CheckImports();
             ci.Show();

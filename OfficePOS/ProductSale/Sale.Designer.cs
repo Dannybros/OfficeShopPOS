@@ -1,14 +1,14 @@
 ﻿
 namespace OfficePOS
 {
-    partial class Sales
+    partial class Sale
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,6 +20,7 @@ namespace OfficePOS
             }
             base.Dispose(disposing);
         }
+
 
         #region Component Designer generated code
 
@@ -41,7 +42,7 @@ namespace OfficePOS
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelOrderList = new System.Windows.Forms.FlowLayoutPanel();
             this.panelOrderTotal = new System.Windows.Forms.Panel();
-            this.cmb_supplier = new System.Windows.Forms.ComboBox();
+            this.cmb_customer = new System.Windows.Forms.ComboBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.btn_Bill = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
@@ -66,6 +67,9 @@ namespace OfficePOS
             this.txtSearch.Size = new System.Drawing.Size(164, 30);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.Text = "Search...";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // panel2
             // 
@@ -113,22 +117,19 @@ namespace OfficePOS
             // 
             this.cmbCategory.BackColor = System.Drawing.Color.White;
             this.cmbCategory.DropDownHeight = 120;
-            this.cmbCategory.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.Black;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.IntegralHeight = false;
             this.cmbCategory.Items.AddRange(new object[] {
-            "All",
-            "Computer",
-            "Chair",
-            "Desk",
-            "Lamp"});
+            "ທັງໝົດ"});
             this.cmbCategory.Location = new System.Drawing.Point(28, 27);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbCategory.Size = new System.Drawing.Size(164, 34);
+            this.cmbCategory.Size = new System.Drawing.Size(164, 42);
             this.cmbCategory.TabIndex = 3;
-            this.cmbCategory.Text = "All";
+            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -180,7 +181,7 @@ namespace OfficePOS
             // 
             // panelOrderTotal
             // 
-            this.panelOrderTotal.Controls.Add(this.cmb_supplier);
+            this.panelOrderTotal.Controls.Add(this.cmb_customer);
             this.panelOrderTotal.Controls.Add(this.panel3);
             this.panelOrderTotal.Controls.Add(this.Label3);
             this.panelOrderTotal.Controls.Add(this.btn_Bill);
@@ -192,18 +193,18 @@ namespace OfficePOS
             this.panelOrderTotal.Size = new System.Drawing.Size(639, 255);
             this.panelOrderTotal.TabIndex = 0;
             // 
-            // cmb_supplier
+            // cmb_customer
             // 
-            this.cmb_supplier.BackColor = System.Drawing.Color.White;
-            this.cmb_supplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_supplier.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb_supplier.ForeColor = System.Drawing.Color.Black;
-            this.cmb_supplier.FormattingEnabled = true;
-            this.cmb_supplier.Location = new System.Drawing.Point(194, 35);
-            this.cmb_supplier.Margin = new System.Windows.Forms.Padding(4);
-            this.cmb_supplier.Name = "cmb_supplier";
-            this.cmb_supplier.Size = new System.Drawing.Size(362, 30);
-            this.cmb_supplier.TabIndex = 39;
+            this.cmb_customer.BackColor = System.Drawing.Color.White;
+            this.cmb_customer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_customer.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_customer.ForeColor = System.Drawing.Color.Black;
+            this.cmb_customer.FormattingEnabled = true;
+            this.cmb_customer.Location = new System.Drawing.Point(194, 35);
+            this.cmb_customer.Margin = new System.Windows.Forms.Padding(4);
+            this.cmb_customer.Name = "cmb_customer";
+            this.cmb_customer.Size = new System.Drawing.Size(362, 30);
+            this.cmb_customer.TabIndex = 39;
             // 
             // Label3
             // 
@@ -231,6 +232,7 @@ namespace OfficePOS
             this.btn_Bill.TabIndex = 36;
             this.btn_Bill.Text = "ພິມໃບບິນ";
             this.btn_Bill.UseVisualStyleBackColor = false;
+            this.btn_Bill.Click += new System.EventHandler(this.btn_Bill_Click);
             // 
             // btn_Cancel
             // 
@@ -246,6 +248,7 @@ namespace OfficePOS
             this.btn_Cancel.TabIndex = 37;
             this.btn_Cancel.Text = "ຍົກເລີກ";
             this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // txt_sum_supply
             // 
@@ -283,14 +286,15 @@ namespace OfficePOS
             this.panelOrder.Size = new System.Drawing.Size(641, 654);
             this.panelOrder.TabIndex = 6;
             // 
-            // Sales
+            // Sale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1329, 654);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelOrder);
-            this.Name = "Sales";
-            this.Size = new System.Drawing.Size(1329, 654);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "Sale";
             this.panelSearchItems.ResumeLayout(false);
             this.panelSearchItems.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).EndInit();
@@ -320,7 +324,7 @@ namespace OfficePOS
         private System.Windows.Forms.Panel panelOrderTotal;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelOrder;
-        internal System.Windows.Forms.ComboBox cmb_supplier;
+        internal System.Windows.Forms.ComboBox cmb_customer;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Button btn_Bill;
         internal System.Windows.Forms.Button btn_Cancel;

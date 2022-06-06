@@ -155,7 +155,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DB_Methods.cs" />
+    <Compile Include="ImportProduct\CheckImportProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportProduct\CheckImportProducts.Designer.cs">
+      <DependentUpon>CheckImportProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\ErrorMsg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,13 +173,7 @@
     <Compile Include="ImportProduct\CheckImports.Designer.cs">
       <DependentUpon>CheckImports.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImportProduct\CheckImportProduct.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ImportProduct\CheckImportProduct.Designer.cs">
-      <DependentUpon>CheckImportProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OrderItem.cs" />
+    <Compile Include="OrderProduct\OrderItem.cs" />
     <Compile Include="Organise\OrganiseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,6 +216,13 @@
     <Compile Include="OrderProduct\SupplyProduct.Designer.cs">
       <DependentUpon>SupplyProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductSale\Sale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductSale\Sale.Designer.cs">
+      <DependentUpon>Sale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSale\SaleItem.cs" />
     <Compile Include="UseControl\Security.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -247,12 +253,6 @@
     <Compile Include="Organise\Inventory.Designer.cs">
       <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductSale\Sales.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ProductSale\Sales.Designer.cs">
-      <DependentUpon>Sales.cs</DependentUpon>
-    </Compile>
     <Compile Include="Organise\SupplierInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -279,14 +279,14 @@
     <Compile Include="Reports\Revenue.Designer.cs">
       <DependentUpon>Revenue.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ImportProduct\CheckImportProducts.resx">
+      <DependentUpon>CheckImportProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\ErrorMsg.resx">
       <DependentUpon>ErrorMsg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportProduct\CheckImports.resx">
       <DependentUpon>CheckImports.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ImportProduct\CheckImportProduct.resx">
-      <DependentUpon>CheckImportProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\OrganiseInfo.resx">
       <DependentUpon>OrganiseInfo.cs</DependentUpon>
@@ -309,6 +309,9 @@
     <EmbeddedResource Include="OrderProduct\SupplyProduct.resx">
       <DependentUpon>SupplyProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductSale\Sale.resx">
+      <DependentUpon>Sale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UseControl\Security.resx">
       <DependentUpon>Security.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,9 +326,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProductSale\Sales.resx">
-      <DependentUpon>Sales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\SupplierInfo.resx">
       <DependentUpon>SupplierInfo.cs</DependentUpon>

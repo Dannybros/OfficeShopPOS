@@ -137,7 +137,7 @@ namespace OfficePOS
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(62, 41);
+            this.Label3.Location = new System.Drawing.Point(54, 41);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(140, 29);
@@ -183,6 +183,7 @@ namespace OfficePOS
             this.btn_Bill.TabIndex = 30;
             this.btn_Bill.Text = "ພິມໃບບິນ";
             this.btn_Bill.UseVisualStyleBackColor = false;
+            this.btn_Bill.Click += new System.EventHandler(this.btn_Bill_Click);
             // 
             // txt_sum_supply
             // 

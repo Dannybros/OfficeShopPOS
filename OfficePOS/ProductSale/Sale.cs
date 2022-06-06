@@ -12,17 +12,16 @@ using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
-    public partial class SupplyProduct : Form
+    public partial class Sale : Form
     {
         MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
         MySqlCommand cmd;
 
-        List<OrderItem> OrderItemList = new List<OrderItem>();
-
-        public string Order_ID;
+        List<SaleItem> SaleItemList = new List<SaleItem>();
+        public string Sale_ID;
         private double Total = 0;
 
-        public SupplyProduct()
+        public Sale()
         {
             InitializeComponent();
             startForm();
@@ -31,13 +30,13 @@ namespace OfficePOS
         private void startForm()
         {
             LoadProductType();
-            LoadSupplier();
+            LoadCustomer();
             LoadProducts();
-            GenerateOrderID();
+            GenerateSaleID();
             cmbCategory.SelectedIndex = 0;
         }
 
-        private void GenerateOrderID()
+        private void GenerateSaleID()
         {
             StringBuilder sb = new StringBuilder();
             int numGuidsToConcat = (((8 - 1) / 32) + 1);
@@ -46,7 +45,7 @@ namespace OfficePOS
                 sb.Append(Guid.NewGuid().ToString("N"));
             }
 
-           Order_ID = "Order-" + sb.ToString(0, 8);
+            Sale_ID = "Sale-" + sb.ToString(0, 8);
         }
 
         private void LoadProductType()
@@ -61,29 +60,56 @@ namespace OfficePOS
             conn.Close();
         }
 
-        private void LoadSupplier()
+        private void LoadCustomer()
         {
             cmd = new MySqlCommand("SELECT `Supplier_Name` FROM `suppliers`", conn);
             conn.Open();
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                cmb_supplier.Items.Add(reader.GetString("Supplier_Name"));
+                cmb_customer.Items.Add(reader.GetString("Supplier_Name"));
             }
             conn.Close();
         }
 
+        private void enableItem(string s)
+        {
+            foreach (Panel p in panelItems.Controls.OfType<Panel>())
+            {
+                foreach (Label lbl in p.Controls.OfType<Label>())
+                {
+                    if (lbl.Text == s)
+                    {
+                        p.Enabled = true;
+                    }
+                }
+            }
+        }
+
+        private void disenableItem(string s)
+        {
+            foreach (Panel p in panelItems.Controls.OfType<Panel>())
+            {
+                foreach (Label lbl in p.Controls.OfType<Label>())
+                {
+                    if (lbl.Text == s)
+                    {
+                        p.Enabled = false;
+                    }
+                }
+            }
+        }
+
         public void LoadProducts()
         {
-            panelSupplyItems.Controls.Clear();
+            panelItems.Controls.Clear();
 
             string searchTerm = "";
-            if(txtSearch.Text != "Search...")
+            if (txtSearch.Text != "Search...")
             {
                 searchTerm = txtSearch.Text;
             }
-
-            if(cmbCategory.Text == "ທັງໝົດ")
+            if (cmbCategory.Text == "ທັງໝົດ")
             {
                 cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%'", conn);
             }
@@ -100,24 +126,34 @@ namespace OfficePOS
             for (var i = 0; i < dt.Rows.Count; i++)
             {
                 var dataRow = dt.Rows[i];
-                popItems(dataRow["Product_Name"].ToString(), dataRow["Product_ID"].ToString(), (double)dataRow["Original_Price"], (byte[])dataRow["Product_Img"]);
+                popItems(dataRow["Product_ID"].ToString(), dataRow["Product_Name"].ToString(), dataRow["Quantity"].ToString(), (double)dataRow["Selling_Price"], (byte[])dataRow["Product_Img"]);
             }
         }
 
-        private void popItems(string name, string ID, double price, byte[] picArray)
+        private void popItems(string id, string prodTitle, string totalAmount, double priceTag, byte[] picByte)
         {
             PictureBox pic = new PictureBox();
-            MemoryStream ms = new MemoryStream(picArray);
+            MemoryStream ms = new MemoryStream(picByte);
             pic.BackgroundImage = Image.FromStream(ms);
             pic.Width = 150;
             pic.Height = 120;
+            pic.Cursor = Cursors.Hand;
             pic.BackgroundImageLayout = ImageLayout.Stretch;
             pic.Click += new EventHandler(picture_Click);
-            pic.Tag = ID + "/" + price.ToString() + "/" + name;
+            pic.Tag = id + "/" + priceTag.ToString() + "/" + prodTitle + "/" + totalAmount;
+
+            Label price = new Label();
+            price.Text = priceTag.ToString();
+            price.Font = new Font("Times news Roman", 10, FontStyle.Regular);
+            price.TextAlign = ContentAlignment.MiddleCenter;
+            price.BackColor = Color.IndianRed;
+            price.ForeColor = Color.White;
+            pic.Controls.Add(price);
 
             Label title = new Label();
-            title.Text = name;
-            title.Tag = ID + "/" + price.ToString() + "/" + name;
+            title.Text = prodTitle;
+            title.Tag = id + "/" + priceTag.ToString() + "/" + prodTitle + "/" + totalAmount;
+            title.Cursor = Cursors.Hand;
             title.AutoSize = false;
             title.Dock = DockStyle.Bottom;
             title.Height = 30;
@@ -138,7 +174,7 @@ namespace OfficePOS
             product.Controls.Add(pic);
             product.Controls.Add(title);
 
-            panelSupplyItems.Controls.Add(product);
+            panelItems.Controls.Add(product);
         }
 
         private void picture_Click(object sender, EventArgs e)
@@ -147,8 +183,9 @@ namespace OfficePOS
             string id = parameters.Split('/')[0];
             double price = double.Parse(parameters.Split('/')[1]);
             string name = parameters.Split('/')[2];
+            int total_quantity = int.Parse(parameters.Split('/')[3]);
 
-            OrderItemList.Add(new OrderItem(id, name, price, 1));
+            SaleItemList.Add(new SaleItem(id, name, price, 1, total_quantity));
             LoadOrderList();
             disenableItem(name);
         }
@@ -158,60 +195,18 @@ namespace OfficePOS
             string parameters = ((Label)sender).Tag.ToString();
             string id = parameters.Split('/')[0];
             double price = double.Parse(parameters.Split('/')[1]);
-            string name =  parameters.Split('/')[2];
+            string name = parameters.Split('/')[2];
+            int total_quantity = int.Parse(parameters.Split('/')[3]);
 
-            OrderItemList.Add(new OrderItem(id, name, price, 1));
+            SaleItemList.Add(new SaleItem(id, name, price, 1, total_quantity));
             LoadOrderList();
             disenableItem(name);
-        }
-
-        private void enableItem(string s)
-        {
-            foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
-            {
-                foreach (Label lbl in p.Controls.OfType<Label>())
-                {
-                    if (lbl.Text == s)
-                    {
-                        p.Enabled = true;
-                    }
-                }
-            }
-        }
-
-        private void disenableItem(string s)
-        {
-            foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
-            {
-                foreach (Label lbl in p.Controls.OfType<Label>())
-                {
-                    if (lbl.Text == s)
-                    {
-                        p.Enabled = false;
-                    }
-                }
-            }
-        }
-
-        public void LoadOrderList()
-        {
-            Total = 0;
-            panelSupplyList.Controls.Clear();
-
-            foreach (var item in OrderItemList)
-            {
-                Total += item.Total;
-
-                addOrderListToPanel(item.ProID, item.Name, item.Amount.ToString());
-            }
-
-            txt_sum_supply.Text = Math.Round(Total, 2).ToString();
         }
 
         private void addOrderListToPanel(string proID, string name, string quantity)
         {
             FlowLayoutPanel orderPanel = new FlowLayoutPanel();
-            orderPanel.Width = panelSupplyList.Width - 5;
+            orderPanel.Width = panelOrderList.Width - 5;
             orderPanel.Height = 40;
             orderPanel.Dock = DockStyle.Top;
             orderPanel.BorderStyle = BorderStyle.FixedSingle;
@@ -221,7 +216,7 @@ namespace OfficePOS
             Id.Text = proID;
             Id.Font = new Font("Times new Roman", 12, FontStyle.Regular);
             Id.Height = 40;
-            Id.Width = (orderPanel.Width-40) / 4;
+            Id.Width = (orderPanel.Width - 40) / 4;
             var idMargin = Id.Margin;
             idMargin.Left = 20;
             idMargin.Right = 10;
@@ -230,7 +225,7 @@ namespace OfficePOS
             orderPanel.Controls.Add(Id);
 
             Label title = new Label();
-            title.Text = "ເພີ່ມສິນຄ້າໃຫມ່";
+            title.Text = name;
             title.Font = new Font("Phetsarath OT", 12, FontStyle.Regular);
             title.AutoSize = false;
             title.Width = (orderPanel.Width - 40) / 4;
@@ -242,7 +237,7 @@ namespace OfficePOS
             orderPanel.Controls.Add(title);
 
             PictureBox picLess = new PictureBox();
-            picLess.Size = new Size(20,20);
+            picLess.Size = new Size(20, 20);
             picLess.Cursor = Cursors.Hand;
             var picLessMargin = picLess.Margin;
             picLessMargin.Top = 10;
@@ -258,7 +253,7 @@ namespace OfficePOS
             amount.Text = quantity;
             amount.Font = new Font("Times new Roman", 14, FontStyle.Bold);
             amount.AutoSize = false;
-            amount.Width = (orderPanel.Width - 40) / 8; 
+            amount.Width = (orderPanel.Width - 40) / 8;
             amount.Height = 20;
             var amountMargin = amount.Margin;
             amountMargin.Top = 10;
@@ -295,7 +290,21 @@ namespace OfficePOS
             picDel.Click += new EventHandler(del_order_click);
             orderPanel.Controls.Add(picDel);
 
-            panelSupplyList.Controls.Add(orderPanel);
+            panelOrderList.Controls.Add(orderPanel);
+        }
+
+        public void LoadOrderList()
+        {
+            Total = 0;
+            panelOrderList.Controls.Clear();
+
+            foreach (var item in SaleItemList)
+            {
+                Total += item.Total;
+                addOrderListToPanel(item.ProID, item.Name, item.Amount.ToString());
+            }
+
+            txt_sum_supply.Text = Math.Round(Total, 2).ToString();
         }
 
         private void del_order_click(object sender, EventArgs e)
@@ -304,10 +313,10 @@ namespace OfficePOS
             string proID = props.Split('/')[0];
             string name = props.Split('/')[1];
 
-            var foundItem = OrderItemList.FirstOrDefault(c => c.ProID == proID);
-            OrderItemList.Remove(foundItem);
-            enableItem(name);
+            var foundItem = SaleItemList.FirstOrDefault(c => c.ProID == proID);
+            SaleItemList.Remove(foundItem);
             LoadOrderList();
+            enableItem(name);
         }
 
         private void decrease_amount_click(object sender, EventArgs e)
@@ -316,11 +325,11 @@ namespace OfficePOS
             string proID = props.Split('/')[0];
             string name = props.Split('/')[1];
 
-            var foundItem = OrderItemList.FirstOrDefault(c => c.ProID == proID); 
+            var foundItem = SaleItemList.FirstOrDefault(c => c.ProID == proID);
 
             if (foundItem.Amount <= 1)
             {
-                OrderItemList.Remove(foundItem);
+                SaleItemList.Remove(foundItem);
                 enableItem(name);
             }
             else
@@ -337,17 +346,20 @@ namespace OfficePOS
         {
             string proID = ((PictureBox)sender).Tag.ToString();
 
-            var foundItem = OrderItemList.FirstOrDefault(c => c.ProID == proID);
-            foundItem.Amount += 1;
-            foundItem.Total = foundItem.Amount * foundItem.Price;
+            var foundItem = SaleItemList.FirstOrDefault(c => c.ProID == proID);
+            int tempAmount = foundItem.Amount + 1;
+
+            if(foundItem.Total_Quant < tempAmount)
+            {
+                MessageBox.Show("You reached maxium amount of this product", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                foundItem.Amount = tempAmount;
+                foundItem.Total = foundItem.Amount * foundItem.Price;
+            }
 
             LoadOrderList();
-        }
-
-        private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            AddProduct ap = new AddProduct();
-            ap.Show();
         }
 
         private void txtSearch_Enter(object sender, EventArgs e)
@@ -371,7 +383,7 @@ namespace OfficePOS
         {
             txtSearch.ForeColor = Color.Black;
             LoadProducts();
-            foreach (var item in OrderItemList)
+            foreach(var item in SaleItemList)
             {
                 disenableItem(item.Name);
             }
@@ -379,49 +391,34 @@ namespace OfficePOS
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            OrderItemList.Clear();
+            SaleItemList.Clear();
             LoadOrderList();
 
-            foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
-            {
-                p.Enabled = true;
-            }
-        }
-
-        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadProducts();
-            foreach (var item in OrderItemList)
-            {
-                disenableItem(item.Name);
-            }
         }
 
         private void btn_Bill_Click(object sender, EventArgs e)
         {
-            if (cmb_supplier.Text == "")
+            if (cmb_customer.Text == "")
             {
                 MessageBox.Show("Please Choose Supplier!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 conn.Open();
-                foreach(var item in OrderItemList)
+                 foreach (var item in SaleItemList)
                 {
-                    insertOrderDetailDB(item.ProID, item.Name, item.Price, item.Amount, item.Total);
-                    UpdateAmount(item.ProID, item.Amount);
+                    insertSaleDetail(item.ProID, item.Name, item.Price, item.Amount, item.Total);
+                    updateAmount(item.ProID, item.Amount);
                 }
-
-                insertOrderDB();
-
+                insertSaleDB();
                 conn.Close();
             }
         }
 
-        private void insertOrderDetailDB(string pId, string name, double price, int amount, double total)
+        private void insertSaleDetail(string pId, string name, double price, int amount, double total)
         {
-            cmd = new MySqlCommand("INSERT INTO `import_details`(`Order_ID`, `Product_ID`, `Product_Name`, `Original_Price`, `Amount`, `Total_Price`) VALUES (@orderId, @prodId, @name, @price, @amount, @total)", conn);
-            cmd.Parameters.AddWithValue("@orderId", Order_ID);
+            cmd = new MySqlCommand("INSERT INTO `sale_details`(`Sale_ID`, `Product_ID`, `Product_Name`, `Price`, `Amount`) VALUES (@saleId, @prodId, @name, @price, @amount, @total)", conn);
+            cmd.Parameters.AddWithValue("@orderId", Sale_ID);
             cmd.Parameters.AddWithValue("@prodId", pId);
             cmd.Parameters.AddWithValue("@name", name);
             cmd.Parameters.AddWithValue("@price", price);
@@ -431,28 +428,36 @@ namespace OfficePOS
             cmd.ExecuteNonQuery();
         }
 
-        private void UpdateAmount(string pId, int amount)
+        private void updateAmount(string id, double amount)
         {
-            cmd = new MySqlCommand("UPDATE `products` SET Quantity=Quantity+@amount WHERE `Product_ID`=@prodId", conn);
-            cmd.Parameters.AddWithValue("@prodId", pId);
+            cmd = new MySqlCommand("UPDATE `products` SET Quantity=Quantity-@amount WHERE `Product_ID`=@prodId", conn);
+            cmd.Parameters.AddWithValue("@prodId", id);
             cmd.Parameters.AddWithValue("@amount", amount);
 
             cmd.ExecuteNonQuery();
         }
 
-        private void insertOrderDB()
+        private void insertSaleDB()
         {
-            cmd = new MySqlCommand("INSERT INTO `order_imports`(`Order_ID`, `Supplier_Name`, `Import_Date`, `Total`, `Checked`) VALUES (@orderId, @supplier, @date, @total, @check)", conn);
+            cmd = new MySqlCommand("INSERT INTO `sale`(`Sale_ID`, `Customer_Name`, `Total`, `Date`) VALUES VALUES (@orderId, @supplier,  @total, @date)", conn);
 
-            cmd.Parameters.AddWithValue("@orderId", Order_ID);
-            cmd.Parameters.AddWithValue("@supplier", cmb_supplier.Text);
+            cmd.Parameters.AddWithValue("@saleID", Sale_ID);
+            cmd.Parameters.AddWithValue("@supplier", cmb_customer.Text);
             cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("MM/dd/yyyy"));
             cmd.Parameters.AddWithValue("@total", double.Parse(txt_sum_supply.Text));
-            cmd.Parameters.AddWithValue("@check", false);
 
             if (cmd.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("Ordered Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadProducts();
+            foreach (var item in SaleItemList)
+            {
+                disenableItem(item.Name);
             }
         }
     }

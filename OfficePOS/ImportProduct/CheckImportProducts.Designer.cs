@@ -1,14 +1,14 @@
 ﻿
 namespace OfficePOS
 {
-    partial class CheckImportProduct
+    partial class CheckImportProducts
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,27 +21,27 @@ namespace OfficePOS
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckImportProduct));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckImportProducts));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lbl_title = new System.Windows.Forms.Label();
             this.panelSearcBox = new System.Windows.Forms.Panel();
             this.picSearchIcon = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.DGV_orderList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelTop.SuspendLayout();
             this.panelSearcBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_orderList)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -54,7 +54,7 @@ namespace OfficePOS
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1269, 123);
-            this.panelTop.TabIndex = 38;
+            this.panelTop.TabIndex = 44;
             // 
             // lbl_title
             // 
@@ -102,43 +102,45 @@ namespace OfficePOS
             this.txtSearch.TabIndex = 0;
             this.txtSearch.Text = "Search...";
             // 
+            // DGV_orderList
+            // 
+            this.DGV_orderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_orderList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGV_orderList.Location = new System.Drawing.Point(30, 30);
+            this.DGV_orderList.Name = "DGV_orderList";
+            this.DGV_orderList.RowHeadersWidth = 51;
+            this.DGV_orderList.RowTemplate.Height = 24;
+            this.DGV_orderList.Size = new System.Drawing.Size(1209, 571);
+            this.DGV_orderList.TabIndex = 2;
+            this.DGV_orderList.Click += new System.EventHandler(this.DGV_orderList_Click);
+            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.DGV_orderList);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 123);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(30);
             this.panel1.Size = new System.Drawing.Size(1269, 631);
-            this.panel1.TabIndex = 40;
+            this.panel1.TabIndex = 45;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 30);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1209, 571);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
-            // 
-            // CheckImportProduct
+            // CheckImportProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1269, 754);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelTop);
-            this.Name = "CheckImportProduct";
-            this.Size = new System.Drawing.Size(1269, 754);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "CheckImportProducts";
+            this.Text = "CheckImportProducts";
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.panelSearcBox.ResumeLayout(false);
             this.panelSearcBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_orderList)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -146,11 +148,11 @@ namespace OfficePOS
         #endregion
 
         private System.Windows.Forms.Panel panelTop;
+        private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.Panel panelSearcBox;
         private System.Windows.Forms.PictureBox picSearchIcon;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.DataGridView DGV_orderList;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label lbl_title;
     }
 }

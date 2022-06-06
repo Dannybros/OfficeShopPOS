@@ -72,8 +72,8 @@ namespace OfficePOS
 
         private void lblSale_Click(object sender, EventArgs e)
         {
-            Sales sale = new Sales();
-            switchPanel(sale);
+            Sale sale = new Sale();
+            switchFormPanel(sale);
         }
 
         private void lbl_order_product_Click(object sender, EventArgs e)
@@ -90,8 +90,8 @@ namespace OfficePOS
 
         private void lbl_import_Click(object sender, EventArgs e)
         {
-            CheckImportProduct cip = new CheckImportProduct();
-            switchPanel(cip);
+            CheckImportProducts cip = new CheckImportProducts();
+            switchFormPanel(cip);
         }
     }
 }
