@@ -446,7 +446,6 @@ namespace OfficePOS
             this.Name = "EditProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditProduct";
-            this.Load += new System.EventHandler(this.EditProduct_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.product_Info.ResumeLayout(false);

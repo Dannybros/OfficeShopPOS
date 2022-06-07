@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class OrganiseInfo : UserControl
+    public partial class OrganiseForm : Form
     {
-        public OrganiseInfo()
+        public OrganiseForm()
         {
             InitializeComponent();
-
             loadForm();
 
             foreach (Label lbl in panelTop.Controls.OfType<Label>())
@@ -32,6 +31,7 @@ namespace OfficePOS
                 };
             }
         }
+
         private void loadForm()
         {
             lbl_product.ForeColor = Color.White;

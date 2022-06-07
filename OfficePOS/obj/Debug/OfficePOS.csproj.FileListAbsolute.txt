@@ -96,3 +96,4 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ErrorMsg.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplyProduct.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CheckImportProducts.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Sale.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrganiseForm.resources

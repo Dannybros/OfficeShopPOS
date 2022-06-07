@@ -1,14 +1,14 @@
 ﻿
 namespace OfficePOS
 {
-    partial class OrganiseInfo
+    partial class OrganiseForm
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,10 +21,10 @@ namespace OfficePOS
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -43,7 +43,7 @@ namespace OfficePOS
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 100);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1146, 551);
+            this.panelContent.Size = new System.Drawing.Size(1128, 504);
             this.panelContent.TabIndex = 20;
             // 
             // panelTop
@@ -57,7 +57,7 @@ namespace OfficePOS
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1146, 100);
+            this.panelTop.Size = new System.Drawing.Size(1128, 100);
             this.panelTop.TabIndex = 19;
             // 
             // lbl_Employee
@@ -108,14 +108,15 @@ namespace OfficePOS
             this.lbl_customer.Text = "ລູກຄ້າ";
             this.lbl_customer.Click += new System.EventHandler(this.lbl_customer_Click);
             // 
-            // OrganiseInfo
+            // OrganiseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1128, 604);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelTop);
-            this.Name = "OrganiseInfo";
-            this.Size = new System.Drawing.Size(1146, 651);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "OrganiseForm";
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.ResumeLayout(false);

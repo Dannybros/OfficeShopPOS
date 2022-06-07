@@ -42,14 +42,13 @@ namespace OfficePOS
             activePanel.Height = lblHome.Height;
             activePanel.Top = lblHome.Top;
 
-            OrganiseInfo organise = new OrganiseInfo();
-            switchPanel(organise);
+            OrganiseForm organise = new OrganiseForm();
+            switchFormPanel(organise);
         }
 
         private void switchPanel(UserControl panel)
         {
             panelContent.Controls.Clear();
-            //panel.TopLevel = false;
             panel.Dock = DockStyle.Fill;
             panelContent.Controls.Add(panel);
             panel.Show();
@@ -66,8 +65,8 @@ namespace OfficePOS
 
         private void lblHome_Click(object sender, EventArgs e)
         {
-            OrganiseInfo organise = new OrganiseInfo();
-            switchPanel(organise);
+            OrganiseForm organise = new OrganiseForm();
+            switchFormPanel(organise);
         }
 
         private void lblSale_Click(object sender, EventArgs e)

@@ -174,11 +174,11 @@
       <DependentUpon>CheckImports.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderProduct\OrderItem.cs" />
-    <Compile Include="Organise\OrganiseInfo.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Organise\OrganiseForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Organise\OrganiseInfo.Designer.cs">
-      <DependentUpon>OrganiseInfo.cs</DependentUpon>
+    <Compile Include="Organise\OrganiseForm.Designer.cs">
+      <DependentUpon>OrganiseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Organise\Employee.cs">
       <SubType>UserControl</SubType>
@@ -288,8 +288,8 @@
     <EmbeddedResource Include="ImportProduct\CheckImports.resx">
       <DependentUpon>CheckImports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Organise\OrganiseInfo.resx">
-      <DependentUpon>OrganiseInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Organise\OrganiseForm.resx">
+      <DependentUpon>OrganiseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\Employee.resx">
       <DependentUpon>Employee.cs</DependentUpon>
