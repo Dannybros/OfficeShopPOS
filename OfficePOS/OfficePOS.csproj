@@ -198,10 +198,10 @@
     <Compile Include="OrderProduct\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\EditProduct.cs">
+    <Compile Include="Organise\EditProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\EditProduct.Designer.cs">
+    <Compile Include="Organise\EditProduct.Designer.cs">
       <DependentUpon>EditProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\Home.cs">
@@ -300,7 +300,7 @@
     <EmbeddedResource Include="OrderProduct\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\EditProduct.resx">
+    <EmbeddedResource Include="Organise\EditProduct.resx">
       <DependentUpon>EditProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Home.resx">
@@ -395,6 +395,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Resources\supplier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\programmer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
