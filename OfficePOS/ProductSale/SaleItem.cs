@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OfficePOS
 {
-    class SaleItem
+    public class SaleItem
     {
         private string proID;
         private double price;

@@ -46,3 +46,4 @@ D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\CrystalDecisions.ReportAppServer.Co
 D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\stdole.dll
 D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleBillViewer.resources

@@ -398,7 +398,7 @@ namespace OfficePOS
 
         private void btn_Bill_Click(object sender, EventArgs e)
         {
-            if (cmb_customer.Text == "")
+            /*if (cmb_customer.Text == "")
             {
                 MessageBox.Show("Please Choose Supplier!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -412,7 +412,10 @@ namespace OfficePOS
                 }
                 insertSaleDB();
                 conn.Close();
-            }
+            }*/
+
+            SaleBillViewer saleViewer = new SaleBillViewer(SaleItemList);
+            saleViewer.Show();
         }
 
         private void insertSaleDetail(string pId, string name, double price, int amount, double total)

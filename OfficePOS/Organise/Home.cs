@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,7 +37,7 @@ namespace OfficePOS
         }
 
         private void startForm()
-        { 
+        {
             lblHome.ForeColor = Color.White;
             activePanel.Height = lblHome.Height;
             activePanel.Top = lblHome.Top;

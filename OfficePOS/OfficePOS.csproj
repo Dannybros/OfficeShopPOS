@@ -60,10 +60,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Home.cs">
+    <Compile Include="Organise\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="Organise\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportProduct\CheckImportProducts.cs">
@@ -166,19 +166,19 @@
     <Compile Include="Reports\Revenue.Designer.cs">
       <DependentUpon>Revenue.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductSale\Bill\SaleBillReport.cs">
+    <Compile Include="ProductSale\Bill\SaleBillViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductSale\Bill\SaleBillViewer.Designer.cs">
+      <DependentUpon>SaleBillViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleBillReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SaleBillReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Home.resx">
+    <EmbeddedResource Include="Organise\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportProduct\CheckImportProducts.resx">
@@ -204,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OrderProduct\SupplyProduct.resx">
       <DependentUpon>SupplyProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductSale\Bill\SaleBillViewer.resx">
+      <DependentUpon>SaleBillViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductSale\Sale.resx">
       <DependentUpon>Sale.cs</DependentUpon>
@@ -239,7 +242,7 @@
     <EmbeddedResource Include="Reports\Revenue.resx">
       <DependentUpon>Revenue.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductSale\Bill\SaleBillReport.rpt">
+    <EmbeddedResource Include="SaleBillReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SaleBillReport.cs</LastGenOutput>
     </EmbeddedResource>

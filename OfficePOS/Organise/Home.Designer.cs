@@ -39,14 +39,14 @@ namespace OfficePOS
             this.lblHome = new System.Windows.Forms.Label();
             this.activePanel = new System.Windows.Forms.Panel();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SideBar.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // SideBar
@@ -176,16 +176,6 @@ namespace OfficePOS
             this.panelLogo.Size = new System.Drawing.Size(378, 210);
             this.panelLogo.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::OfficePOS.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(62, 38);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(251, 127);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.White;
@@ -205,6 +195,16 @@ namespace OfficePOS
             this.panelContent.Size = new System.Drawing.Size(932, 860);
             this.panelContent.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::OfficePOS.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(62, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(251, 127);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -212,6 +212,7 @@ namespace OfficePOS
             this.ClientSize = new System.Drawing.Size(1314, 862);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.SideBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Home";
             this.Text = "Home";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -219,8 +220,8 @@ namespace OfficePOS
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             this.panelLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

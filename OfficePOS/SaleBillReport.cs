@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OfficePOS.ProductSale.Bill {
+namespace OfficePOS {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace OfficePOS.ProductSale.Bill {
         
         public override string FullResourceName {
             get {
-                return "OfficePOS.ProductSale.Bill.SaleBillReport.rpt";
+                return "OfficePOS.SaleBillReport.rpt";
             }
             set {
                 // Do nothing
