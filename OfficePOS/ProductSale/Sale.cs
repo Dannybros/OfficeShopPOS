@@ -62,12 +62,12 @@ namespace OfficePOS
 
         private void LoadCustomer()
         {
-            cmd = new MySqlCommand("SELECT `Supplier_Name` FROM `suppliers`", conn);
+            cmd = new MySqlCommand("SELECT `Customer_Name` FROM `customer`", conn);
             conn.Open();
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                cmb_customer.Items.Add(reader.GetString("Supplier_Name"));
+                cmb_customer.Items.Add(reader.GetString("Customer_Name"));
             }
             conn.Close();
         }
@@ -111,11 +111,11 @@ namespace OfficePOS
             }
             if (cmbCategory.Text == "ທັງໝົດ")
             {
-                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%'", conn);
+                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%' AND Quantity > 0", conn);
             }
             else
             {
-                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%' AND `Product_Type_Name` = @type", conn);
+                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%' AND `Product_Type_Name` = @type AND Quantity > 0", conn);
                 cmd.Parameters.AddWithValue("@type", cmbCategory.Text);
             }
 

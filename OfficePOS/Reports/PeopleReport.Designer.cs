@@ -70,6 +70,7 @@ namespace OfficePOS
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(191, 37);
             this.cmbType.TabIndex = 3;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
             // 
             // panelSearcBox
             // 
@@ -105,6 +106,9 @@ namespace OfficePOS
             this.txtSearch.Size = new System.Drawing.Size(200, 30);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.Text = "Search...";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // panel1
             // 

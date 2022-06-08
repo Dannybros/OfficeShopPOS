@@ -65,7 +65,7 @@ namespace OfficePOS
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
-            this.panel4.Location = new System.Drawing.Point(343, 336);
+            this.panel4.Location = new System.Drawing.Point(343, 315);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(749, 5);
             this.panel4.TabIndex = 28;
@@ -75,7 +75,7 @@ namespace OfficePOS
             this.txt_Brand.BackColor = System.Drawing.Color.White;
             this.txt_Brand.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Brand.ForeColor = System.Drawing.Color.Black;
-            this.txt_Brand.Location = new System.Drawing.Point(880, 179);
+            this.txt_Brand.Location = new System.Drawing.Point(880, 177);
             this.txt_Brand.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Brand.Name = "txt_Brand";
             this.txt_Brand.Size = new System.Drawing.Size(212, 30);
@@ -86,7 +86,7 @@ namespace OfficePOS
             this.txt_weight.BackColor = System.Drawing.Color.White;
             this.txt_weight.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_weight.ForeColor = System.Drawing.Color.Black;
-            this.txt_weight.Location = new System.Drawing.Point(493, 175);
+            this.txt_weight.Location = new System.Drawing.Point(493, 173);
             this.txt_weight.Margin = new System.Windows.Forms.Padding(4);
             this.txt_weight.Name = "txt_weight";
             this.txt_weight.Size = new System.Drawing.Size(212, 30);
@@ -95,7 +95,7 @@ namespace OfficePOS
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Location = new System.Drawing.Point(343, 259);
+            this.panel3.Location = new System.Drawing.Point(343, 238);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(749, 5);
             this.panel3.TabIndex = 27;
@@ -191,17 +191,19 @@ namespace OfficePOS
             // txt_production_date
             // 
             this.txt_production_date.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_production_date.Location = new System.Drawing.Point(268, 375);
+            this.txt_production_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txt_production_date.Location = new System.Drawing.Point(493, 352);
             this.txt_production_date.Name = "txt_production_date";
-            this.txt_production_date.Size = new System.Drawing.Size(319, 30);
+            this.txt_production_date.Size = new System.Drawing.Size(212, 30);
             this.txt_production_date.TabIndex = 44;
             // 
             // txtExpire_date
             // 
             this.txtExpire_date.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExpire_date.Location = new System.Drawing.Point(773, 375);
+            this.txtExpire_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtExpire_date.Location = new System.Drawing.Point(880, 354);
             this.txtExpire_date.Name = "txtExpire_date";
-            this.txtExpire_date.Size = new System.Drawing.Size(319, 30);
+            this.txtExpire_date.Size = new System.Drawing.Size(212, 30);
             this.txtExpire_date.TabIndex = 43;
             // 
             // label8
@@ -209,7 +211,7 @@ namespace OfficePOS
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(90, 377);
+            this.label8.Location = new System.Drawing.Point(345, 352);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(144, 29);
@@ -221,7 +223,7 @@ namespace OfficePOS
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(748, 182);
+            this.label5.Location = new System.Drawing.Point(748, 180);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 29);
@@ -233,7 +235,7 @@ namespace OfficePOS
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(344, 179);
+            this.label7.Location = new System.Drawing.Point(344, 177);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 29);
@@ -245,7 +247,7 @@ namespace OfficePOS
             this.lblExpire.AutoSize = true;
             this.lblExpire.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExpire.ForeColor = System.Drawing.Color.White;
-            this.lblExpire.Location = new System.Drawing.Point(642, 375);
+            this.lblExpire.Location = new System.Drawing.Point(748, 354);
             this.lblExpire.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblExpire.Name = "lblExpire";
             this.lblExpire.Size = new System.Drawing.Size(115, 29);
@@ -257,7 +259,7 @@ namespace OfficePOS
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(748, 284);
+            this.label6.Location = new System.Drawing.Point(748, 263);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 29);
@@ -270,7 +272,7 @@ namespace OfficePOS
             this.Label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.Label2.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.ForeColor = System.Drawing.Color.White;
-            this.Label2.Location = new System.Drawing.Point(344, 112);
+            this.Label2.Location = new System.Drawing.Point(344, 110);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(72, 29);
@@ -282,7 +284,7 @@ namespace OfficePOS
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.ForeColor = System.Drawing.Color.White;
-            this.Label4.Location = new System.Drawing.Point(344, 287);
+            this.Label4.Location = new System.Drawing.Point(344, 266);
             this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(87, 29);
@@ -294,7 +296,7 @@ namespace OfficePOS
             this.txt_origin_price.BackColor = System.Drawing.Color.White;
             this.txt_origin_price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_origin_price.ForeColor = System.Drawing.Color.Black;
-            this.txt_origin_price.Location = new System.Drawing.Point(880, 287);
+            this.txt_origin_price.Location = new System.Drawing.Point(880, 266);
             this.txt_origin_price.Margin = new System.Windows.Forms.Padding(4);
             this.txt_origin_price.Name = "txt_origin_price";
             this.txt_origin_price.Size = new System.Drawing.Size(212, 30);
@@ -306,7 +308,7 @@ namespace OfficePOS
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.White;
-            this.Label3.Location = new System.Drawing.Point(748, 113);
+            this.Label3.Location = new System.Drawing.Point(748, 111);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(110, 29);
@@ -319,7 +321,7 @@ namespace OfficePOS
             this.txt_id.Enabled = false;
             this.txt_id.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_id.ForeColor = System.Drawing.Color.Black;
-            this.txt_id.Location = new System.Drawing.Point(493, 46);
+            this.txt_id.Location = new System.Drawing.Point(493, 44);
             this.txt_id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(212, 30);
@@ -331,7 +333,7 @@ namespace OfficePOS
             this.combo_type.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_type.ForeColor = System.Drawing.Color.Black;
             this.combo_type.FormattingEnabled = true;
-            this.combo_type.Location = new System.Drawing.Point(880, 113);
+            this.combo_type.Location = new System.Drawing.Point(880, 111);
             this.combo_type.Margin = new System.Windows.Forms.Padding(4);
             this.combo_type.Name = "combo_type";
             this.combo_type.Size = new System.Drawing.Size(212, 30);
@@ -342,7 +344,7 @@ namespace OfficePOS
             this.pb_product_img.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pb_product_img.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pb_product_img.Image = global::OfficePOS.Properties.Resources.download;
-            this.pb_product_img.Location = new System.Drawing.Point(54, 54);
+            this.pb_product_img.Location = new System.Drawing.Point(53, 52);
             this.pb_product_img.Name = "pb_product_img";
             this.pb_product_img.Size = new System.Drawing.Size(226, 183);
             this.pb_product_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -353,7 +355,7 @@ namespace OfficePOS
             // 
             this.btn_upload.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold);
             this.btn_upload.ForeColor = System.Drawing.Color.Black;
-            this.btn_upload.Location = new System.Drawing.Point(54, 244);
+            this.btn_upload.Location = new System.Drawing.Point(53, 242);
             this.btn_upload.Margin = new System.Windows.Forms.Padding(4);
             this.btn_upload.Name = "btn_upload";
             this.btn_upload.Size = new System.Drawing.Size(226, 42);
@@ -368,7 +370,7 @@ namespace OfficePOS
             this.Label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.Label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.White;
-            this.Label1.Location = new System.Drawing.Point(348, 54);
+            this.Label1.Location = new System.Drawing.Point(348, 52);
             this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(41, 22);
@@ -380,7 +382,7 @@ namespace OfficePOS
             this.txt_selling_price.BackColor = System.Drawing.Color.White;
             this.txt_selling_price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_selling_price.ForeColor = System.Drawing.Color.Black;
-            this.txt_selling_price.Location = new System.Drawing.Point(493, 283);
+            this.txt_selling_price.Location = new System.Drawing.Point(493, 262);
             this.txt_selling_price.Margin = new System.Windows.Forms.Padding(4);
             this.txt_selling_price.Name = "txt_selling_price";
             this.txt_selling_price.Size = new System.Drawing.Size(212, 30);
@@ -392,7 +394,7 @@ namespace OfficePOS
             this.txt_productName.BackColor = System.Drawing.Color.White;
             this.txt_productName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_productName.ForeColor = System.Drawing.Color.Black;
-            this.txt_productName.Location = new System.Drawing.Point(493, 109);
+            this.txt_productName.Location = new System.Drawing.Point(493, 107);
             this.txt_productName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_productName.Name = "txt_productName";
             this.txt_productName.Size = new System.Drawing.Size(212, 30);

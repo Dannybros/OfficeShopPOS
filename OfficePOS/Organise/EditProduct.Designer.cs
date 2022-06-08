@@ -35,6 +35,10 @@ namespace OfficePOS
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.product_Info = new System.Windows.Forms.Panel();
+            this.txt_production_date = new System.Windows.Forms.DateTimePicker();
+            this.txtExpire_date = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblExpire = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,10 +59,6 @@ namespace OfficePOS
             this.Label1 = new System.Windows.Forms.Label();
             this.txt_selling_price = new System.Windows.Forms.TextBox();
             this.txt_productName = new System.Windows.Forms.TextBox();
-            this.txt_production_date = new System.Windows.Forms.DateTimePicker();
-            this.txtExpire_date = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblExpire = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.product_Info.SuspendLayout();
@@ -103,6 +103,7 @@ namespace OfficePOS
             this.btn_Del.TabIndex = 29;
             this.btn_Del.Text = "ລຶບ";
             this.btn_Del.UseVisualStyleBackColor = false;
+            this.btn_Del.Click += new System.EventHandler(this.btn_Del_Click);
             // 
             // btn_cancel
             // 
@@ -136,6 +137,7 @@ namespace OfficePOS
             this.btn_add.TabIndex = 27;
             this.btn_add.Text = "ບັນທຶກ";
             this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // product_Info
             // 
@@ -170,6 +172,50 @@ namespace OfficePOS
             this.product_Info.Name = "product_Info";
             this.product_Info.Size = new System.Drawing.Size(1143, 493);
             this.product_Info.TabIndex = 23;
+            // 
+            // txt_production_date
+            // 
+            this.txt_production_date.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_production_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txt_production_date.Location = new System.Drawing.Point(493, 432);
+            this.txt_production_date.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.txt_production_date.Name = "txt_production_date";
+            this.txt_production_date.Size = new System.Drawing.Size(209, 30);
+            this.txt_production_date.TabIndex = 68;
+            // 
+            // txtExpire_date
+            // 
+            this.txtExpire_date.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExpire_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtExpire_date.Location = new System.Drawing.Point(877, 430);
+            this.txtExpire_date.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.txtExpire_date.Name = "txtExpire_date";
+            this.txtExpire_date.Size = new System.Drawing.Size(212, 30);
+            this.txtExpire_date.TabIndex = 67;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(342, 432);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(144, 29);
+            this.label8.TabIndex = 66;
+            this.label8.Text = "ວັນ​ທີ​ຜະລິດຕະພັນ:";
+            // 
+            // lblExpire
+            // 
+            this.lblExpire.AutoSize = true;
+            this.lblExpire.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExpire.ForeColor = System.Drawing.Color.White;
+            this.lblExpire.Location = new System.Drawing.Point(740, 429);
+            this.lblExpire.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblExpire.Name = "lblExpire";
+            this.lblExpire.Size = new System.Drawing.Size(115, 29);
+            this.lblExpire.TabIndex = 65;
+            this.lblExpire.Text = "ວັນ​ທີ​ໝົດ​ອາ​ຍຸ:";
             // 
             // panel4
             // 
@@ -361,6 +407,7 @@ namespace OfficePOS
             this.btn_upload.TabIndex = 44;
             this.btn_upload.Text = "Upload";
             this.btn_upload.UseVisualStyleBackColor = true;
+            this.btn_upload.Click += new System.EventHandler(this.btn_upload_Click);
             // 
             // Label1
             // 
@@ -396,46 +443,6 @@ namespace OfficePOS
             this.txt_productName.Name = "txt_productName";
             this.txt_productName.Size = new System.Drawing.Size(212, 30);
             this.txt_productName.TabIndex = 47;
-            // 
-            // txt_production_date
-            // 
-            this.txt_production_date.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_production_date.Location = new System.Drawing.Point(256, 429);
-            this.txt_production_date.Name = "txt_production_date";
-            this.txt_production_date.Size = new System.Drawing.Size(319, 30);
-            this.txt_production_date.TabIndex = 68;
-            // 
-            // txtExpire_date
-            // 
-            this.txtExpire_date.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExpire_date.Location = new System.Drawing.Point(770, 430);
-            this.txtExpire_date.Name = "txtExpire_date";
-            this.txtExpire_date.Size = new System.Drawing.Size(319, 30);
-            this.txtExpire_date.TabIndex = 67;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(78, 431);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(144, 29);
-            this.label8.TabIndex = 66;
-            this.label8.Text = "ວັນ​ທີ​ຜະລິດຕະພັນ:";
-            // 
-            // lblExpire
-            // 
-            this.lblExpire.AutoSize = true;
-            this.lblExpire.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpire.ForeColor = System.Drawing.Color.White;
-            this.lblExpire.Location = new System.Drawing.Point(639, 430);
-            this.lblExpire.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblExpire.Name = "lblExpire";
-            this.lblExpire.Size = new System.Drawing.Size(115, 29);
-            this.lblExpire.TabIndex = 65;
-            this.lblExpire.Text = "ວັນ​ທີ​ໝົດ​ອາ​ຍຸ:";
             // 
             // EditProduct
             // 

@@ -21,6 +21,8 @@ namespace OfficePOS
             InitializeComponent();
             txt_id.Text = GUID();
             pb_product_img.Image = OfficePOS.Properties.Resources.download;
+            txt_production_date.CustomFormat = " dd-MM-yyyy";
+            txtExpire_date.CustomFormat = " dd-MM-yyyy";
             LoadProductType();
         }
 
@@ -125,8 +127,8 @@ namespace OfficePOS
             cmd.Parameters.AddWithValue("@size", txt_weight.Text);
             cmd.Parameters.AddWithValue("@orgPrice", txt_origin_price.Text);
             cmd.Parameters.AddWithValue("@selPrice", txt_selling_price.Text);
-            cmd.Parameters.AddWithValue("@pDate", txt_production_date.Text);
-            cmd.Parameters.AddWithValue("@eDate", txtExpire_date.Text);
+            cmd.Parameters.AddWithValue("@pDate", txt_production_date.Value.ToShortDateString());
+            cmd.Parameters.AddWithValue("@eDate", txtExpire_date.Value.ToShortDateString());
 
             MemoryStream ms = new MemoryStream();
             pb_product_img.Image.Save(ms, pb_product_img.Image.RawFormat);
@@ -136,7 +138,7 @@ namespace OfficePOS
             conn.Open();
             if (cmd.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("You have successfully added new Products", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("You have successfully added new product", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearData();
                 var sp = Application.OpenForms.OfType<SupplyProduct>().Single();
                 sp.LoadProducts();
