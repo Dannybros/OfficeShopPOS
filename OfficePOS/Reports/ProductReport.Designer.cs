@@ -3,12 +3,12 @@ namespace OfficePOS
 {
     partial class ProductReport
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,10 +21,10 @@ namespace OfficePOS
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -53,7 +53,7 @@ namespace OfficePOS
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1170, 60);
+            this.panelTop.Size = new System.Drawing.Size(1104, 60);
             this.panelTop.TabIndex = 32;
             // 
             // cmbType
@@ -63,13 +63,10 @@ namespace OfficePOS
             this.cmbType.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbType.FormattingEnabled = true;
             this.cmbType.Items.AddRange(new object[] {
-            "ສິນຄ້າໝົດ",
-            "ສິນຄ້າຂາຍດີ",
-            "ສິນຄ້າໃກ້ຈະໝົດ",
-            "ສິນຄ້າໃກ້ຈະໝົດອາຍຸ"});
-            this.cmbType.Location = new System.Drawing.Point(673, 11);
+            "ທັງໝົດ"});
+            this.cmbType.Location = new System.Drawing.Point(595, 11);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(177, 37);
+            this.cmbType.Size = new System.Drawing.Size(191, 37);
             this.cmbType.TabIndex = 3;
             // 
             // panelSearcBox
@@ -78,7 +75,7 @@ namespace OfficePOS
             this.panelSearcBox.Controls.Add(this.picSearchIcon);
             this.panelSearcBox.Controls.Add(this.txtSearch);
             this.panelSearcBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSearcBox.Location = new System.Drawing.Point(886, 0);
+            this.panelSearcBox.Location = new System.Drawing.Point(820, 0);
             this.panelSearcBox.Name = "panelSearcBox";
             this.panelSearcBox.Size = new System.Drawing.Size(282, 58);
             this.panelSearcBox.TabIndex = 2;
@@ -114,7 +111,7 @@ namespace OfficePOS
             this.panel1.Location = new System.Drawing.Point(0, 60);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(30);
-            this.panel1.Size = new System.Drawing.Size(1170, 625);
+            this.panel1.Size = new System.Drawing.Size(1104, 583);
             this.panel1.TabIndex = 34;
             // 
             // dataGridView1
@@ -125,17 +122,19 @@ namespace OfficePOS
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1110, 565);
+            this.dataGridView1.Size = new System.Drawing.Size(1044, 523);
             this.dataGridView1.TabIndex = 0;
             // 
             // ProductReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1104, 643);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProductReport";
-            this.Size = new System.Drawing.Size(1170, 685);
+            this.Text = "ProductReport";
             this.panelTop.ResumeLayout(false);
             this.panelSearcBox.ResumeLayout(false);
             this.panelSearcBox.PerformLayout();
@@ -147,6 +146,7 @@ namespace OfficePOS
         }
 
         #endregion
+
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.Panel panelSearcBox;

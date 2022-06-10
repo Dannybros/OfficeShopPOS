@@ -45,7 +45,7 @@ namespace OfficePOS
                 sb.Append(Guid.NewGuid().ToString("N"));
             }
 
-            Sale_ID = "Sale-" + sb.ToString(0, 8);
+            Sale_ID = "S-" + sb.ToString(0, 8);
         }
 
         private void LoadProductType()
@@ -398,24 +398,24 @@ namespace OfficePOS
 
         private void btn_Bill_Click(object sender, EventArgs e)
         {
-            /*if (cmb_customer.Text == "")
+            if (cmb_customer.Text == "")
             {
-                MessageBox.Show("Please Choose Supplier!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please Choose Customer!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 conn.Open();
-                 foreach (var item in SaleItemList)
+                foreach (var item in SaleItemList)
                 {
                     insertSaleDetail(item.ProID, item.Name, item.Price, item.Amount, item.Total);
                     updateAmount(item.ProID, item.Amount);
                 }
                 insertSaleDB();
                 conn.Close();
-            }*/
 
-            SaleBillViewer saleViewer = new SaleBillViewer(SaleItemList);
-            saleViewer.Show();
+                SaleBillViewer saleViewer = new SaleBillViewer(SaleItemList, Sale_ID, cmb_customer.Text);
+                saleViewer.Show();
+            }
         }
 
         private void insertSaleDetail(string pId, string name, double price, int amount, double total)

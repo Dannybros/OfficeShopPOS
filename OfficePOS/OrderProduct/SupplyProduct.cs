@@ -429,6 +429,8 @@ namespace OfficePOS
             cmd.Parameters.AddWithValue("@total", total);
 
             cmd.ExecuteNonQuery();
+            OrderBillViewer obw = new OrderBillViewer(OrderItemList, Order_ID, cmb_supplier.Text);
+            obw.Show();
         }
 
         private void UpdateAmount(string pId, int amount)

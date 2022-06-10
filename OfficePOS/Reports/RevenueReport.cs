@@ -11,15 +11,15 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace OfficePOS
 {
-    public partial class Revenue : UserControl
+    public partial class RevenueReport : Form
     {
-        public Revenue()
+        public RevenueReport()
         {
             InitializeComponent();
             addPanels();
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
+        private void RevenueReport_Load(object sender, EventArgs e)
         {
             chartSetting();
         }
@@ -52,7 +52,7 @@ namespace OfficePOS
             panel.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
 
-            panel.Width = (panelDashboard.Width - 20)/ 3;
+            panel.Width = (panelDashboard.Width - 20) / 3;
             panel.Height = 150;
             panel.Padding = new Padding(20, 20, 20, 20);
             var margin = panel.Margin;
@@ -74,7 +74,7 @@ namespace OfficePOS
             title.TextAlign = ContentAlignment.BottomLeft;
             p.Controls.Add(title);
 
-            Label content = new Label() { Text = mainNumber};
+            Label content = new Label() { Text = mainNumber };
             content.Font = new Font("Times New Roman", 22, FontStyle.Bold);
             content.AutoSize = true;
             content.Height = p.Height / 3;
@@ -103,6 +103,5 @@ namespace OfficePOS
             createPanel(p3, Color.FromArgb(254, 178, 8));
             addLabel(p3, "ລາຍຈ່າຍພະນັກງານ", "500,000 KIP", "ລາຍຈ່າຍທັງໝົດຂອງຂອງເງິນເດືອນພະນັກງານ");
         }
-
     }
 }

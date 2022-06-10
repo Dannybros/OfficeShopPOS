@@ -225,10 +225,10 @@ namespace OfficePOS
             this.btn_Bill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Bill.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Bill.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Bill.Location = new System.Drawing.Point(461, 188);
+            this.btn_Bill.Location = new System.Drawing.Point(442, 188);
             this.btn_Bill.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Bill.Name = "btn_Bill";
-            this.btn_Bill.Size = new System.Drawing.Size(117, 45);
+            this.btn_Bill.Size = new System.Drawing.Size(136, 45);
             this.btn_Bill.TabIndex = 36;
             this.btn_Bill.Text = "ພິມໃບບິນ";
             this.btn_Bill.UseVisualStyleBackColor = false;

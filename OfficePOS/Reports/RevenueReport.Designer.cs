@@ -1,14 +1,14 @@
 ﻿
 namespace OfficePOS
 {
-    partial class Revenue
+    partial class RevenueReport
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,10 +21,10 @@ namespace OfficePOS
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -39,18 +39,10 @@ namespace OfficePOS
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 350D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 450D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 270D);
-            this.panelDashboard = new System.Windows.Forms.FlowLayoutPanel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.panelDashboard = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panelDashboard
-            // 
-            this.panelDashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelDashboard.Location = new System.Drawing.Point(0, 0);
-            this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(1322, 450);
-            this.panelDashboard.TabIndex = 4;
             // 
             // chart1
             // 
@@ -64,7 +56,7 @@ namespace OfficePOS
             legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(0, 108);
+            this.chart1.Location = new System.Drawing.Point(0, 126);
             this.chart1.Name = "chart1";
             series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
             series1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(204)))), ((int)(((byte)(231)))));
@@ -98,20 +90,30 @@ namespace OfficePOS
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1322, 619);
-            this.chart1.TabIndex = 5;
+            this.chart1.Size = new System.Drawing.Size(1321, 619);
+            this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
             // 
-            // Dashboard
+            // panelDashboard
+            // 
+            this.panelDashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelDashboard.Location = new System.Drawing.Point(0, 0);
+            this.panelDashboard.Name = "panelDashboard";
+            this.panelDashboard.Size = new System.Drawing.Size(1321, 450);
+            this.panelDashboard.TabIndex = 6;
+            // 
+            // RevenueReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1321, 745);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.panelDashboard);
-            this.Name = "Dashboard";
-            this.Size = new System.Drawing.Size(1322, 727);
-            this.Load += new System.EventHandler(this.Dashboard_Load);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "RevenueReport";
+            this.Text = "RevenueReport";
+            this.Load += new System.EventHandler(this.RevenueReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
@@ -119,7 +121,7 @@ namespace OfficePOS
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel panelDashboard;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.FlowLayoutPanel panelDashboard;
     }
 }

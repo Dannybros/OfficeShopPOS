@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OfficePOS
 {
-    public partial class ProductReport : UserControl
+    public partial class ProductReport : Form
     {
         public ProductReport()
         {

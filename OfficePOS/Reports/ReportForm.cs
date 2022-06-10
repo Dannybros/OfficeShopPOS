@@ -40,10 +40,10 @@ namespace OfficePOS
             switchPanel(sr);
         }
 
-        private void switchPanel(UserControl panel)
+        private void switchPanel(Form panel)
         {
             panelContent.Controls.Clear();
-            //panel.TopLevel = false;
+            panel.TopLevel = false;
             panel.Dock = DockStyle.Fill;
             panelContent.Controls.Add(panel);
             panel.Show();
@@ -57,13 +57,21 @@ namespace OfficePOS
 
         private void lbl_report_revenue_Click(object sender, EventArgs e)
         {
-            Revenue rev = new Revenue();
+            RevenueReport rev = new RevenueReport();
             switchPanel(rev);
+        }
+
+        private void switchPanel2(UserControl panel)
+        {
+            panelContent.Controls.Clear();
+            panel.Dock = DockStyle.Fill;
+            panelContent.Controls.Add(panel);
+            panel.Show();
         }
 
         private void lbl_report_customer_Click(object sender, EventArgs e)
         {
-            PeopleReport peReport = new PeopleReport();
+            PeopleReports peReport = new PeopleReports();
             switchPanel(peReport);
         }
 

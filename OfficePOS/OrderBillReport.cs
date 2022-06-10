@@ -16,14 +16,14 @@ namespace OfficePOS {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class SaleBillReport : ReportClass {
+    public class OrderBillReport : ReportClass {
         
-        public SaleBillReport() {
+        public OrderBillReport() {
         }
         
         public override string ResourceName {
             get {
-                return "SaleBillReport.rpt";
+                return "OrderBillReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OfficePOS {
         
         public override string FullResourceName {
             get {
-                return "OfficePOS.SaleBillReport.rpt";
+                return "OfficePOS.OrderBillReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace OfficePOS {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_CustomerName {
+        public CrystalDecisions.Shared.IParameterField Parameter_Order_ID {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace OfficePOS {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Bill_ID {
+        public CrystalDecisions.Shared.IParameterField Parameter_Supplier_Name {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,9 +106,9 @@ namespace OfficePOS {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedSaleBillReport : Component, ICachedReport {
+    public class CachedOrderBillReport : Component, ICachedReport {
         
-        public CachedSaleBillReport() {
+        public CachedOrderBillReport() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace OfficePOS {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            SaleBillReport rpt = new SaleBillReport();
+            OrderBillReport rpt = new OrderBillReport();
             rpt.Site = this.Site;
             return rpt;
         }
