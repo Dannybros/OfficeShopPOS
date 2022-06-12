@@ -49,6 +49,7 @@ namespace OfficePOS
             this.txt_sum_supply = new System.Windows.Forms.TextBox();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelOrder = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelSearchItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).BeginInit();
             this.panel4.SuspendLayout();
@@ -181,6 +182,7 @@ namespace OfficePOS
             // 
             // panelOrderTotal
             // 
+            this.panelOrderTotal.Controls.Add(this.label2);
             this.panelOrderTotal.Controls.Add(this.cmb_customer);
             this.panelOrderTotal.Controls.Add(this.panel3);
             this.panelOrderTotal.Controls.Add(this.Label3);
@@ -286,6 +288,19 @@ namespace OfficePOS
             this.panelOrder.Size = new System.Drawing.Size(641, 654);
             this.panelOrder.TabIndex = 6;
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(467, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 55);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "KIP";
+            // 
             // Sale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -329,5 +344,6 @@ namespace OfficePOS
         internal System.Windows.Forms.Button btn_Bill;
         internal System.Windows.Forms.Button btn_Cancel;
         internal System.Windows.Forms.TextBox txt_sum_supply;
+        private System.Windows.Forms.Label label2;
     }
 }

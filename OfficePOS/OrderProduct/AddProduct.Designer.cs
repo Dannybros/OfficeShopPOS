@@ -341,13 +341,13 @@ namespace OfficePOS
             // 
             // pb_product_img
             // 
-            this.pb_product_img.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pb_product_img.BackColor = System.Drawing.Color.White;
             this.pb_product_img.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pb_product_img.Image = global::OfficePOS.Properties.Resources.download;
             this.pb_product_img.Location = new System.Drawing.Point(53, 52);
             this.pb_product_img.Name = "pb_product_img";
             this.pb_product_img.Size = new System.Drawing.Size(226, 183);
-            this.pb_product_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_product_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_product_img.TabIndex = 0;
             this.pb_product_img.TabStop = false;
             // 

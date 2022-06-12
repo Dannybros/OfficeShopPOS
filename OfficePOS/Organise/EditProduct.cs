@@ -53,8 +53,8 @@ namespace OfficePOS
             txt_weight.Text = dt.Rows[0]["Size"].ToString();
             txt_Brand.Text = dt.Rows[0]["Product_Brand"].ToString();
             txt_amount.Text = dt.Rows[0]["Quantity"].ToString();
-            txt_selling_price.Text = Convert.ToInt32(dt.Rows[0]["Selling_Price"]).ToString("N");
-            txt_origin_price.Text = Convert.ToInt32(dt.Rows[0]["Original_Price"]).ToString("N");
+            txt_selling_price.Text = Convert.ToInt32(dt.Rows[0]["Selling_Price"]).ToString("#,##0");
+            txt_origin_price.Text = Convert.ToInt32(dt.Rows[0]["Original_Price"]).ToString("#,##0");
             txt_production_date.Text = dt.Rows[0]["Production_Date"].ToString();
             txtExpire_date.Text = dt.Rows[0]["Expiration_Date"].ToString();
 
@@ -92,6 +92,10 @@ namespace OfficePOS
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Product Deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    var iv = Application.OpenForms.OfType<Inventory>().FirstOrDefault();
+                    iv.LoadProducts();
+
                     this.Close();
                 }
 
@@ -142,6 +146,10 @@ namespace OfficePOS
             if (cmd.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("You have successfully updated product info", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var iv = Application.OpenForms.OfType<Inventory>().FirstOrDefault();
+                iv.LoadProducts();
+
                 this.Close();
             }
             conn.Close();

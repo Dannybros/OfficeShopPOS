@@ -135,10 +135,11 @@ namespace OfficePOS
             PictureBox pic = new PictureBox();
             MemoryStream ms = new MemoryStream(picByte);
             pic.BackgroundImage = Image.FromStream(ms);
+            pic.BackColor = Color.White;
             pic.Width = 150;
             pic.Height = 120;
             pic.Cursor = Cursors.Hand;
-            pic.BackgroundImageLayout = ImageLayout.Stretch;
+            pic.BackgroundImageLayout = ImageLayout.Zoom;
             pic.Click += new EventHandler(picture_Click);
             pic.Tag = id + "/" + priceTag.ToString() + "/" + prodTitle + "/" + totalAmount;
 
@@ -304,7 +305,7 @@ namespace OfficePOS
                 addOrderListToPanel(item.ProID, item.Name, item.Amount.ToString());
             }
 
-            txt_sum_supply.Text = Math.Round(Total, 2).ToString();
+            txt_sum_supply.Text =" " + Total.ToString("#,##0");
         }
 
         private void del_order_click(object sender, EventArgs e)
@@ -394,6 +395,11 @@ namespace OfficePOS
             SaleItemList.Clear();
             LoadOrderList();
 
+            foreach (Panel p in panelItems.Controls.OfType<Panel>())
+            {
+                p.Enabled = true;
+            }
+
         }
 
         private void btn_Bill_Click(object sender, EventArgs e)
@@ -412,16 +418,13 @@ namespace OfficePOS
                 }
                 insertSaleDB();
                 conn.Close();
-
-                SaleBillViewer saleViewer = new SaleBillViewer(SaleItemList, Sale_ID, cmb_customer.Text);
-                saleViewer.Show();
             }
         }
 
         private void insertSaleDetail(string pId, string name, double price, int amount, double total)
         {
-            cmd = new MySqlCommand("INSERT INTO `sale_details`(`Sale_ID`, `Product_ID`, `Product_Name`, `Price`, `Amount`) VALUES (@saleId, @prodId, @name, @price, @amount, @total)", conn);
-            cmd.Parameters.AddWithValue("@orderId", Sale_ID);
+            cmd = new MySqlCommand("INSERT INTO `sale_details`(`Sale_ID`, `Product_ID`, `Product_Name`, `Price`, `Amount`, `Product_Total`) VALUES (@saleId, @prodId, @name, @price, @amount, @total)", conn);
+            cmd.Parameters.AddWithValue("@saleId", Sale_ID);
             cmd.Parameters.AddWithValue("@prodId", pId);
             cmd.Parameters.AddWithValue("@name", name);
             cmd.Parameters.AddWithValue("@price", price);
@@ -442,16 +445,29 @@ namespace OfficePOS
 
         private void insertSaleDB()
         {
-            cmd = new MySqlCommand("INSERT INTO `sale`(`Sale_ID`, `Customer_Name`, `Total`, `Date`) VALUES VALUES (@orderId, @supplier,  @total, @date)", conn);
+            cmd = new MySqlCommand("INSERT INTO `sale`(`Sale_ID`, `Customer_Name`, `Total`, `Date`) VALUES (@saleID, @name, @total, @date)", conn);
 
             cmd.Parameters.AddWithValue("@saleID", Sale_ID);
-            cmd.Parameters.AddWithValue("@supplier", cmb_customer.Text);
-            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("MM/dd/yyyy"));
+            cmd.Parameters.AddWithValue("@name", cmb_customer.Text);
             cmd.Parameters.AddWithValue("@total", double.Parse(txt_sum_supply.Text));
+            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("MM/dd/yyyy"));
 
             if (cmd.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("Ordered Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("Sale Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (result == DialogResult.OK)
+                {
+                    SaleBillViewer saleViewer = new SaleBillViewer(SaleItemList, Sale_ID, cmb_customer.Text);
+                    saleViewer.Show();
+
+                    SaleItemList.Clear();
+                    LoadOrderList();
+                    foreach (Panel p in panelItems.Controls.OfType<Panel>())
+                    {
+                        p.Enabled = true;
+                    }
+                }
             }
         }
 

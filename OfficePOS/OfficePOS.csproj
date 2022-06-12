@@ -78,11 +78,11 @@
     <Compile Include="Organise\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImportProduct\CheckImportProducts.cs">
+    <Compile Include="ImportProduct\ImportProductList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportProduct\CheckImportProducts.Designer.cs">
-      <DependentUpon>CheckImportProducts.cs</DependentUpon>
+    <Compile Include="ImportProduct\ImportProductList.Designer.cs">
+      <DependentUpon>ImportProductList.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportProduct\CheckImports.cs">
       <SubType>Form</SubType>
@@ -200,8 +200,8 @@
     <EmbeddedResource Include="Organise\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImportProduct\CheckImportProducts.resx">
-      <DependentUpon>CheckImportProducts.cs</DependentUpon>
+    <EmbeddedResource Include="ImportProduct\ImportProductList.resx">
+      <DependentUpon>ImportProductList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportProduct\CheckImports.resx">
       <DependentUpon>CheckImports.cs</DependentUpon>

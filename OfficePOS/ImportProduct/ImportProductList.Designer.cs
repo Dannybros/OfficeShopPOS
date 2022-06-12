@@ -1,7 +1,7 @@
 ﻿
 namespace OfficePOS
 {
-    partial class CheckImportProducts
+    partial class ImportProductList
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace OfficePOS
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckImportProducts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportProductList));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lbl_title = new System.Windows.Forms.Label();
             this.panelSearcBox = new System.Windows.Forms.Panel();
@@ -83,7 +83,7 @@ namespace OfficePOS
             this.picSearchIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picSearchIcon.BackColor = System.Drawing.Color.White;
             this.picSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("picSearchIcon.Image")));
-            this.picSearchIcon.Location = new System.Drawing.Point(218, 44);
+            this.picSearchIcon.Location = new System.Drawing.Point(218, 49);
             this.picSearchIcon.Name = "picSearchIcon";
             this.picSearchIcon.Size = new System.Drawing.Size(25, 25);
             this.picSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -95,12 +95,15 @@ namespace OfficePOS
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearch.Location = new System.Drawing.Point(42, 39);
+            this.txtSearch.Location = new System.Drawing.Point(42, 44);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(211, 33);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.Text = "Search...";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // DGV_orderList
             // 
@@ -112,6 +115,8 @@ namespace OfficePOS
             this.DGV_orderList.RowTemplate.Height = 24;
             this.DGV_orderList.Size = new System.Drawing.Size(1209, 571);
             this.DGV_orderList.TabIndex = 2;
+            this.DGV_orderList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_orderList_CellFormatting);
+            this.DGV_orderList.SelectionChanged += new System.EventHandler(this.DGV_orderList_SelectionChanged);
             this.DGV_orderList.Click += new System.EventHandler(this.DGV_orderList_Click);
             // 
             // panel1
@@ -124,7 +129,7 @@ namespace OfficePOS
             this.panel1.Size = new System.Drawing.Size(1269, 631);
             this.panel1.TabIndex = 45;
             // 
-            // CheckImportProducts
+            // ImportProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,7 +137,7 @@ namespace OfficePOS
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CheckImportProducts";
+            this.Name = "ImportProductList";
             this.Text = "CheckImportProducts";
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();

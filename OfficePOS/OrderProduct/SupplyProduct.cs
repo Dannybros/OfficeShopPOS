@@ -25,10 +25,8 @@ namespace OfficePOS
         public SupplyProduct()
         {
             InitializeComponent();
-            startForm();
         }
-
-        private void startForm()
+        public void startForm()
         {
             LoadProductType();
             LoadSupplier();
@@ -109,9 +107,10 @@ namespace OfficePOS
             PictureBox pic = new PictureBox();
             MemoryStream ms = new MemoryStream(picArray);
             pic.BackgroundImage = Image.FromStream(ms);
+            pic.BackColor = Color.White;
             pic.Width = 150;
             pic.Height = 120;
-            pic.BackgroundImageLayout = ImageLayout.Stretch;
+            pic.BackgroundImageLayout = ImageLayout.Zoom;
             pic.Click += new EventHandler(picture_Click);
             pic.Tag = ID + "/" + price.ToString() + "/" + name;
 
@@ -205,7 +204,7 @@ namespace OfficePOS
                 addOrderListToPanel(item.ProID, item.Name, item.Amount.ToString());
             }
 
-            txt_sum_supply.Text = Math.Round(Total, 2).ToString();
+            txt_sum_supply.Text =" " + Total.ToString("#,##0");
         }
 
         private void addOrderListToPanel(string proID, string name, string quantity)
@@ -409,7 +408,6 @@ namespace OfficePOS
                 foreach(var item in OrderItemList)
                 {
                     insertOrderDetailDB(item.ProID, item.Name, item.Price, item.Amount, item.Total);
-                    UpdateAmount(item.ProID, item.Amount);
                 }
 
                 insertOrderDB();
@@ -429,17 +427,6 @@ namespace OfficePOS
             cmd.Parameters.AddWithValue("@total", total);
 
             cmd.ExecuteNonQuery();
-            OrderBillViewer obw = new OrderBillViewer(OrderItemList, Order_ID, cmb_supplier.Text);
-            obw.Show();
-        }
-
-        private void UpdateAmount(string pId, int amount)
-        {
-            cmd = new MySqlCommand("UPDATE `products` SET Quantity=Quantity+@amount WHERE `Product_ID`=@prodId", conn);
-            cmd.Parameters.AddWithValue("@prodId", pId);
-            cmd.Parameters.AddWithValue("@amount", amount);
-
-            cmd.ExecuteNonQuery();
         }
 
         private void insertOrderDB()
@@ -450,12 +437,29 @@ namespace OfficePOS
             cmd.Parameters.AddWithValue("@supplier", cmb_supplier.Text);
             cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("MM/dd/yyyy"));
             cmd.Parameters.AddWithValue("@total", double.Parse(txt_sum_supply.Text));
-            cmd.Parameters.AddWithValue("@check", false);
+            cmd.Parameters.AddWithValue("@check", "ຍັງບໍ່ກວດ");
 
             if (cmd.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("Ordered Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               DialogResult result =  MessageBox.Show("Ordered Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(result == DialogResult.OK)
+                {
+                    OrderBillViewer obw = new OrderBillViewer(OrderItemList, Order_ID, cmb_supplier.Text);
+                    obw.Show();
+                    OrderItemList.Clear();
+                    LoadOrderList();
+
+                    foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
+                    {
+                        p.Enabled = true;
+                    }
+                }
             }
+        }
+
+        private void SupplyProduct_Load(object sender, EventArgs e)
+        {
+            startForm();
         }
     }
 }

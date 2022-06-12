@@ -81,7 +81,7 @@ namespace OfficePOS
 
         private void lbl_import_Click(object sender, EventArgs e)
         {
-            CheckImportProducts cip = new CheckImportProducts();
+            ImportProductList cip = new ImportProductList();
             switchFormPanel(cip);
         }
     }

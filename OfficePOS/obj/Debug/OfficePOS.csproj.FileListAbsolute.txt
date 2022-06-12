@@ -21,7 +21,6 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Employee.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ProductReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CheckImports.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplyProduct.resources
-D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CheckImportProducts.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Sale.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrganiseForm.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ReportForm.resources
@@ -47,3 +46,5 @@ D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\CrystalDecisions.ReportAppServer.Co
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleBillViewer.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.RevenueReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.PeopleReports.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrderBillViewer.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ImportProductList.resources

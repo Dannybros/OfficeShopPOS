@@ -138,11 +138,14 @@ namespace OfficePOS
             conn.Open();
             if (cmd.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("You have successfully added new product", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                clearData();
-                var sp = Application.OpenForms.OfType<SupplyProduct>().Single();
-                sp.LoadProducts();
-                this.Close();
+                DialogResult result =  MessageBox.Show("You have successfully added new product", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if(result == DialogResult.OK)
+                {
+                    var sp = Application.OpenForms.OfType<SupplyProduct>().FirstOrDefault();
+                    sp.LoadProducts();
+                    this.Close();
+                }
             }
             else
             {

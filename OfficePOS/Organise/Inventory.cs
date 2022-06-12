@@ -80,7 +80,7 @@ namespace OfficePOS
             pic.Height = 150;
             MemoryStream ms = new MemoryStream(picArray);
             pic.BackgroundImage = Image.FromStream(ms);
-            pic.BackgroundImageLayout = ImageLayout.Stretch;
+            pic.BackgroundImageLayout = ImageLayout.Zoom;
             pic.Click += new EventHandler(picture_Click);
             pic.Tag = id;
 
