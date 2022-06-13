@@ -12,11 +12,11 @@ using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
-    public partial class SupplierInfo : UserControl
+    public partial class SupplierInfos : Form
     {
         MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
 
-        public SupplierInfo()
+        public SupplierInfos()
         {
             InitializeComponent();
             clearData();
@@ -48,7 +48,7 @@ namespace OfficePOS
             DataGridViewImageColumn picCol = new DataGridViewImageColumn();
             picCol = (DataGridViewImageColumn)dataGridView1.Columns[5];
             picCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            picCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            picCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.DefaultCellStyle.Font = new Font("Times New Roman", 12);
             foreach (DataGridViewColumn item in dataGridView1.Columns)
@@ -59,7 +59,8 @@ namespace OfficePOS
 
         private void clearData()
         {
-            foreach(TextBox txt in groupBox1.Controls.OfType<TextBox>()) {
+            foreach (TextBox txt in groupBox1.Controls.OfType<TextBox>())
+            {
                 txt.Text = "";
             }
             pb_supplier.Image = OfficePOS.Properties.Resources.supplier;
@@ -114,7 +115,7 @@ namespace OfficePOS
 
         private bool checkIfSupplierExist()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel`, `Supplier_Img` FROM `suppliers` WHERE  `Supplier_ID` = '"+txt_sup_ID.Text +"'", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel`, `Supplier_Img` FROM `suppliers` WHERE  `Supplier_ID` = '" + txt_sup_ID.Text + "'", conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
@@ -127,7 +128,7 @@ namespace OfficePOS
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if (txt_sup_ID.Text=="" || txt_sup_email.Text =="" || txt_sup_name.Text=="" || txt_sup_phone.Text=="" || txt_sup_address.Text == "")
+            if (txt_sup_ID.Text == "" || txt_email.Text == "" || txt_sup_name.Text == "" || txt_phone.Text == "" || txt_address.Text == "")
             {
                 MessageBox.Show("Please Fill In Every Textbox Fields To Save.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -144,9 +145,9 @@ namespace OfficePOS
 
             cmd.Parameters.AddWithValue("@id", txt_sup_ID.Text);
             cmd.Parameters.AddWithValue("@name", txt_sup_name.Text);
-            cmd.Parameters.AddWithValue("@address", txt_sup_address.Text);
-            cmd.Parameters.AddWithValue("@email", txt_sup_email.Text);
-            cmd.Parameters.AddWithValue("@tel", txt_sup_phone.Text);
+            cmd.Parameters.AddWithValue("@address", txt_address.Text);
+            cmd.Parameters.AddWithValue("@email", txt_email.Text);
+            cmd.Parameters.AddWithValue("@tel", txt_phone.Text);
 
             MemoryStream ms = new MemoryStream();
             pb_supplier.Image.Save(ms, pb_supplier.Image.RawFormat);
@@ -174,9 +175,9 @@ namespace OfficePOS
 
             cmd.Parameters.AddWithValue("@id", txt_sup_ID.Text);
             cmd.Parameters.AddWithValue("@name", txt_sup_name.Text);
-            cmd.Parameters.AddWithValue("@address", txt_sup_address.Text);
-            cmd.Parameters.AddWithValue("@email", txt_sup_email.Text);
-            cmd.Parameters.AddWithValue("@phone", txt_sup_phone.Text);
+            cmd.Parameters.AddWithValue("@address", txt_address.Text);
+            cmd.Parameters.AddWithValue("@email", txt_email.Text);
+            cmd.Parameters.AddWithValue("@phone", txt_phone.Text);
 
             MemoryStream ms = new MemoryStream();
             pb_supplier.Image.Save(ms, pb_supplier.Image.RawFormat);
@@ -213,16 +214,19 @@ namespace OfficePOS
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            txt_sup_ID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            txt_sup_name.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            txt_sup_address.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            txt_sup_email.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            txt_sup_phone.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            if (dataGridView1.RowCount > 0)
+            {
+                txt_sup_ID.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                txt_sup_name.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                txt_address.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                txt_email.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                txt_phone.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
-            byte[] pic;
-            pic = (byte[])dataGridView1.CurrentRow.Cells[5].Value;
-            MemoryStream ms = new MemoryStream(pic);
-            pb_supplier.Image = Image.FromStream(ms);
+                byte[] pic;
+                pic = (byte[])dataGridView1.CurrentRow.Cells[5].Value;
+                MemoryStream ms = new MemoryStream(pic);
+                pb_supplier.Image = Image.FromStream(ms);
+            }
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -234,7 +238,7 @@ namespace OfficePOS
         {
             DialogResult result = MessageBox.Show("Do you wish to delete this supplier?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 MySqlCommand cmd = new MySqlCommand("DELETE FROM `suppliers` WHERE `Supplier_ID`='" + txt_sup_ID.Text + "'", conn);
 

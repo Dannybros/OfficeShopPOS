@@ -57,9 +57,9 @@ namespace OfficePOS
             dataGridView1.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
-        private void fillSupplier(string searchTerm)
+        private void fillEmployee(string searchTerm)
         {
-            cmd = new MySqlCommand("SELECT `Supplier_ID`, `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel` FROM `suppliers` WHERE CONCAT (`Supplier_ID`,`Supplier_Name`, `Supplier_Email`) LIKE '%" + searchTerm + "%' ", conn);
+            cmd = new MySqlCommand("SELECT `Employee_ID`, `Employee_Name`, `Employee_Phone`, `Employee_Email`, `Employee_Address` FROM `employee` WHERE CONCAT (`Employee_ID`,`Employee_Name`) LIKE '%" + searchTerm + "%' ", conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
@@ -69,7 +69,7 @@ namespace OfficePOS
             dataGridView1.Columns[2].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
-        private void fillEmployee(string searchTerm)
+        private void fillSupplier(string searchTerm)
         {
             cmd = new MySqlCommand("SELECT `Supplier_ID`, `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel` FROM `suppliers` WHERE CONCAT (`Supplier_ID`,`Supplier_Name`, `Supplier_Email`) LIKE '%" + searchTerm + "%' ", conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);

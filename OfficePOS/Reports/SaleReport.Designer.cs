@@ -36,7 +36,6 @@ namespace OfficePOS
             this.panelSearcBox = new System.Windows.Forms.Panel();
             this.picSearchIcon = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.cmbType = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SaleItems)).BeginInit();
             this.panelTop.SuspendLayout();
@@ -70,7 +69,6 @@ namespace OfficePOS
             // 
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(57)))), ((int)(((byte)(77)))));
             this.panelTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelTop.Controls.Add(this.cmbType);
             this.panelTop.Controls.Add(this.panelSearcBox);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
@@ -116,20 +114,6 @@ namespace OfficePOS
             this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
-            // cmbType
-            // 
-            this.cmbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.Items.AddRange(new object[] {
-            "ການຂາຍໝົດ",
-            "ສິນຄ້າຂາຍດີ"});
-            this.cmbType.Location = new System.Drawing.Point(723, 8);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(191, 37);
-            this.cmbType.TabIndex = 4;
-            // 
             // SaleReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -158,6 +142,5 @@ namespace OfficePOS
         private System.Windows.Forms.Panel panelSearcBox;
         private System.Windows.Forms.PictureBox picSearchIcon;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.ComboBox cmbType;
     }
 }

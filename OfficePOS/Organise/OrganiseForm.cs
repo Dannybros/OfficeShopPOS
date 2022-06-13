@@ -39,15 +39,6 @@ namespace OfficePOS
             switchForm(Inv);
         }
 
-        private void switchPanel(UserControl panel)
-        {
-            panelContent.Controls.Clear();
-            //panel.TopLevel = false;
-            panel.Dock = DockStyle.Fill;
-            panelContent.Controls.Add(panel);
-            panel.Show();
-        }
-
         private void switchForm(Form panel)
         {
             panelContent.Controls.Clear();
@@ -65,20 +56,20 @@ namespace OfficePOS
 
         private void lbl_customer_Click(object sender, EventArgs e)
         {
-            CustomerInfo sinfo = new CustomerInfo();
-            switchPanel(sinfo);
+            CustomerInfos cInfo = new CustomerInfos();
+            switchForm(cInfo);
         }
 
         private void lbl_Employee_Click(object sender, EventArgs e)
         {
-            Employee sEmp = new Employee();
-            switchPanel(sEmp);
+            EmployeeInfos eInfo = new EmployeeInfos();
+            switchForm(eInfo);
         }
 
         private void lbl_supplier_Click(object sender, EventArgs e)
         {
-            SupplierInfo sSupp = new SupplierInfo();
-            switchPanel(sSupp);
+            SupplierInfos sInfo = new SupplierInfos();
+            switchForm(sInfo);
         }
     }
 }

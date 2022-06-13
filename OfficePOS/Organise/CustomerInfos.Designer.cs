@@ -1,14 +1,14 @@
 ﻿
 namespace OfficePOS
 {
-    partial class CustomerInfo
+    partial class CustomerInfos
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,15 +21,15 @@ namespace OfficePOS
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.label4 = new System.Windows.Forms.Label();
+            this.panelSupplierInfo = new System.Windows.Forms.Panel();
             this.btn_Del = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_GUID = new System.Windows.Forms.Button();
@@ -43,36 +43,38 @@ namespace OfficePOS
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
+            this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panelDataView = new System.Windows.Forms.Panel();
             this.dataGridCustomer = new System.Windows.Forms.DataGridView();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.panelSupplierInfo = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.panelSupplierInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_customer)).BeginInit();
-            this.panel2.SuspendLayout();
             this.panelDataView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCustomer)).BeginInit();
-            this.panelSupplierInfo.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label4
+            // panelSupplierInfo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(333, 152);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 29);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "ເບີໂທຂອງລູກຄ້າ:";
+            this.panelSupplierInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(57)))), ((int)(((byte)(77)))));
+            this.panelSupplierInfo.Controls.Add(this.btn_Del);
+            this.panelSupplierInfo.Controls.Add(this.groupBox1);
+            this.panelSupplierInfo.Controls.Add(this.btn_cancel);
+            this.panelSupplierInfo.Controls.Add(this.btn_add);
+            this.panelSupplierInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSupplierInfo.Location = new System.Drawing.Point(0, 0);
+            this.panelSupplierInfo.Name = "panelSupplierInfo";
+            this.panelSupplierInfo.Padding = new System.Windows.Forms.Padding(20);
+            this.panelSupplierInfo.Size = new System.Drawing.Size(1322, 378);
+            this.panelSupplierInfo.TabIndex = 10;
             // 
             // btn_Del
             // 
@@ -191,6 +193,7 @@ namespace OfficePOS
             this.btn_upload.TabIndex = 14;
             this.btn_upload.Text = "ເລືອກຮູບ";
             this.btn_upload.UseVisualStyleBackColor = true;
+            this.btn_upload.Click += new System.EventHandler(this.btn_upload_Click);
             // 
             // pb_customer
             // 
@@ -250,6 +253,18 @@ namespace OfficePOS
             this.txtPhone.TabIndex = 26;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(333, 152);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(133, 29);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "ເບີໂທຂອງລູກຄ້າ:";
+            // 
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -293,68 +308,6 @@ namespace OfficePOS
             this.Label2.TabIndex = 19;
             this.Label2.Text = "ຊື່ລູກຄ້າ:";
             // 
-            // btn_add
-            // 
-            this.btn_add.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btn_add.FlatAppearance.BorderSize = 0;
-            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_add.Location = new System.Drawing.Point(45, 302);
-            this.btn_add.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(136, 40);
-            this.btn_add.TabIndex = 30;
-            this.btn_add.Text = "ບັນທຶກ";
-            this.btn_add.UseVisualStyleBackColor = false;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearch.Location = new System.Drawing.Point(38, 21);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(190, 30);
-            this.txtSearch.TabIndex = 2;
-            this.txtSearch.Text = "Search...";
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.txtSearch);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(20, 20);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1282, 75);
-            this.panel2.TabIndex = 0;
-            // 
-            // panelDataView
-            // 
-            this.panelDataView.Controls.Add(this.dataGridCustomer);
-            this.panelDataView.Controls.Add(this.panel2);
-            this.panelDataView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDataView.Location = new System.Drawing.Point(0, 378);
-            this.panelDataView.Name = "panelDataView";
-            this.panelDataView.Padding = new System.Windows.Forms.Padding(20, 20, 20, 40);
-            this.panelDataView.Size = new System.Drawing.Size(1322, 276);
-            this.panelDataView.TabIndex = 9;
-            // 
-            // dataGridCustomer
-            // 
-            this.dataGridCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridCustomer.Location = new System.Drawing.Point(20, 95);
-            this.dataGridCustomer.Name = "dataGridCustomer";
-            this.dataGridCustomer.RowHeadersWidth = 51;
-            this.dataGridCustomer.RowTemplate.Height = 24;
-            this.dataGridCustomer.Size = new System.Drawing.Size(1282, 141);
-            this.dataGridCustomer.TabIndex = 2;
-            this.dataGridCustomer.Click += new System.EventHandler(this.dataGridCustomer_Click);
-            // 
             // btn_cancel
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.DarkKhaki;
@@ -371,66 +324,116 @@ namespace OfficePOS
             this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // panelSupplierInfo
+            // btn_add
             // 
-            this.panelSupplierInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(57)))), ((int)(((byte)(77)))));
-            this.panelSupplierInfo.Controls.Add(this.btn_Del);
-            this.panelSupplierInfo.Controls.Add(this.groupBox1);
-            this.panelSupplierInfo.Controls.Add(this.btn_cancel);
-            this.panelSupplierInfo.Controls.Add(this.btn_add);
-            this.panelSupplierInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSupplierInfo.Location = new System.Drawing.Point(0, 0);
-            this.panelSupplierInfo.Name = "panelSupplierInfo";
-            this.panelSupplierInfo.Padding = new System.Windows.Forms.Padding(20);
-            this.panelSupplierInfo.Size = new System.Drawing.Size(1322, 378);
-            this.panelSupplierInfo.TabIndex = 8;
+            this.btn_add.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btn_add.FlatAppearance.BorderSize = 0;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_add.Location = new System.Drawing.Point(45, 302);
+            this.btn_add.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(136, 40);
+            this.btn_add.TabIndex = 30;
+            this.btn_add.Text = "ບັນທຶກ";
+            this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // CustomerInfo
+            // panelDataView
+            // 
+            this.panelDataView.Controls.Add(this.dataGridCustomer);
+            this.panelDataView.Controls.Add(this.panel2);
+            this.panelDataView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDataView.Location = new System.Drawing.Point(0, 378);
+            this.panelDataView.Name = "panelDataView";
+            this.panelDataView.Padding = new System.Windows.Forms.Padding(20, 20, 20, 40);
+            this.panelDataView.Size = new System.Drawing.Size(1322, 276);
+            this.panelDataView.TabIndex = 12;
+            // 
+            // dataGridCustomer
+            // 
+            this.dataGridCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridCustomer.Location = new System.Drawing.Point(20, 95);
+            this.dataGridCustomer.Name = "dataGridCustomer";
+            this.dataGridCustomer.RowHeadersWidth = 51;
+            this.dataGridCustomer.RowTemplate.Height = 24;
+            this.dataGridCustomer.Size = new System.Drawing.Size(1282, 141);
+            this.dataGridCustomer.TabIndex = 2;
+            this.dataGridCustomer.Click += new System.EventHandler(this.dataGridCustomer_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(20, 20);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1282, 75);
+            this.panel2.TabIndex = 0;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.Color.Gray;
+            this.txtSearch.Location = new System.Drawing.Point(38, 21);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(190, 30);
+            this.txtSearch.TabIndex = 2;
+            this.txtSearch.Text = "Search...";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
+            // 
+            // CustomerInfos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1322, 654);
             this.Controls.Add(this.panelDataView);
             this.Controls.Add(this.panelSupplierInfo);
-            this.Name = "CustomerInfo";
-            this.Size = new System.Drawing.Size(1322, 654);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "CustomerInfos";
+            this.Text = "CustomerInfos";
+            this.panelSupplierInfo.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_customer)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panelDataView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCustomer)).EndInit();
-            this.panelSupplierInfo.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        internal System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panelSupplierInfo;
         internal System.Windows.Forms.Button btn_Del;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_GUID;
+        private System.Windows.Forms.RadioButton rbFemale;
+        private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.TextBox txtAddress;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.Button btn_upload;
         private System.Windows.Forms.PictureBox pb_customer;
+        internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtEmail;
         internal System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPhone;
-        internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtID;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Label Label2;
+        internal System.Windows.Forms.Button btn_cancel;
         internal System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelDataView;
         private System.Windows.Forms.DataGridView dataGridCustomer;
-        internal System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Panel panelSupplierInfo;
-        private System.Windows.Forms.RadioButton rbFemale;
-        private System.Windows.Forms.RadioButton rbMale;
-        private System.Windows.Forms.Button btn_GUID;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

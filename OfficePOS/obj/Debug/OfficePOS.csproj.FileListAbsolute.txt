@@ -13,11 +13,8 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Home.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.csproj.CopyComplete
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EditProduct.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.AddProduct.resources
-D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplierInfo.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Inventory.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleReport.resources
-D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CustomerInfo.resources
-D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Employee.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ProductReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CheckImports.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplyProduct.resources
@@ -49,3 +46,6 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.PeopleReports.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrderBillViewer.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ImportProductList.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleDetailReport.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CustomerInfos.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplierInfos.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EmployeeInfos.resources

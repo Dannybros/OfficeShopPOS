@@ -12,21 +12,20 @@ using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
-    public partial class CustomerInfo : UserControl
+    public partial class CustomerInfos : Form
     {
         MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
 
         MySqlCommand cmd;
 
-        public CustomerInfo()
+        public CustomerInfos()
         {
             InitializeComponent();
             fillGrid();
         }
-
         private void clearData()
         {
-            foreach(TextBox txt in groupBox1.Controls.OfType<TextBox>())
+            foreach (TextBox txt in groupBox1.Controls.OfType<TextBox>())
             {
                 txt.Text = "";
             }
@@ -45,7 +44,7 @@ namespace OfficePOS
                 sb.Append(Guid.NewGuid().ToString("N"));
             }
 
-           return "C-" + sb.ToString(0, 8);
+            return "C-" + sb.ToString(0, 8);
         }
 
         private void fillGrid()
@@ -84,7 +83,7 @@ namespace OfficePOS
         }
 
         private void btn_add_Click(object sender, EventArgs e)
-        {  
+        {
             if (txtID.Text == "" || txtAddress.Text == "" || txtPhone.Text == "" || txtEmail.Text == "" || txtName.Text == "")
             {
                 MessageBox.Show("Please Fill In Every Textbox Fields To Save.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -161,7 +160,6 @@ namespace OfficePOS
 
         private void txtSearch_Enter(object sender, EventArgs e)
         {
-
             if (txtSearch.Text == "Search...")
             {
                 txtSearch.Text = null;
@@ -199,6 +197,17 @@ namespace OfficePOS
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btn_upload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opf = new OpenFileDialog();
+            opf.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+
+            if (opf.ShowDialog() == DialogResult.OK)
+            {
+                pb_customer.Image = Image.FromFile(opf.FileName);
             }
         }
     }
