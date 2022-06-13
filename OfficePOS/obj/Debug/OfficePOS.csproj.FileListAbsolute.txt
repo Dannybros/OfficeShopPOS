@@ -48,3 +48,4 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.RevenueReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.PeopleReports.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrderBillViewer.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ImportProductList.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleDetailReport.resources

@@ -144,7 +144,7 @@ namespace OfficePOS
             pic.Tag = id + "/" + priceTag.ToString() + "/" + prodTitle + "/" + totalAmount;
 
             Label price = new Label();
-            price.Text = priceTag.ToString();
+            price.Text = priceTag.ToString("#,##0") + " K";
             price.Font = new Font("Times news Roman", 10, FontStyle.Regular);
             price.TextAlign = ContentAlignment.MiddleCenter;
             price.BackColor = Color.IndianRed;
@@ -393,12 +393,8 @@ namespace OfficePOS
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             SaleItemList.Clear();
+            LoadProducts();
             LoadOrderList();
-
-            foreach (Panel p in panelItems.Controls.OfType<Panel>())
-            {
-                p.Enabled = true;
-            }
 
         }
 
@@ -462,11 +458,8 @@ namespace OfficePOS
                     saleViewer.Show();
 
                     SaleItemList.Clear();
+                    LoadProducts();
                     LoadOrderList();
-                    foreach (Panel p in panelItems.Controls.OfType<Panel>())
-                    {
-                        p.Enabled = true;
-                    }
                 }
             }
         }

@@ -36,7 +36,7 @@ namespace OfficePOS
         {
             lbl_product.ForeColor = Color.White;
             Inventory Inv = new Inventory();
-            switchPanel(Inv);
+            switchForm(Inv);
         }
 
         private void switchPanel(UserControl panel)
@@ -48,10 +48,19 @@ namespace OfficePOS
             panel.Show();
         }
 
+        private void switchForm(Form panel)
+        {
+            panelContent.Controls.Clear();
+            panel.TopLevel = false;
+            panel.Dock = DockStyle.Fill;
+            panelContent.Controls.Add(panel);
+            panel.Show();
+        }
+
         private void lbl_product_Click(object sender, EventArgs e)
         {
-            Inventory Inv = new Inventory();
-            switchPanel(Inv);
+            Inventory inv = new Inventory();
+            switchForm(inv);
         }
 
         private void lbl_customer_Click(object sender, EventArgs e)

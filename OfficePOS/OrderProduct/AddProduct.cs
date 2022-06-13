@@ -142,8 +142,7 @@ namespace OfficePOS
 
                 if(result == DialogResult.OK)
                 {
-                    var sp = Application.OpenForms.OfType<SupplyProduct>().FirstOrDefault();
-                    sp.LoadProducts();
+                    (Application.OpenForms["SupplyProduct"] as SupplyProduct).LoadProducts();
                     this.Close();
                 }
             }

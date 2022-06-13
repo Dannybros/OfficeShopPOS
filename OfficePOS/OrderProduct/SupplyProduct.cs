@@ -44,7 +44,7 @@ namespace OfficePOS
                 sb.Append(Guid.NewGuid().ToString("N"));
             }
 
-           Order_ID = "Order-" + sb.ToString(0, 8);
+           Order_ID = "O-" + sb.ToString(0, 8);
         }
 
         private void LoadProductType()

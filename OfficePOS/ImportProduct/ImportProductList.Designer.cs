@@ -37,6 +37,7 @@ namespace OfficePOS
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.DGV_orderList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.panelTop.SuspendLayout();
             this.panelSearcBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).BeginInit();
@@ -48,6 +49,7 @@ namespace OfficePOS
             // 
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(57)))), ((int)(((byte)(77)))));
             this.panelTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTop.Controls.Add(this.cmbCategory);
             this.panelTop.Controls.Add(this.lbl_title);
             this.panelTop.Controls.Add(this.panelSearcBox);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -129,6 +131,26 @@ namespace OfficePOS
             this.panel1.Size = new System.Drawing.Size(1269, 631);
             this.panel1.TabIndex = 45;
             // 
+            // cmbCategory
+            // 
+            this.cmbCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCategory.BackColor = System.Drawing.Color.White;
+            this.cmbCategory.DropDownHeight = 120;
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.ForeColor = System.Drawing.Color.Black;
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.IntegralHeight = false;
+            this.cmbCategory.Items.AddRange(new object[] {
+            "ຍັງບໍ່ກວດ",
+            "ກວດແລ້ວ"});
+            this.cmbCategory.Location = new System.Drawing.Point(781, 37);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbCategory.Size = new System.Drawing.Size(164, 42);
+            this.cmbCategory.TabIndex = 4;
+            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
+            // 
             // ImportProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -159,5 +181,6 @@ namespace OfficePOS
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView DGV_orderList;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox cmbCategory;
     }
 }

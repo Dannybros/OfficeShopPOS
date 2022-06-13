@@ -127,6 +127,12 @@
     <Compile Include="OrderProduct\SupplyProduct.Designer.cs">
       <DependentUpon>SupplyProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Organise\Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organise\Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\PeopleReports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,12 +157,6 @@
     </Compile>
     <Compile Include="Reports\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Organise\Inventory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Organise\Inventory.Designer.cs">
-      <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Organise\SupplierInfo.cs">
       <SubType>UserControl</SubType>
@@ -189,6 +189,12 @@
     </Compile>
     <Compile Include="Reports\SaleReport.Designer.cs">
       <DependentUpon>SaleReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SaleDetailReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\SaleDetailReport.Designer.cs">
+      <DependentUpon>SaleDetailReport.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="OrderBillReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -224,6 +230,9 @@
     <EmbeddedResource Include="OrderProduct\SupplyProduct.resx">
       <DependentUpon>SupplyProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Organise\Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\PeopleReports.resx">
       <DependentUpon>PeopleReports.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,9 +247,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Organise\Inventory.resx">
-      <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\SupplierInfo.resx">
       <DependentUpon>SupplierInfo.cs</DependentUpon>
@@ -264,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SaleReport.resx">
       <DependentUpon>SaleReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SaleDetailReport.resx">
+      <DependentUpon>SaleDetailReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

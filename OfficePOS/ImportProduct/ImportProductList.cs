@@ -20,6 +20,7 @@ namespace OfficePOS
         {
             InitializeComponent();
             fillData();
+            cmbCategory.SelectedIndex = 0;
         }
 
         public void fillData()
@@ -33,7 +34,8 @@ namespace OfficePOS
                 searchTerm = txtSearch.Text;
             }
 
-            cmd = new MySqlCommand("SELECT * FROM  `order_imports`  WHERE CONCAT (`Order_ID`,`Supplier_Name`, `Import_Date`, `Checked`) LIKE '%" + searchTerm + "%' ", conn);
+            cmd = new MySqlCommand("SELECT * FROM `order_imports` WHERE CONCAT (`Order_ID`,`Supplier_Name`) LIKE '%" + searchTerm + "%' AND `Checked` = @status", conn);
+            cmd.Parameters.AddWithValue("@status", cmbCategory.Text);
 
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable tb = new DataTable();
@@ -56,12 +58,15 @@ namespace OfficePOS
 
         private void DGV_orderList_Click(object sender, EventArgs e)
         {
-            string id = DGV_orderList.CurrentRow.Cells[0].Value.ToString();
-            string checkStatus = DGV_orderList.CurrentRow.Cells[4].Value.ToString();
-            string total = DGV_orderList.CurrentRow.Cells[3].Value.ToString();
+            if (DGV_orderList.RowCount > 0)
+            {
+                string id = DGV_orderList.CurrentRow.Cells[0].Value.ToString();
+                string checkStatus = DGV_orderList.CurrentRow.Cells[4].Value.ToString();
+                string total = DGV_orderList.CurrentRow.Cells[3].Value.ToString();
 
-            CheckImports ci = new CheckImports(id, checkStatus, total);
-            ci.Show();
+                CheckImports ci = new CheckImports(id, checkStatus, total);
+                ci.Show();
+            }
         }
 
         private void DGV_orderList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -108,6 +113,11 @@ namespace OfficePOS
                 txtSearch.Text = "Search...";
                 txtSearch.ForeColor = Color.Gray;
             }
+        }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillData();
         }
     }
 }

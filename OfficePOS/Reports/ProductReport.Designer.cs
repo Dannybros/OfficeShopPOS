@@ -60,14 +60,17 @@ namespace OfficePOS
             // 
             this.cmbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbType.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbType.FormattingEnabled = true;
             this.cmbType.Items.AddRange(new object[] {
-            "ທັງໝົດ"});
-            this.cmbType.Location = new System.Drawing.Point(595, 11);
+            "ສິນຄ້າໃກ້ຈະໝົດອາຍຸ",
+            "ສິນຄ້າໃກ້ຈະໝົດ",
+            "ສິນຄ້າຂາຍດີ"});
+            this.cmbType.Location = new System.Drawing.Point(545, 8);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(191, 37);
+            this.cmbType.Size = new System.Drawing.Size(241, 42);
             this.cmbType.TabIndex = 3;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
             // 
             // panelSearcBox
             // 
@@ -103,6 +106,9 @@ namespace OfficePOS
             this.txtSearch.Size = new System.Drawing.Size(200, 30);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.Text = "Search...";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // panel1
             // 

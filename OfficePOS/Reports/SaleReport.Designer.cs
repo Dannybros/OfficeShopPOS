@@ -33,10 +33,10 @@ namespace OfficePOS
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgv_SaleItems = new System.Windows.Forms.DataGridView();
             this.panelTop = new System.Windows.Forms.Panel();
-            this.cmbType = new System.Windows.Forms.ComboBox();
             this.panelSearcBox = new System.Windows.Forms.Panel();
             this.picSearchIcon = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SaleItems)).BeginInit();
             this.panelTop.SuspendLayout();
@@ -64,6 +64,7 @@ namespace OfficePOS
             this.dgv_SaleItems.RowTemplate.Height = 24;
             this.dgv_SaleItems.Size = new System.Drawing.Size(1160, 615);
             this.dgv_SaleItems.TabIndex = 0;
+            this.dgv_SaleItems.Click += new System.EventHandler(this.dgv_SaleItems_Click);
             // 
             // panelTop
             // 
@@ -76,20 +77,6 @@ namespace OfficePOS
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1220, 60);
             this.panelTop.TabIndex = 38;
-            // 
-            // cmbType
-            // 
-            this.cmbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.Items.AddRange(new object[] {
-            "Amount",
-            "Expiration Date"});
-            this.cmbType.Location = new System.Drawing.Point(755, 15);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(143, 30);
-            this.cmbType.TabIndex = 3;
             // 
             // panelSearcBox
             // 
@@ -125,6 +112,23 @@ namespace OfficePOS
             this.txtSearch.Size = new System.Drawing.Size(200, 30);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.Text = "Search...";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
+            // 
+            // cmbType
+            // 
+            this.cmbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Items.AddRange(new object[] {
+            "ການຂາຍໝົດ",
+            "ສິນຄ້າຂາຍດີ"});
+            this.cmbType.Location = new System.Drawing.Point(723, 8);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(191, 37);
+            this.cmbType.TabIndex = 4;
             // 
             // SaleReport
             // 
@@ -151,9 +155,9 @@ namespace OfficePOS
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgv_SaleItems;
         private System.Windows.Forms.Panel panelTop;
-        private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.Panel panelSearcBox;
         private System.Windows.Forms.PictureBox picSearchIcon;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ComboBox cmbType;
     }
 }

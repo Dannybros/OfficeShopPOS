@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
-    public partial class Inventory : UserControl
+    public partial class Inventory : Form
     {
         MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
         MySqlCommand cmd;
@@ -23,7 +23,7 @@ namespace OfficePOS
             startForm();
         }
 
-        private void startForm()
+        public void startForm()
         {
             LoadProductType();
             LoadProducts();
@@ -73,7 +73,7 @@ namespace OfficePOS
             conn.Close();
         }
 
-        private void popItems(string id, string name, byte[]picArray)
+        private void popItems(string id, string name, byte[] picArray)
         {
             PictureBox pic = new PictureBox();
             pic.Width = 200;

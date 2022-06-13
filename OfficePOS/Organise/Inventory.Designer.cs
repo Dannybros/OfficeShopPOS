@@ -3,12 +3,12 @@ namespace OfficePOS
 {
     partial class Inventory
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -21,10 +21,10 @@ namespace OfficePOS
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -35,8 +35,8 @@ namespace OfficePOS
             this.panelCategory = new System.Windows.Forms.Panel();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.panelSearcBox = new System.Windows.Forms.Panel();
-            this.picSearchIcon = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.picSearchIcon = new System.Windows.Forms.PictureBox();
             this.panelTop.SuspendLayout();
             this.panelCategory.SuspendLayout();
             this.panelSearcBox.SuspendLayout();
@@ -51,7 +51,7 @@ namespace OfficePOS
             this.panelDisplayItems.Location = new System.Drawing.Point(0, 79);
             this.panelDisplayItems.Name = "panelDisplayItems";
             this.panelDisplayItems.Size = new System.Drawing.Size(1190, 653);
-            this.panelDisplayItems.TabIndex = 27;
+            this.panelDisplayItems.TabIndex = 29;
             // 
             // panelTop
             // 
@@ -62,7 +62,7 @@ namespace OfficePOS
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1190, 79);
-            this.panelTop.TabIndex = 26;
+            this.panelTop.TabIndex = 28;
             // 
             // panelCategory
             // 
@@ -103,19 +103,6 @@ namespace OfficePOS
             this.panelSearcBox.Size = new System.Drawing.Size(282, 79);
             this.panelSearcBox.TabIndex = 2;
             // 
-            // picSearchIcon
-            // 
-            this.picSearchIcon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picSearchIcon.BackColor = System.Drawing.Color.White;
-            this.picSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("picSearchIcon.Image")));
-            this.picSearchIcon.Location = new System.Drawing.Point(201, 29);
-            this.picSearchIcon.Name = "picSearchIcon";
-            this.picSearchIcon.Size = new System.Drawing.Size(25, 25);
-            this.picSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSearchIcon.TabIndex = 1;
-            this.picSearchIcon.TabStop = false;
-            // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -130,14 +117,29 @@ namespace OfficePOS
             this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
-            // Inventory
+            // picSearchIcon
+            // 
+            this.picSearchIcon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picSearchIcon.BackColor = System.Drawing.Color.White;
+            this.picSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("picSearchIcon.Image")));
+            this.picSearchIcon.Location = new System.Drawing.Point(201, 29);
+            this.picSearchIcon.Name = "picSearchIcon";
+            this.picSearchIcon.Size = new System.Drawing.Size(25, 25);
+            this.picSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picSearchIcon.TabIndex = 1;
+            this.picSearchIcon.TabStop = false;
+            // 
+            // ProductInvetory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1190, 732);
             this.Controls.Add(this.panelDisplayItems);
             this.Controls.Add(this.panelTop);
-            this.Name = "Inventory";
-            this.Size = new System.Drawing.Size(1190, 732);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "ProductInvetory";
+            this.Text = "ProductInvetory";
             this.panelTop.ResumeLayout(false);
             this.panelCategory.ResumeLayout(false);
             this.panelSearcBox.ResumeLayout(false);

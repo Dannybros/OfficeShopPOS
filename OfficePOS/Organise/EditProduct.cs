@@ -91,11 +91,7 @@ namespace OfficePOS
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("Product Deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                    var iv = Application.OpenForms.OfType<Inventory>().FirstOrDefault();
-                    iv.LoadProducts();
-
+                    (Application.OpenForms["ProductInvetory"] as Inventory).LoadProducts();
                     this.Close();
                 }
 
@@ -145,12 +141,15 @@ namespace OfficePOS
             conn.Open();
             if (cmd.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("You have successfully updated product info", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               DialogResult result = MessageBox.Show("You have successfully updated product info", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                var iv = Application.OpenForms.OfType<Inventory>().FirstOrDefault();
-                iv.LoadProducts();
+                if(result == DialogResult.OK)
+                {
+                    /*var iv = Application.OpenForms.OfType<Inventory>().SingleOrDefault();
+                    iv.startForm();*/
 
-                this.Close();
+                    this.Close();
+                }
             }
             conn.Close();
 
