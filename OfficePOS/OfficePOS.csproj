@@ -60,6 +60,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reports\Revenue\MonthlyRevenue.cs" />
+    <Compile Include="Reports\MonthCalendar.cs" />
+    <Compile Include="Reports\Revenue\MonthlyRevenueReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Revenue\MonthlyRevenueReport.Designer.cs">
+      <DependentUpon>MonthlyRevenueReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Organise\EmployeeInfos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,10 +174,16 @@
     <Compile Include="ProductSale\SaleBillViewer.Designer.cs">
       <DependentUpon>SaleBillViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RevenueReport.cs">
+    <Compile Include="Reports\Revenue\GraphicRevenueRepor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\RevenueReport.Designer.cs">
+    <Compile Include="Reports\Revenue\GraphicRevenueRepor.Designer.cs">
+      <DependentUpon>GraphicRevenueRepor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Revenue\RevenueReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Revenue\RevenueReport.Designer.cs">
       <DependentUpon>RevenueReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleBillReport.cs">
@@ -196,6 +210,9 @@
     <Compile Include="Organise\SupplierInfos.Designer.cs">
       <DependentUpon>SupplierInfos.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\Revenue\MonthlyRevenueReport.resx">
+      <DependentUpon>MonthlyRevenueReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Organise\EmployeeInfos.resx">
       <DependentUpon>EmployeeInfos.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,7 +275,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\RevenueReport.resx">
+    <EmbeddedResource Include="Reports\Revenue\GraphicRevenueRepor.resx">
+      <DependentUpon>GraphicRevenueRepor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Revenue\RevenueReport.resx">
       <DependentUpon>RevenueReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleBillReport.rpt">

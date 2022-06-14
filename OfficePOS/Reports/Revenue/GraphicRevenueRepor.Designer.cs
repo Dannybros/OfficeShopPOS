@@ -1,7 +1,7 @@
 ﻿
 namespace OfficePOS
 {
-    partial class RevenueReport
+    partial class GraphicRevenueReport
     {
         /// <summary>
         /// Required designer variable.
@@ -56,9 +56,9 @@ namespace OfficePOS
             legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(0, 126);
+            this.chart1.Location = new System.Drawing.Point(0, 265);
             this.chart1.Name = "chart1";
-            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
+            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
             series1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(204)))), ((int)(((byte)(231)))));
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
@@ -71,7 +71,7 @@ namespace OfficePOS
             series1.MarkerColor = System.Drawing.Color.DodgerBlue;
             series1.MarkerSize = 7;
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series1.Name = "Series1";
+            series1.Name = "Sale";
             dataPoint1.LabelBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             dataPoint2.LabelBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             dataPoint3.LabelBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -88,9 +88,9 @@ namespace OfficePOS
             series1.Points.Add(dataPoint7);
             series1.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1321, 619);
+            this.chart1.Size = new System.Drawing.Size(1321, 579);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
             // 
@@ -99,17 +99,17 @@ namespace OfficePOS
             this.panelDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelDashboard.Location = new System.Drawing.Point(0, 0);
             this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(1321, 450);
-            this.panelDashboard.TabIndex = 6;
+            this.panelDashboard.Size = new System.Drawing.Size(1321, 185);
+            this.panelDashboard.TabIndex = 9;
             // 
             // RevenueReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1321, 745);
-            this.Controls.Add(this.chart1);
+            this.ClientSize = new System.Drawing.Size(1321, 844);
             this.Controls.Add(this.panelDashboard);
+            this.Controls.Add(this.chart1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RevenueReport";
             this.Text = "RevenueReport";

@@ -62,9 +62,7 @@ namespace OfficePOS
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            foreach (TextBox text in product_Info.Controls.OfType<TextBox>()) { text.Text = ""; }
-            combo_type.Text = "";
-            pb_product_img.Image = null;
+            clearData();
         }
 
         private void btn_upload_Click(object sender, EventArgs e)
@@ -160,7 +158,6 @@ namespace OfficePOS
             {
                 e.Handled = true;
             }
-
         }
     }
 }

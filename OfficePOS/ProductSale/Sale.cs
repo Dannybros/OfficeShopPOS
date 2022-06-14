@@ -446,7 +446,7 @@ namespace OfficePOS
             cmd.Parameters.AddWithValue("@saleID", Sale_ID);
             cmd.Parameters.AddWithValue("@name", cmb_customer.Text);
             cmd.Parameters.AddWithValue("@total", double.Parse(txt_sum_supply.Text));
-            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("MM/dd/yyyy"));
+            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
 
             if (cmd.ExecuteNonQuery() == 1)
             {
@@ -458,8 +458,7 @@ namespace OfficePOS
                     saleViewer.Show();
 
                     SaleItemList.Clear();
-                    LoadProducts();
-                    LoadOrderList();
+                    startForm();
                 }
             }
         }

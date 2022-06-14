@@ -435,7 +435,7 @@ namespace OfficePOS
 
             cmd.Parameters.AddWithValue("@orderId", Order_ID);
             cmd.Parameters.AddWithValue("@supplier", cmb_supplier.Text);
-            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("MM/dd/yyyy"));
+            cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
             cmd.Parameters.AddWithValue("@total", double.Parse(txt_sum_supply.Text));
             cmd.Parameters.AddWithValue("@check", "ຍັງບໍ່ກວດ");
 
@@ -448,6 +448,7 @@ namespace OfficePOS
                     obw.Show();
                     OrderItemList.Clear();
                     LoadOrderList();
+                    GenerateOrderID();
 
                     foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
                     {

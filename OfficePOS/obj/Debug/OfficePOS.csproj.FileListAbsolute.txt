@@ -49,3 +49,5 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleDetailReport.resource
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CustomerInfos.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplierInfos.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EmployeeInfos.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.MonthlyRevenueReport.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.GraphicRevenueReport.resources

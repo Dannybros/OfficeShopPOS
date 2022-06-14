@@ -20,6 +20,7 @@ namespace OfficePOS
         public SaleReport()
         {
             InitializeComponent();
+            loadSaleItems();
         }
 
         private void loadSaleItems()

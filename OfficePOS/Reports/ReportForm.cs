@@ -40,7 +40,7 @@ namespace OfficePOS
             switchPanel(sr);
         }
 
-        private void switchPanel(Form panel)
+        public void switchPanel(Form panel)
         {
             panelContent.Controls.Clear();
             panel.TopLevel = false;
