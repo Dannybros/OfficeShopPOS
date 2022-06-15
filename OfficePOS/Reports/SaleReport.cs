@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using System.IO;
+using System.Data.SqlClient;
 
 namespace OfficePOS
 {
     public partial class SaleReport : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        //      SQL CASE
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
+
+       /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;*/
             
         public SaleReport()
         {
@@ -34,9 +38,9 @@ namespace OfficePOS
                 searchTerm = txtSearch.Text;
             }
 
-            cmd = new MySqlCommand("SELECT * FROM `sale` WHERE CONCAT (`Sale_ID`,`Customer_Name`, `Date`) LIKE '%" + searchTerm + "%'", conn);
+            cmd = new SqlCommand("SELECT * FROM [sale] WHERE CONCAT (Sale_ID, Customer_Name, Date) LIKE '%" + searchTerm + "%'", conn);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
 

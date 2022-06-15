@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
     public partial class SupplierInfos : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        //   MYSQL CASE\
+        //MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+
+        SqlCommand cmd;
 
         public SupplierInfos()
         {
@@ -36,8 +42,16 @@ namespace OfficePOS
 
         private void fillGrid()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT `Supplier_ID`, `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel`, `Supplier_Img` FROM `suppliers`", conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            dataGridView1.DataSource = null;
+            string searchTerm = "";
+            if(txtSearch.Text != "Search...")
+            {
+                searchTerm = txtSearch.Text;
+            }
+
+            cmd = new SqlCommand("SELECT * FROM [supplier] WHERE CONCAT (Supplier_ID, Supplier_Name, Supplier_Email) LIKE '%" + searchTerm + "%'", conn);
+
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
 
@@ -45,8 +59,8 @@ namespace OfficePOS
             dataGridView1.DataSource = tb;
             dataGridView1.ReadOnly = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-            picCol = (DataGridViewImageColumn)dataGridView1.Columns[5];
+            
+            DataGridViewImageColumn picCol = (DataGridViewImageColumn)dataGridView1.Columns[5];
             picCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             picCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dataGridView1.AllowUserToAddRows = false;
@@ -87,13 +101,7 @@ namespace OfficePOS
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             txtSearch.ForeColor = Color.Black;
-            MySqlCommand cmd = new MySqlCommand("SELECT `Supplier_ID`, `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel`, `Supplier_Img` FROM `suppliers` WHERE CONCAT (`Supplier_ID`,`Supplier_Name`, `Supplier_Email`) LIKE '%" + txtSearch.Text + "%' ", conn);
-
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-
-            dataGridView1.DataSource = dt;
+            fillGrid();
         }
 
         private void btn_upload_Click(object sender, EventArgs e)
@@ -109,14 +117,14 @@ namespace OfficePOS
 
         private void btn_GUID_Click(object sender, EventArgs e)
         {
-            string supp_id = "s-" + GUID();
+            string supp_id = "S-" + GUID();
             txt_sup_ID.Text = supp_id;
         }
 
         private bool checkIfSupplierExist()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel`, `Supplier_Img` FROM `suppliers` WHERE  `Supplier_ID` = '" + txt_sup_ID.Text + "'", conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            cmd = new SqlCommand("SELECT * FROM [supplier] WHERE Supplier_ID = '" + txt_sup_ID.Text + "'", conn);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
@@ -141,7 +149,7 @@ namespace OfficePOS
 
         private void insertSup()
         {
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO `suppliers`(`Supplier_ID`, `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel`, `Supplier_Img`) VALUES (@id, @name, @address, @email, @tel, @img)", conn);
+            cmd = new SqlCommand("INSERT INTO [supplier] (Supplier_ID, Supplier_Name, Supplier_Address, Supplier_Email, Supplier_Tel, Supplier_Img) VALUES (@id, @name, @address, @email, @tel, @img)", conn);
 
             cmd.Parameters.AddWithValue("@id", txt_sup_ID.Text);
             cmd.Parameters.AddWithValue("@name", txt_sup_name.Text);
@@ -152,7 +160,7 @@ namespace OfficePOS
             MemoryStream ms = new MemoryStream();
             pb_supplier.Image.Save(ms, pb_supplier.Image.RawFormat);
 
-            cmd.Parameters.Add("@img", MySqlDbType.LongBlob).Value = ms.ToArray();
+            cmd.Parameters.AddWithValue("@img", ms.ToArray());
 
             conn.Open();
             if (cmd.ExecuteNonQuery() == 1)
@@ -171,7 +179,7 @@ namespace OfficePOS
 
         private void updateSup()
         {
-            MySqlCommand cmd = new MySqlCommand("UPDATE `suppliers` SET `Supplier_Name`=@name, `Supplier_Address`=@address, `Supplier_Email`=@email, `Supplier_Tel`=@phone, `Supplier_Img`=@img WHERE `Supplier_ID`=@id", conn);
+            cmd = new SqlCommand("UPDATE [supplier] SET Supplier_Name=@name, Supplier_Address=@address, Supplier_Email=@email, Supplier_Tel=@phone, Supplier_Img=@img WHERE Supplier_ID=@id", conn);
 
             cmd.Parameters.AddWithValue("@id", txt_sup_ID.Text);
             cmd.Parameters.AddWithValue("@name", txt_sup_name.Text);
@@ -182,7 +190,7 @@ namespace OfficePOS
             MemoryStream ms = new MemoryStream();
             pb_supplier.Image.Save(ms, pb_supplier.Image.RawFormat);
 
-            cmd.Parameters.Add("@img", MySqlDbType.Blob).Value = ms.ToArray();
+            cmd.Parameters.AddWithValue("@img", ms.ToArray());
 
             conn.Open();
             if (cmd.ExecuteNonQuery() == 1)
@@ -240,13 +248,12 @@ namespace OfficePOS
 
             if (result == DialogResult.OK)
             {
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM `suppliers` WHERE `Supplier_ID`='" + txt_sup_ID.Text + "'", conn);
+                cmd = new SqlCommand("DELETE FROM [supplier] WHERE Supplier_ID='" + txt_sup_ID.Text + "'", conn);
 
                 conn.Open();
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("Supplier Deleted successfully", "Deleted Successfully", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     clearData();
                     fillGrid();
                 }

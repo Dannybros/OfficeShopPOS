@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace OfficePOS
 {
     public partial class Sale : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+       /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;*/
+
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
 
         List<SaleItem> SaleItemList = new List<SaleItem>();
         public string Sale_ID;
@@ -50,26 +54,30 @@ namespace OfficePOS
 
         private void LoadProductType()
         {
-            cmd = new MySqlCommand("SELECT `Product_Type_Name` FROM `product_types`", conn);
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            cmd = new SqlCommand("SELECT * FROM [product_types]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
             {
-                cmbCategory.Items.Add(reader.GetString("Product_Type_Name"));
+                var dataRow = dt.Rows[i];
+                cmbCategory.Items.Add(dataRow["Product_Type_Name"].ToString());
             }
-            conn.Close();
         }
 
         private void LoadCustomer()
         {
-            cmd = new MySqlCommand("SELECT `Customer_Name` FROM `customer`", conn);
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            cmd = new SqlCommand("SELECT Customer_Name FROM [customer]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
             {
-                cmb_customer.Items.Add(reader.GetString("Customer_Name"));
+                var dataRow = dt.Rows[i];
+                cmb_customer.Items.Add(dataRow["Customer_Name"].ToString());
             }
-            conn.Close();
         }
 
         private void enableItem(string s)
@@ -111,16 +119,16 @@ namespace OfficePOS
             }
             if (cmbCategory.Text == "ທັງໝົດ")
             {
-                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%' AND Quantity > 0", conn);
+                cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' AND Quantity > 0", conn);
             }
             else
             {
-                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%' AND `Product_Type_Name` = @type AND Quantity > 0", conn);
+                cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' AND Product_Type_Name = @type AND Quantity > 0", conn);
                 cmd.Parameters.AddWithValue("@type", cmbCategory.Text);
             }
 
             DataTable dt = new DataTable();
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             adp.Fill(dt);
 
             for (var i = 0; i < dt.Rows.Count; i++)
@@ -419,7 +427,7 @@ namespace OfficePOS
 
         private void insertSaleDetail(string pId, string name, double price, int amount, double total)
         {
-            cmd = new MySqlCommand("INSERT INTO `sale_details`(`Sale_ID`, `Product_ID`, `Product_Name`, `Price`, `Amount`, `Product_Total`) VALUES (@saleId, @prodId, @name, @price, @amount, @total)", conn);
+            cmd = new SqlCommand("INSERT INTO [sale_details] (Sale_ID, Product_ID, Product_Name, Price, Amount, Product_Total) VALUES (@saleId, @prodId, @name, @price, @amount, @total)", conn);
             cmd.Parameters.AddWithValue("@saleId", Sale_ID);
             cmd.Parameters.AddWithValue("@prodId", pId);
             cmd.Parameters.AddWithValue("@name", name);
@@ -432,7 +440,7 @@ namespace OfficePOS
 
         private void updateAmount(string id, double amount)
         {
-            cmd = new MySqlCommand("UPDATE `products` SET Quantity=Quantity-@amount WHERE `Product_ID`=@prodId", conn);
+            cmd = new SqlCommand("UPDATE [products] SET Quantity=Quantity-@amount WHERE Product_ID=@prodId", conn);
             cmd.Parameters.AddWithValue("@prodId", id);
             cmd.Parameters.AddWithValue("@amount", amount);
 
@@ -441,7 +449,7 @@ namespace OfficePOS
 
         private void insertSaleDB()
         {
-            cmd = new MySqlCommand("INSERT INTO `sale`(`Sale_ID`, `Customer_Name`, `Total`, `Date`) VALUES (@saleID, @name, @total, @date)", conn);
+            cmd = new SqlCommand("INSERT INTO [sale](Sale_ID, Customer_Name, Total, Date) VALUES (@saleID, @name, @total, @date)", conn);
 
             cmd.Parameters.AddWithValue("@saleID", Sale_ID);
             cmd.Parameters.AddWithValue("@name", cmb_customer.Text);
@@ -458,7 +466,10 @@ namespace OfficePOS
                     saleViewer.Show();
 
                     SaleItemList.Clear();
-                    startForm();
+                    LoadProducts();
+                    LoadOrderList();
+                    cmb_customer.Text = "";
+
                 }
             }
         }

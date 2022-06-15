@@ -8,14 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
     public partial class EmployeeInfos : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        //      MYSQL CASE
+       /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;*/
+
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+
+        SqlCommand cmd;
 
         public EmployeeInfos()
         {
@@ -44,9 +50,9 @@ namespace OfficePOS
                 searchTerm = txtSearch.Text;
             }
 
-            cmd = new MySqlCommand("SELECT * FROM `employee` WHERE CONCAT (`Employee_ID`,`Employee_Name`) LIKE '%" + searchTerm + "%' ", conn);
+            cmd = new SqlCommand("SELECT * FROM [employee] WHERE CONCAT (Employee_ID, Employee_Name) LIKE '%" + searchTerm + "%' ", conn);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
 
@@ -54,8 +60,7 @@ namespace OfficePOS
             dataGridView1.DataSource = tb;
             dataGridView1.ReadOnly = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-            picCol = (DataGridViewImageColumn)dataGridView1.Columns[5];
+            DataGridViewImageColumn picCol = (DataGridViewImageColumn)dataGridView1.Columns[5];
             picCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             picCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dataGridView1.AllowUserToAddRows = false;
@@ -97,6 +102,19 @@ namespace OfficePOS
             clearData();
         }
 
+        private bool checkIfEmployeeExist()
+        {
+            cmd = new SqlCommand("SELECT * FROM [employee] WHERE Employee_ID = '" + txt_ID.Text + "'", conn);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            { return true; }
+            else
+            { return false; }
+        }
+
         private void btn_add_Click(object sender, EventArgs e)
         {
             if (txt_ID.Text == "" || txt_email.Text == "" || txt_name.Text == "" || txt_phone.Text == "" || txt_address.Text == "")
@@ -105,7 +123,17 @@ namespace OfficePOS
             }
             else
             {
-                cmd = new MySqlCommand("INSERT INTO `employee`(`Employee_ID`, `Employee_Name`, `Employee_Phone`, `Employee_Email`, `Employee_Address`, `Emp_Img`) VALUES (@id, @name, @phone, @email, @addr, @img) ON DUPLICATE KEY UPDATE Employee_Name=@name, Employee_Address=@addr, Employee_Email=@email, Employee_Phone=@phone, Emp_Img=@img", conn);
+                //      MYSQL CASE
+               /* cmd = new SqlCommand("INSERT INTO `employee`(`Employee_ID`, `Employee_Name`, `Employee_Phone`, `Employee_Email`, `Employee_Address`, `Emp_Img`) VALUES (@id, @name, @phone, @email, @addr, @img) ON DUPLICATE KEY UPDATE Employee_Name=@name, Employee_Address=@addr, Employee_Email=@email, Employee_Phone=@phone, Emp_Img=@img", conn);*/
+
+                if (checkIfEmployeeExist())
+                {
+                    cmd = new SqlCommand("UPDATE [employee] SET Employee_Name=@name, Employee_Address=@addr, Employee_Email=@email, Employee_Phone=@phone, Emp_Img=@img WHERE Employee_ID=@id", conn);
+                }
+                else
+                {
+                    cmd = new SqlCommand("INSERT INTO [employee] (Employee_ID, Employee_Name, Employee_Address, Employee_Email, Employee_Phone, Emp_Img) VALUES (@id, @name, @addr, @email, @phone, @img)", conn);
+                }
 
                 cmd.Parameters.AddWithValue("@id", txt_ID.Text);
                 cmd.Parameters.AddWithValue("@name", txt_name.Text);
@@ -115,7 +143,7 @@ namespace OfficePOS
 
                 MemoryStream ms = new MemoryStream();
                 pb_emp.Image.Save(ms, pb_emp.Image.RawFormat);
-                cmd.Parameters.Add("@img", MySqlDbType.LongBlob).Value = ms.ToArray();
+                cmd.Parameters.AddWithValue("@img", ms.ToArray());
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -133,13 +161,12 @@ namespace OfficePOS
 
             if (result == DialogResult.OK)
             {
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM `employee` WHERE `Employee_ID`='" + txt_ID.Text + "'", conn);
+                cmd = new SqlCommand("DELETE FROM [employee] WHERE Employee_ID='" + txt_ID.Text + "'", conn);
 
                 conn.Open();
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("Supplier Deleted successfully", "Deleted Successfully", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     clearData();
                     fillGrid();
                 }

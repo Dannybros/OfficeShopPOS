@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace OfficePOS
 {
     public partial class MonthlyRevenueReport : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        //      MYSQL CASE
+        /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+         MySqlCommand cmd;*/
+
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
 
         List<MonthlyRevenue> revenueList = new List<MonthlyRevenue>();
 
@@ -78,15 +83,18 @@ namespace OfficePOS
 
         private void getRevenue()
         {
-            cmd = new MySqlCommand("SELECT sum(Total) AS Revenue, Date FROM `sale` GROUP BY YEAR(Date), MONTH(Date)", conn);
+            //  MYSQL CASE
+            //cmd = new MYSqlCommand("SELECT sum(Total) AS Revenue, Date FROM sale GROUP BY YEAR(Date), MONTH(Date)", conn);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            cmd = new SqlCommand("SELECT SUM(TOTAL) AS Revenue, FORMAT(Date, 'MM-yyyy') AS Month FROM [sale] GROUP BY FORMAT(Date, 'MM-yyyy')", conn);
+
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
             for (var i = 0; i < dt.Rows.Count; i++)
             {
-                string monthYear = Convert.ToDateTime(dt.Rows[i]["Date"]).ToString("MM-yyyy");
+                string monthYear = Convert.ToDateTime(dt.Rows[i]["Month"]).ToString("MM-yyyy");
                 double revenue = Convert.ToDouble(dt.Rows[i]["Revenue"]);
 
                 revenueList.Add(new MonthlyRevenue(monthYear, revenue, 0));
@@ -95,15 +103,15 @@ namespace OfficePOS
 
         private void getExpenditure()
         {
-            cmd = new MySqlCommand("SELECT sum(Total) AS Expenditure, Import_Date FROM `order_imports` GROUP BY YEAR(Import_Date), MONTH(Import_Date)", conn);
+            cmd = new SqlCommand("SELECT sum(Total) AS Expenditure, FORMAT(Import_Date, 'MM-yyyy') AS Month FROM [order_imports] GROUP BY FORMAT(Import_Date, 'MM-yyyy')", conn);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
             for (var i = 0; i < dt.Rows.Count; i++)
             {
-                string monthYear = Convert.ToDateTime(dt.Rows[i]["Import_Date"]).ToString("MM-yyyy");
+                string monthYear = Convert.ToDateTime(dt.Rows[i]["Month"]).ToString("MM-yyyy");
                 double expenditure = Convert.ToDouble(dt.Rows[i]["Expenditure"]);
 
                 foreach(var item in revenueList)

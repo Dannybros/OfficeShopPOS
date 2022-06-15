@@ -9,13 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace OfficePOS
 {
     public partial class SaleDetailReport : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        //      SQL CASE
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
+
+        /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+         MySqlCommand cmd;*/
 
         private string id, total;
 
@@ -30,9 +35,9 @@ namespace OfficePOS
 
         private void loadSaleDetails()
         {
-            cmd = new MySqlCommand("SELECT * FROM `sale_details` NATURAL JOIN `products` WHERE `Sale_ID` ='" + id + "'", conn);
+            cmd = new SqlCommand("SELECT * FROM [sale_details] INNER JOIN [products] ON [sale_details].Product_ID =[products].Product_ID WHERE Sale_ID ='" + id + "'", conn);
             DataTable dt = new DataTable();
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             adp.Fill(dt);
 
             for (var i = 0; i < dt.Rows.Count; i++)

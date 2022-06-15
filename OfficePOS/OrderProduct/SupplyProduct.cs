@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
     public partial class SupplyProduct : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        /*MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;*/
+
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
 
         List<OrderItem> OrderItemList = new List<OrderItem>();
 
@@ -49,26 +53,30 @@ namespace OfficePOS
 
         private void LoadProductType()
         {
-            cmd = new MySqlCommand("SELECT `Product_Type_Name` FROM `product_types`", conn);
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            cmd = new SqlCommand("SELECT * FROM [product_types]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
             {
-                cmbCategory.Items.Add(reader.GetString("Product_Type_Name"));
+                var dataRow = dt.Rows[i];
+                cmbCategory.Items.Add(dataRow["Product_Type_Name"].ToString());
             }
-            conn.Close();
         }
 
         private void LoadSupplier()
         {
-            cmd = new MySqlCommand("SELECT `Supplier_Name` FROM `suppliers`", conn);
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            cmd = new SqlCommand("SELECT Supplier_Name FROM [supplier]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
             {
-                cmb_supplier.Items.Add(reader.GetString("Supplier_Name"));
+                var dataRow = dt.Rows[i];
+                cmb_supplier.Items.Add(dataRow["Supplier_Name"].ToString());
             }
-            conn.Close();
         }
 
         public void LoadProducts()
@@ -83,16 +91,16 @@ namespace OfficePOS
 
             if(cmbCategory.Text == "ທັງໝົດ")
             {
-                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%'", conn);
+                cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%'", conn);
             }
             else
             {
-                cmd = new MySqlCommand("SELECT * FROM `products` WHERE CONCAT (`Product_ID`,`Product_Name`) LIKE '%" + searchTerm + "%' AND `Product_Type_Name` = @type", conn);
+                cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' AND Product_Type_Name = @type", conn);
                 cmd.Parameters.AddWithValue("@type", cmbCategory.Text);
             }
 
             DataTable dt = new DataTable();
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             adp.Fill(dt);
 
             for (var i = 0; i < dt.Rows.Count; i++)
@@ -345,7 +353,7 @@ namespace OfficePOS
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            AddProduct ap = new AddProduct();
+            AddProduct ap = new AddProduct(this);
             ap.Show();
         }
 
@@ -418,7 +426,7 @@ namespace OfficePOS
 
         private void insertOrderDetailDB(string pId, string name, double price, int amount, double total)
         {
-            cmd = new MySqlCommand("INSERT INTO `import_details`(`Order_ID`, `Product_ID`, `Product_Name`, `Original_Price`, `Amount`, `Total_Price`) VALUES (@orderId, @prodId, @name, @price, @amount, @total)", conn);
+            cmd = new SqlCommand("INSERT INTO [import_details] (Order_ID, Product_ID, Product_Name, Original_Price, Amount, Total_Price) VALUES (@orderId, @prodId, @name, @price, @amount, @total)", conn);
             cmd.Parameters.AddWithValue("@orderId", Order_ID);
             cmd.Parameters.AddWithValue("@prodId", pId);
             cmd.Parameters.AddWithValue("@name", name);
@@ -431,7 +439,7 @@ namespace OfficePOS
 
         private void insertOrderDB()
         {
-            cmd = new MySqlCommand("INSERT INTO `order_imports`(`Order_ID`, `Supplier_Name`, `Import_Date`, `Total`, `Checked`) VALUES (@orderId, @supplier, @date, @total, @check)", conn);
+            cmd = new SqlCommand("INSERT INTO [order_imports] (Order_ID, Supplier_Name, Import_Date, Total, Checked) VALUES (@orderId, @supplier, @date, @total, @check)", conn);
 
             cmd.Parameters.AddWithValue("@orderId", Order_ID);
             cmd.Parameters.AddWithValue("@supplier", cmb_supplier.Text);
@@ -447,13 +455,9 @@ namespace OfficePOS
                     OrderBillViewer obw = new OrderBillViewer(OrderItemList, Order_ID, cmb_supplier.Text);
                     obw.Show();
                     OrderItemList.Clear();
+                    LoadProducts();
                     LoadOrderList();
-                    GenerateOrderID();
-
-                    foreach (Panel p in panelSupplyItems.Controls.OfType<Panel>())
-                    {
-                        p.Enabled = true;
-                    }
+                    cmb_supplier.Text = "";
                 }
             }
         }

@@ -51,3 +51,5 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplierInfos.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EmployeeInfos.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.MonthlyRevenueReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.GraphicRevenueReport.resources
+D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\System.Data.SqlClient.dll
+D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\System.Data.SqlClient.xml

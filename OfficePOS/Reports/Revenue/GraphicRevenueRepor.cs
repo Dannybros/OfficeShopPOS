@@ -9,22 +9,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace OfficePOS
 {
     public partial class GraphicRevenueReport : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        //      MYSQL CASE
+        /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+         MySqlCommand cmd;*/
+
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
 
         double Revenue, Expenditure;
 
         public GraphicRevenueReport()
         {
             InitializeComponent();
-            getWeekly();
             getMonthlySaleRevenue();
             getMonthlyOrderExpenditure();
+            getWeekly();
             addPanels();
         }
 
@@ -122,12 +127,12 @@ namespace OfficePOS
             int thisYear = Convert.ToInt32(DateTime.Now.Year);
             int todayDate = Convert.ToInt32(DateTime.Now.Day);
 
-            cmd = new MySqlCommand("SELECT sum(Total) AS Revenue, Date FROM `sale` WHERE CONVERT(MONTH(Date), UNSIGNED INTEGER)=@month AND CONVERT(YEAR(Date), UNSIGNED INTEGER)=@year AND CONVERT(Day(Date), UNSIGNED INTEGER) BETWEEN @date-6 AND @date GROUP BY Date", conn);
+            cmd = new SqlCommand("SELECT sum(Total) AS Revenue, Date FROM [sale] WHERE CAST(MONTH(Date) AS int)=@month AND CAST(YEAR(Date) AS int)=@year AND CAST(Day(Date) AS int) BETWEEN @date-6 AND @date GROUP BY Date", conn);
             cmd.Parameters.AddWithValue("@month", thisMonth);
             cmd.Parameters.AddWithValue("@year", thisYear);
             cmd.Parameters.AddWithValue("@date", todayDate);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
@@ -145,11 +150,11 @@ namespace OfficePOS
             int thisMonth = Convert.ToInt32(DateTime.Now.Month);
             int thisYear = Convert.ToInt32(DateTime.Now.Year);
 
-            cmd = new MySqlCommand("SELECT sum(Total) AS revenue FROM `sale` WHERE CONVERT(MONTH(Date), UNSIGNED INTEGER)=@month AND CONVERT(YEAR(Date), UNSIGNED INTEGER)=@year", conn);
+            cmd = new SqlCommand("SELECT sum(Total) AS revenue FROM [sale] WHERE CAST(MONTH(Date) AS int)=@month AND Cast(YEAR(Date) AS int)=@year", conn);
             cmd.Parameters.AddWithValue("@month", thisMonth);
             cmd.Parameters.AddWithValue("@year", thisYear);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
@@ -161,11 +166,11 @@ namespace OfficePOS
             int thisMonth = Convert.ToInt32(DateTime.Now.Month);
             int thisYear = Convert.ToInt32(DateTime.Now.Year);
 
-            cmd = new MySqlCommand("SELECT sum(Total) AS revenue FROM `order_imports` WHERE CONVERT(MONTH(Import_Date), UNSIGNED INTEGER)=@month AND CONVERT(YEAR(Import_Date), UNSIGNED INTEGER)=@year", conn);
+            cmd = new SqlCommand("SELECT sum(Total) AS revenue FROM [order_imports] WHERE CAST(MONTH(Import_Date) AS int)=@month AND CAST(YEAR(Import_Date) AS int)=@year", conn);
             cmd.Parameters.AddWithValue("@month", thisMonth);
             cmd.Parameters.AddWithValue("@year", thisYear);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 

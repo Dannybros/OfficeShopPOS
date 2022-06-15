@@ -10,17 +10,24 @@ using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
 using System.Globalization;
+using System.Data.SqlClient;
 
 namespace OfficePOS
 {
     public partial class EditProduct : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
-        private string proID;
+       /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;*/
 
-        public EditProduct(string id)
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
+
+        private string proID;
+        private Inventory _inv;
+
+        public EditProduct(string id, Inventory invv)
         {
+            _inv = invv;
             InitializeComponent();
             proID = id;
             LoadProductType();
@@ -31,20 +38,22 @@ namespace OfficePOS
         }
         private void LoadProductType()
         {
-            cmd = new MySqlCommand("SELECT `Product_Type_Name` FROM `product_types`", conn);
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            cmd = new SqlCommand("SELECT * FROM [product_types]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
             {
-                combo_type.Items.Add(reader.GetString("Product_Type_Name"));
+                var dataRow = dt.Rows[i];
+                combo_type.Items.Add(dataRow["Product_Type_Name"].ToString());
             }
-            conn.Close();
         }
 
         private void refresh()
         {
-            cmd = new MySqlCommand("SELECT * FROM `products` WHERE `Product_ID`='"+ proID + "'", conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            cmd = new SqlCommand("SELECT * FROM [products] WHERE Product_ID='"+ proID + "'", conn);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
@@ -85,13 +94,13 @@ namespace OfficePOS
 
             if (result == DialogResult.OK)
             {
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM `products` WHERE `Product_ID`='" + txt_id.Text + "'", conn);
+                cmd = new SqlCommand("DELETE FROM [products] WHERE Product_ID='" + txt_id.Text + "'", conn);
 
                 conn.Open();
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {
-                    (Application.OpenForms["ProductInvetory"] as Inventory).LoadProducts();
+                    _inv.LoadProducts();
                     this.Close();
                 }
 
@@ -101,15 +110,15 @@ namespace OfficePOS
 
         private void addProductType()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT `Product_Type_ID`, `Product_Type_Name` FROM `product_types` WHERE `Product_Type_Name`='" + combo_type.Text + "'", conn);
+            cmd = new SqlCommand("SELECT * FROM [product_types] WHERE Product_Type_Name='" + combo_type.Text + "'", conn);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
             if (dt.Rows.Count == 0)
             {
-                MySqlCommand command = new MySqlCommand("INSERT INTO `product_types`( `Product_Type_Name`) VALUES ('" + combo_type.Text + "')", conn);
+                SqlCommand command = new SqlCommand("INSERT INTO [product_types]( Product_Type_Name) VALUES ('" + combo_type.Text + "')", conn);
 
                 conn.Open();
 
@@ -121,7 +130,7 @@ namespace OfficePOS
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            cmd = new MySqlCommand("UPDATE `products` SET `Product_Name`=@name, `Product_Type_Name`=@type, `Product_Brand`=@brand, `Size`=@size, `Quantity`=@quantity, `Original_Price`=@orgPrice, `Selling_Price`=@selPrice, `Production_Date`=@pDate, `Expiration_Date`=@eDate, `Product_Img`=@img WHERE `Product_ID`=@id", conn);
+            cmd = new SqlCommand("UPDATE [products] SET Product_Name=@name, Product_Type_Name=@type, Product_Brand=@brand, Size=@size, Quantity=@quantity, Original_Price=@orgPrice, Selling_Price=@selPrice, Production_Date=@pDate, Expiration_Date=@eDate, Product_Img=@img WHERE Product_ID=@id", conn);
             cmd.Parameters.AddWithValue("@id", txt_id.Text);
             cmd.Parameters.AddWithValue("@name", txt_productName.Text);
             cmd.Parameters.AddWithValue("@type", combo_type.Text);
@@ -136,7 +145,7 @@ namespace OfficePOS
             MemoryStream ms = new MemoryStream();
             product_image.BackgroundImage.Save(ms, product_image.BackgroundImage.RawFormat);
 
-            cmd.Parameters.Add("@img", MySqlDbType.LongBlob).Value = ms.ToArray();
+            cmd.Parameters.AddWithValue("@img", ms.ToArray());
 
             conn.Open();
             if (cmd.ExecuteNonQuery() == 1)
@@ -145,9 +154,6 @@ namespace OfficePOS
 
                 if(result == DialogResult.OK)
                 {
-                    /*var iv = Application.OpenForms.OfType<Inventory>().SingleOrDefault();
-                    iv.startForm();*/
-
                     this.Close();
                 }
             }

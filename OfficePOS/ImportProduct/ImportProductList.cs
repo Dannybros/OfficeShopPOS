@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
     public partial class ImportProductList : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
+
+        // MYSQL CASE
+       /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;*/
 
         public ImportProductList()
         {
@@ -34,10 +39,10 @@ namespace OfficePOS
                 searchTerm = txtSearch.Text;
             }
 
-            cmd = new MySqlCommand("SELECT * FROM `order_imports` WHERE CONCAT (`Order_ID`,`Supplier_Name`) LIKE '%" + searchTerm + "%' AND `Checked` = @status", conn);
+            cmd = new SqlCommand("SELECT * FROM [order_imports] WHERE CONCAT (Order_ID, Supplier_Name) LIKE '%" + searchTerm + "%' AND Checked = @status", conn);
             cmd.Parameters.AddWithValue("@status", cmbCategory.Text);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
 
@@ -64,7 +69,7 @@ namespace OfficePOS
                 string checkStatus = DGV_orderList.CurrentRow.Cells[4].Value.ToString();
                 string total = DGV_orderList.CurrentRow.Cells[3].Value.ToString();
 
-                CheckImports ci = new CheckImports(id, checkStatus, total);
+                CheckImports ci = new CheckImports(id, checkStatus, total, fillData);
                 ci.Show();
             }
         }

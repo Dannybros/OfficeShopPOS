@@ -9,20 +9,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace OfficePOS
 {
     public partial class CheckImports : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        //      MYSQL CASE
+       /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;*/
+
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
         List<OrderItem> OrderItemList = new List<OrderItem>();
 
         private string id, status, total;
+        Action fill;
 
-        public CheckImports(string id, string status, string total)
+        public CheckImports(string id, string status, string total, Action fillData)
         {
             InitializeComponent();
+            fill = fillData;
             this.id = id;
             this.status = status;
             this.total = total;
@@ -34,9 +41,9 @@ namespace OfficePOS
             OrderItemList.Clear();
             importListPanel.Controls.Clear();
 
-            cmd = new MySqlCommand("SELECT * FROM `import_details` NATURAL JOIN `products` WHERE `Order_ID` ='" + id +"'", conn);
+            cmd = new SqlCommand("SELECT * FROM [import_details] INNER JOIN [products] ON [import_details].Product_ID =[products].Product_ID WHERE Order_ID ='" + id +"'", conn);
             DataTable dt = new DataTable();
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             adp.Fill(dt);
 
 
@@ -142,7 +149,7 @@ namespace OfficePOS
         {
             foreach(var item in OrderItemList)
             {
-                cmd = new MySqlCommand("UPDATE `products` SET Quantity=Quantity+@amount WHERE `Product_ID`=@prodId", conn);
+                cmd = new SqlCommand("UPDATE [products] SET Quantity=Quantity+@amount WHERE Product_ID=@prodId", conn);
                 cmd.Parameters.AddWithValue("@prodId", item.ProID);
                 cmd.Parameters.AddWithValue("@amount", item.Amount);
 
@@ -152,12 +159,14 @@ namespace OfficePOS
 
         private void UpdateStatus()
         {
-            cmd = new MySqlCommand("UPDATE `order_imports` SET `Checked`='ກວດແລ້ວ' WHERE `Order_ID`='" + id + "'", conn);
+            cmd = new SqlCommand("UPDATE [order_imports] SET Checked=@status WHERE Order_ID='" + id + "'", conn);
+            cmd.Parameters.AddWithValue("@status", "ກວດແລ້ວ");
+
             if (cmd.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("You have successfully added new product", "Congrats", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                (Application.OpenForms["ImportProductList"] as ImportProductList).fillData();
+                fill.Invoke();
 
                 this.Close();
             }

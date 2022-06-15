@@ -8,15 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
     public partial class CustomerInfos : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        //      SQL CASE
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
 
-        MySqlCommand cmd;
+        //      MYSQL CASE
+       /* MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+
+        MySqlCommand cmd;*/
 
         public CustomerInfos()
         {
@@ -49,8 +55,8 @@ namespace OfficePOS
 
         private void fillGrid()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM `customer`", conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            cmd = new SqlCommand("SELECT * FROM [customer]", conn);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
 
@@ -61,7 +67,7 @@ namespace OfficePOS
             DataGridViewImageColumn picCol = new DataGridViewImageColumn();
             picCol = (DataGridViewImageColumn)dataGridCustomer.Columns[6];
             picCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            picCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            picCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dataGridCustomer.AllowUserToAddRows = false;
             dataGridCustomer.DefaultCellStyle.Font = new Font("Times New Roman", 15);
             dataGridCustomer.Columns[3].DefaultCellStyle.Font = new Font("Times New Roman", 12);
@@ -94,7 +100,18 @@ namespace OfficePOS
                 if (rbMale.Checked) gender = "Male";
                 else gender = "Female";
 
-                cmd = new MySqlCommand("INSERT INTO `customer`(`Customer_ID`, `Customer_Name`, `Gender`, `Address`, `Email`, `Phone`, `Customer_Image`) VALUES (@id, @name, @gender, @addr, @email, @phone, @img) ON DUPLICATE KEY UPDATE Customer_Name=@name, Gender=@gender, Address=@addr, Email=@email, Phone=@phone, Customer_Image=@img", conn);
+                //      MYSQL CASE
+                //cmd = new MySqlCommand("INSERT INTO customer (Customer_ID, Customer_Name, Gender, Address, Email, Phone, Customer_Image) VALUES (@id, @name, @gender, @addr, @email, @phone, @img) ON DUPLICATE KEY UPDATE Customer_Name=@name, Gender=@gender, Address=@addr, Email=@email, Phone=@phone, Customer_Image=@img", conn);
+
+                if (checkIfSCustomerExist())
+                {
+                    cmd = new SqlCommand("UPDATE [customer] SET Customer_Name=@name, Gender=@gender, Address=@addr, Email=@email, Phone=@phone, Customer_Image=@img WHERE Customer_ID=@id", conn);
+                }
+                else
+                {
+                    cmd = new SqlCommand("INSERT INTO [customer] (Customer_ID, Customer_Name, Gender, Address, Email, Phone, Customer_Image) VALUES (@id, @name, @gender, @addr, @email, @phone, @img)", conn);
+                }
+               
                 cmd.Parameters.AddWithValue("@id", txtID.Text);
                 cmd.Parameters.AddWithValue("@name", txtName.Text);
                 cmd.Parameters.AddWithValue("@gender", gender);
@@ -104,7 +121,7 @@ namespace OfficePOS
 
                 MemoryStream ms = new MemoryStream();
                 pb_customer.Image.Save(ms, pb_customer.Image.RawFormat);
-                cmd.Parameters.Add("@img", MySqlDbType.LongBlob).Value = ms.ToArray();
+                cmd.Parameters.AddWithValue("@img", ms.ToArray());
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -114,6 +131,19 @@ namespace OfficePOS
                 clearData();
                 fillGrid();
             }
+        }
+
+        private bool checkIfSCustomerExist()
+        {
+            cmd = new SqlCommand("SELECT * FROM [customer] WHERE Customer_ID = '" + txtID.Text + "'", conn);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            { return true; }
+            else
+            { return false; }
         }
 
         private void dataGridCustomer_Click(object sender, EventArgs e)
@@ -143,13 +173,12 @@ namespace OfficePOS
 
             if (result == DialogResult.OK)
             {
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM `customer` WHERE `Customer_ID`='" + txtID.Text + "'", conn);
+                cmd = new SqlCommand("DELETE FROM [customer] WHERE `Customer_ID`='" + txtID.Text + "'", conn);
 
                 conn.Open();
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("Customer Deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     clearData();
                     fillGrid();
                 }
@@ -178,9 +207,9 @@ namespace OfficePOS
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             txtSearch.ForeColor = Color.Black;
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM `customer` WHERE CONCAT (`Customer_ID`,`Customer_Name`, `Email`, `Phone`) LIKE '%" + txtSearch.Text + "%' ", conn);
+            cmd = new SqlCommand("SELECT * FROM [customer] WHERE CONCAT (Customer_ID, Customer_Name, Email, Phone) LIKE '%" + txtSearch.Text + "%' ", conn);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 

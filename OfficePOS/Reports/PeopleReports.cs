@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace OfficePOS
 {
     public partial class PeopleReports : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
-        MySqlCommand cmd;
+        /*MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        MySqlCommand cmd;*/
+
+        //      SQL CASE
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
 
         public PeopleReports()
         {
@@ -47,8 +52,8 @@ namespace OfficePOS
 
         private void fillCustomer(string searchTerm)
         {
-            cmd = new MySqlCommand("SELECT `Customer_ID`, `Customer_Name`, `Gender`, `Address`, `Email`, `Phone` FROM `customer` WHERE CONCAT (`Customer_ID`,`Customer_Name`, `Email`, `Phone`) LIKE '%" + searchTerm + "%' ", conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            cmd = new SqlCommand("SELECT Customer_ID, Customer_Name, Gender, Address, Email, Phone FROM [customer] WHERE CONCAT (Customer_ID, Customer_Name, Email) LIKE '%" + searchTerm + "%' ", conn);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
 
@@ -59,8 +64,8 @@ namespace OfficePOS
 
         private void fillEmployee(string searchTerm)
         {
-            cmd = new MySqlCommand("SELECT `Employee_ID`, `Employee_Name`, `Employee_Phone`, `Employee_Email`, `Employee_Address` FROM `employee` WHERE CONCAT (`Employee_ID`,`Employee_Name`) LIKE '%" + searchTerm + "%' ", conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            cmd = new SqlCommand("SELECT Employee_ID, Employee_Name, Employee_Phone, Employee_Email, Employee_Address FROM [employee] WHERE CONCAT (Employee_ID, Employee_Name) LIKE '%" + searchTerm + "%' ", conn);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
 
@@ -71,8 +76,8 @@ namespace OfficePOS
 
         private void fillSupplier(string searchTerm)
         {
-            cmd = new MySqlCommand("SELECT `Supplier_ID`, `Supplier_Name`, `Supplier_Address`, `Supplier_Email`, `Supplier_Tel` FROM `suppliers` WHERE CONCAT (`Supplier_ID`,`Supplier_Name`, `Supplier_Email`) LIKE '%" + searchTerm + "%' ", conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            cmd = new SqlCommand("SELECT Supplier_ID, Supplier_Name, Supplier_Address, Supplier_Email, Supplier_Tel FROM [supplier] WHERE CONCAT (Supplier_ID, Supplier_Name, Supplier_Email) LIKE '%" + searchTerm + "%' ", conn);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adp.Fill(tb);
 

@@ -8,16 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace OfficePOS
 {
     public partial class AddProduct : Form
     {
-        MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
+        //      MYSQL CASE
+        //MySqlConnection conn = new MySqlConnection("datasource=localhost; port=3306; username=root; password=; database=office_db");
 
-        public AddProduct()
+        SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
+        SqlCommand cmd;
+
+        private SupplyProduct _supplyProduct;
+
+        Action m;
+
+        public AddProduct(SupplyProduct supplyProduct)
         {
+            _supplyProduct = supplyProduct;
             InitializeComponent();
             txt_id.Text = GUID();
             pb_product_img.Image = OfficePOS.Properties.Resources.download;
@@ -28,14 +38,16 @@ namespace OfficePOS
 
         private void LoadProductType()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT `Product_Type_Name` FROM `product_types`", conn);
-            conn.Open();
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            cmd = new SqlCommand("SELECT * FROM [product_types]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
             {
-                combo_type.Items.Add(reader.GetString("Product_Type_Name"));
+                var dataRow = dt.Rows[i];
+                combo_type.Items.Add(dataRow["Product_Type_Name"].ToString());
             }
-            conn.Close();
         }
 
         private void clearData()
@@ -96,15 +108,15 @@ namespace OfficePOS
 
         private void addProductType()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT `Product_Type_ID`, `Product_Type_Name` FROM `product_types` WHERE `Product_Type_Name`='" + combo_type.Text + "'", conn);
+            cmd = new SqlCommand("SELECT * FROM [product_types] WHERE Product_Type_Name='" + combo_type.Text + "'", conn);
 
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
             if (dt.Rows.Count == 0)
             {
-                MySqlCommand command = new MySqlCommand("INSERT INTO `product_types`( `Product_Type_Name`) VALUES ('"+combo_type.Text+"')", conn);
+                SqlCommand command = new SqlCommand("INSERT INTO [product_types]( Product_Type_Name) VALUES ('"+combo_type.Text+"')", conn);
 
                 conn.Open();
 
@@ -116,7 +128,7 @@ namespace OfficePOS
 
         private void addProduct()
         {
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO `products`(`Product_ID`, `Product_Name`, `Product_Type_Name`, `Product_Brand`, `Size`, `Original_Price`, `Selling_Price`, `Production_Date`, `Expiration_Date`, `Product_Img`) VALUES (@id, @name, @type, @brand, @size, @orgPrice, @selPrice, @pDate, @eDate, @img)", conn);
+            cmd = new SqlCommand("INSERT INTO [products] (Product_ID, Product_Name, Product_Type_Name, Product_Brand, Size, Original_Price, Selling_Price, Production_Date, Expiration_Date, Product_Img) VALUES (@id, @name, @type, @brand, @size, @orgPrice, @selPrice, @pDate, @eDate, @img)", conn);
 
             cmd.Parameters.AddWithValue("@id", txt_id.Text);
             cmd.Parameters.AddWithValue("@name", txt_productName.Text);
@@ -131,7 +143,7 @@ namespace OfficePOS
             MemoryStream ms = new MemoryStream();
             pb_product_img.Image.Save(ms, pb_product_img.Image.RawFormat);
 
-            cmd.Parameters.Add("@img", MySqlDbType.LongBlob).Value = ms.ToArray();
+            cmd.Parameters.AddWithValue("@img", ms.ToArray());
 
             conn.Open();
             if (cmd.ExecuteNonQuery() == 1)
@@ -140,7 +152,7 @@ namespace OfficePOS
 
                 if(result == DialogResult.OK)
                 {
-                    (Application.OpenForms["SupplyProduct"] as SupplyProduct).LoadProducts();
+                    _supplyProduct.LoadProducts();
                     this.Close();
                 }
             }
