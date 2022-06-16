@@ -177,11 +177,11 @@
     <Compile Include="ProductSale\SaleBillViewer.Designer.cs">
       <DependentUpon>SaleBillViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Revenue\GraphicRevenueRepor.cs">
+    <Compile Include="Reports\Revenue\GraphicRevenueReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\Revenue\GraphicRevenueRepor.Designer.cs">
-      <DependentUpon>GraphicRevenueRepor.cs</DependentUpon>
+    <Compile Include="Reports\Revenue\GraphicRevenueReport.Designer.cs">
+      <DependentUpon>GraphicRevenueReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\Revenue\RevenueReport.cs">
       <SubType>Form</SubType>
@@ -278,8 +278,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\Revenue\GraphicRevenueRepor.resx">
-      <DependentUpon>GraphicRevenueRepor.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\Revenue\GraphicRevenueReport.resx">
+      <DependentUpon>GraphicRevenueReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Revenue\RevenueReport.resx">
       <DependentUpon>RevenueReport.cs</DependentUpon>

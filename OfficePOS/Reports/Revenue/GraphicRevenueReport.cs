@@ -22,7 +22,7 @@ namespace OfficePOS
         SqlConnection conn = new SqlConnection("Data Source=DESKTOP-1KL12NM;Initial Catalog=office_db;Integrated Security=True");
         SqlCommand cmd;
 
-        double Revenue, Expenditure;
+        double Revenue=0, Expenditure=0;
 
         public GraphicRevenueReport()
         {
@@ -136,12 +136,15 @@ namespace OfficePOS
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
-            for(int i =0; i<dt.Rows.Count; i++)
+            if (!HasNull(dt))
             {
-                double revenue =Convert.ToDouble(dt.Rows[i]["Revenue"]);
-                var date = DateTime.Parse(dt.Rows[i]["Date"].ToString());
+                for(int i =0; i<dt.Rows.Count; i++)
+                {
+                    double revenue =Convert.ToDouble(dt.Rows[i]["Revenue"]);
+                    var date = DateTime.Parse(dt.Rows[i]["Date"].ToString());
 
-                chart1.Series["Sale"].Points.AddXY(date, revenue);
+                    chart1.Series["Sale"].Points.AddXY(date, revenue);
+                }
             }
         }
 
@@ -150,7 +153,7 @@ namespace OfficePOS
             int thisMonth = Convert.ToInt32(DateTime.Now.Month);
             int thisYear = Convert.ToInt32(DateTime.Now.Year);
 
-            cmd = new SqlCommand("SELECT sum(Total) AS revenue FROM [sale] WHERE CAST(MONTH(Date) AS int)=@month AND Cast(YEAR(Date) AS int)=@year", conn);
+            cmd = new SqlCommand("SELECT SUM(Total) AS revenue FROM [sale] WHERE CAST(MONTH(Date) AS int)=@month AND Cast(YEAR(Date) AS int)=@year", conn);
             cmd.Parameters.AddWithValue("@month", thisMonth);
             cmd.Parameters.AddWithValue("@year", thisYear);
 
@@ -158,7 +161,22 @@ namespace OfficePOS
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
-            Revenue = Convert.ToDouble(dt.Rows[0]["revenue"]);
+            if (!HasNull(dt))
+            {
+                Revenue = Convert.ToDouble(dt.Rows[0]["revenue"]);
+            }
+
+        }
+
+        public bool HasNull(DataTable table)
+        {
+            foreach (DataColumn column in table.Columns)
+            {
+                if (table.Rows.OfType<DataRow>().Any(r => r.IsNull(column)))
+                    return true;
+            }
+
+            return false;
         }
 
         private void getMonthlyOrderExpenditure()
@@ -166,7 +184,7 @@ namespace OfficePOS
             int thisMonth = Convert.ToInt32(DateTime.Now.Month);
             int thisYear = Convert.ToInt32(DateTime.Now.Year);
 
-            cmd = new SqlCommand("SELECT sum(Total) AS revenue FROM [order_imports] WHERE CAST(MONTH(Import_Date) AS int)=@month AND CAST(YEAR(Import_Date) AS int)=@year", conn);
+            cmd = new SqlCommand("SELECT sum(Total) AS expenditure FROM [order_imports] WHERE CAST(MONTH(Import_Date) AS int)=@month AND CAST(YEAR(Import_Date) AS int)=@year", conn);
             cmd.Parameters.AddWithValue("@month", thisMonth);
             cmd.Parameters.AddWithValue("@year", thisYear);
 
@@ -174,7 +192,12 @@ namespace OfficePOS
             DataTable dt = new DataTable();
             adp.Fill(dt);
 
-            Expenditure = Convert.ToDouble(dt.Rows[0]["revenue"]);
+            if (!HasNull(dt))
+            {
+                Expenditure = Convert.ToDouble(dt.Rows[0]["expenditure"]);
+            }
         }
+
+        
     }
 }

@@ -108,21 +108,24 @@ namespace OfficePOS
 
         private void addProductType()
         {
-            cmd = new SqlCommand("SELECT * FROM [product_types] WHERE Product_Type_Name='" + combo_type.Text + "'", conn);
-
-            SqlDataAdapter adp = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-
-            if (dt.Rows.Count == 0)
+            if (combo_type.Text.Trim() != "")
             {
-                SqlCommand command = new SqlCommand("INSERT INTO [product_types]( Product_Type_Name) VALUES ('"+combo_type.Text+"')", conn);
+                cmd = new SqlCommand("SELECT * FROM [product_types] WHERE Product_Type_Name='" + combo_type.Text + "'", conn);
 
-                conn.Open();
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
 
-                command.ExecuteNonQuery();
+                if (dt.Rows.Count == 0)
+                {
+                    SqlCommand command = new SqlCommand("INSERT INTO [product_types]( Product_Type_Name) VALUES ('"+combo_type.Text+"')", conn);
 
-                conn.Close();
+                    conn.Open();
+
+                    command.ExecuteNonQuery();
+
+                    conn.Close();
+                }
             }
         }
 

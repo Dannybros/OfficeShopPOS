@@ -173,7 +173,7 @@ namespace OfficePOS
 
             if (result == DialogResult.OK)
             {
-                cmd = new SqlCommand("DELETE FROM [customer] WHERE `Customer_ID`='" + txtID.Text + "'", conn);
+                cmd = new SqlCommand("DELETE FROM [customer] WHERE Customer_ID='" + txtID.Text + "'", conn);
 
                 conn.Open();
 

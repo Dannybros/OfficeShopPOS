@@ -33,7 +33,7 @@ namespace OfficePOS
             string searchTerm = "";
             if (txtSearch.Text != "Search...") searchTerm = txtSearch.Text;
 
-            if (cmbType.SelectedIndex == 0) cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' ORDER BY Expiration_Date", conn);
+            if (cmbType.SelectedIndex == 0) cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' ORDER BY Expiration_Date DESC", conn);
             else if(cmbType.SelectedIndex ==1) cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%'  ORDER BY Quantity", conn);
             else cmd = new SqlCommand("SELECT t1.* FROM [products] AS t1 INNER JOIN (SELECT Product_ID, sum(Amount) AS count from [sale_details] GROUP BY Product_ID) AS t2 ON t1.Product_ID = t2.Product_ID WHERE CONCAT (t1.Product_ID, Product_Name) LIKE '%" + searchTerm + "%'", conn);
 
