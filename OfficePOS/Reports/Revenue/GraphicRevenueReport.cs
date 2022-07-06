@@ -51,8 +51,6 @@ namespace OfficePOS
             chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             chart1.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
 
-            /*chart1.ChartAreas[0].AxisX.LineColor = Color.Black;
-            chart1.ChartAreas[0].AxisY.LineColor = Color.Black;*/
             chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
             chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
         }
@@ -127,7 +125,7 @@ namespace OfficePOS
             int thisYear = Convert.ToInt32(DateTime.Now.Year);
             int todayDate = Convert.ToInt32(DateTime.Now.Day);
 
-            cmd = new SqlCommand("SELECT sum(Total) AS Revenue, Date FROM [sale] WHERE CAST(MONTH(Date) AS int)=@month AND CAST(YEAR(Date) AS int)=@year AND CAST(Day(Date) AS int) BETWEEN @date-6 AND @date GROUP BY Date", conn);
+            cmd = new SqlCommand("SELECT sum(Total) AS Revenue, Date FROM [sale] WHERE CAST(MONTH(Date) AS int)=@month AND CAST(YEAR(Date) AS int)=@year AND CAST(Day(Date) AS int) BETWEEN @date-8 AND @date GROUP BY Date", conn);
             cmd.Parameters.AddWithValue("@month", thisMonth);
             cmd.Parameters.AddWithValue("@year", thisYear);
             cmd.Parameters.AddWithValue("@date", todayDate);
@@ -138,9 +136,9 @@ namespace OfficePOS
 
             if (!HasNull(dt))
             {
-                for(int i =0; i<dt.Rows.Count; i++)
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    double revenue =Convert.ToDouble(dt.Rows[i]["Revenue"]);
+                    double revenue = Convert.ToDouble(dt.Rows[i]["Revenue"]);
                     var date = DateTime.Parse(dt.Rows[i]["Date"].ToString());
 
                     chart1.Series["Sale"].Points.AddXY(date, revenue);

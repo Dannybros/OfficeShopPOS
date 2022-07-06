@@ -29,6 +29,7 @@ namespace OfficePOS
             getRevenue();
             getExpenditure();
             fillData();
+            month_cal.Value = DateTime.Today;
         }
         private void btn_clear_cal_Click(object sender, EventArgs e)
         {
