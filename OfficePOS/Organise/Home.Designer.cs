@@ -39,14 +39,14 @@ namespace OfficePOS
             this.lblHome = new System.Windows.Forms.Label();
             this.activePanel = new System.Windows.Forms.Panel();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelContent = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SideBar.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // SideBar
@@ -94,7 +94,7 @@ namespace OfficePOS
             this.lbl_import.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_import.ForeColor = System.Drawing.Color.Gray;
             this.lbl_import.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lbl_import.Location = new System.Drawing.Point(125, 333);
+            this.lbl_import.Location = new System.Drawing.Point(125, 361);
             this.lbl_import.Name = "lbl_import";
             this.lbl_import.Padding = new System.Windows.Forms.Padding(10);
             this.lbl_import.Size = new System.Drawing.Size(230, 73);
@@ -108,7 +108,7 @@ namespace OfficePOS
             this.lbl_report.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_report.ForeColor = System.Drawing.Color.Gray;
             this.lbl_report.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lbl_report.Location = new System.Drawing.Point(125, 443);
+            this.lbl_report.Location = new System.Drawing.Point(125, 471);
             this.lbl_report.Name = "lbl_report";
             this.lbl_report.Padding = new System.Windows.Forms.Padding(10);
             this.lbl_report.Size = new System.Drawing.Size(230, 73);
@@ -122,7 +122,7 @@ namespace OfficePOS
             this.lbl_order_product.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_order_product.ForeColor = System.Drawing.Color.Gray;
             this.lbl_order_product.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lbl_order_product.Location = new System.Drawing.Point(125, 223);
+            this.lbl_order_product.Location = new System.Drawing.Point(125, 251);
             this.lbl_order_product.Name = "lbl_order_product";
             this.lbl_order_product.Padding = new System.Windows.Forms.Padding(10);
             this.lbl_order_product.Size = new System.Drawing.Size(230, 73);
@@ -136,7 +136,7 @@ namespace OfficePOS
             this.lblSale.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSale.ForeColor = System.Drawing.Color.Gray;
             this.lblSale.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblSale.Location = new System.Drawing.Point(125, 113);
+            this.lblSale.Location = new System.Drawing.Point(125, 141);
             this.lblSale.Name = "lblSale";
             this.lblSale.Padding = new System.Windows.Forms.Padding(10);
             this.lblSale.Size = new System.Drawing.Size(230, 73);
@@ -149,19 +149,19 @@ namespace OfficePOS
             // 
             this.lblHome.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHome.ForeColor = System.Drawing.Color.Gray;
-            this.lblHome.Location = new System.Drawing.Point(125, 3);
+            this.lblHome.Location = new System.Drawing.Point(125, 31);
             this.lblHome.Name = "lblHome";
             this.lblHome.Padding = new System.Windows.Forms.Padding(10);
             this.lblHome.Size = new System.Drawing.Size(230, 73);
             this.lblHome.TabIndex = 8;
-            this.lblHome.Text = "ຈັດການຂໍ້ມູນ";
+            this.lblHome.Text = "ຈັດການຂໍ້ມູນຫຼັກ";
             this.lblHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblHome.Click += new System.EventHandler(this.lblHome_Click);
             // 
             // activePanel
             // 
             this.activePanel.BackColor = System.Drawing.Color.RoyalBlue;
-            this.activePanel.Location = new System.Drawing.Point(-1, 0);
+            this.activePanel.Location = new System.Drawing.Point(-1, 28);
             this.activePanel.Name = "activePanel";
             this.activePanel.Size = new System.Drawing.Size(13, 76);
             this.activePanel.TabIndex = 2;
@@ -175,6 +175,16 @@ namespace OfficePOS
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(378, 210);
             this.panelLogo.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::OfficePOS.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(62, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(251, 127);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panelMain
             // 
@@ -195,16 +205,6 @@ namespace OfficePOS
             this.panelContent.Size = new System.Drawing.Size(932, 860);
             this.panelContent.TabIndex = 2;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::OfficePOS.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(62, 38);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(251, 127);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -220,8 +220,8 @@ namespace OfficePOS
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             this.panelLogo.ResumeLayout(false);
-            this.panelMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

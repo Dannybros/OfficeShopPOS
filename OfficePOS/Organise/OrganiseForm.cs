@@ -71,5 +71,11 @@ namespace OfficePOS
             SupplierInfos sInfo = new SupplierInfos();
             switchForm(sInfo);
         }
+
+        private void lbl_category_Click(object sender, EventArgs e)
+        {
+            CategoryInfo category = new CategoryInfo();
+            switchForm(category);
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace OfficePOS
 
         private void LoadProductType()
         {
-            cmd = new SqlCommand("SELECT * FROM [product_types]", conn);
+            cmd = new SqlCommand("SELECT * FROM [product_categories]", conn);
             DataTable dt = new DataTable();
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             adp.Fill(dt);
@@ -101,31 +101,7 @@ namespace OfficePOS
             }
             else
             {
-                addProductType();
                 addProduct();
-            }
-        }
-
-        private void addProductType()
-        {
-            if (combo_type.Text.Trim() != "")
-            {
-                cmd = new SqlCommand("SELECT * FROM [product_types] WHERE Product_Type_Name='" + combo_type.Text + "'", conn);
-
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-
-                if (dt.Rows.Count == 0)
-                {
-                    SqlCommand command = new SqlCommand("INSERT INTO [product_types]( Product_Type_Name) VALUES ('"+combo_type.Text+"')", conn);
-
-                    conn.Open();
-
-                    command.ExecuteNonQuery();
-
-                    conn.Close();
-                }
             }
         }
 

@@ -330,6 +330,7 @@ namespace OfficePOS
             // combo_type
             // 
             this.combo_type.BackColor = System.Drawing.Color.White;
+            this.combo_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_type.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_type.ForeColor = System.Drawing.Color.Black;
             this.combo_type.FormattingEnabled = true;

@@ -53,3 +53,5 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.MonthlyRevenueReport.reso
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.GraphicRevenueReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\System.Data.SqlClient.dll
 D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\System.Data.SqlClient.xml
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CategoryInfo.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EditCategory.resources

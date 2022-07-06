@@ -35,6 +35,7 @@ namespace OfficePOS
             this.lbl_supplier = new System.Windows.Forms.Label();
             this.lbl_product = new System.Windows.Forms.Label();
             this.lbl_customer = new System.Windows.Forms.Label();
+            this.lbl_category = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,13 +44,14 @@ namespace OfficePOS
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 100);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1128, 504);
+            this.panelContent.Size = new System.Drawing.Size(1345, 504);
             this.panelContent.TabIndex = 20;
             // 
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.panelTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTop.Controls.Add(this.lbl_category);
             this.panelTop.Controls.Add(this.lbl_Employee);
             this.panelTop.Controls.Add(this.lbl_supplier);
             this.panelTop.Controls.Add(this.lbl_product);
@@ -57,7 +59,7 @@ namespace OfficePOS
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1128, 100);
+            this.panelTop.Size = new System.Drawing.Size(1345, 100);
             this.panelTop.TabIndex = 19;
             // 
             // lbl_Employee
@@ -108,11 +110,23 @@ namespace OfficePOS
             this.lbl_customer.Text = "ລູກຄ້າ";
             this.lbl_customer.Click += new System.EventHandler(this.lbl_customer_Click);
             // 
+            // lbl_category
+            // 
+            this.lbl_category.AutoSize = true;
+            this.lbl_category.Font = new System.Drawing.Font("Phetsarath OT", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_category.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_category.Location = new System.Drawing.Point(1020, 35);
+            this.lbl_category.Name = "lbl_category";
+            this.lbl_category.Size = new System.Drawing.Size(123, 32);
+            this.lbl_category.TabIndex = 4;
+            this.lbl_category.Text = "ປະເພດສິນຄ້າ";
+            this.lbl_category.Click += new System.EventHandler(this.lbl_category_Click);
+            // 
             // OrganiseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 604);
+            this.ClientSize = new System.Drawing.Size(1345, 604);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -131,5 +145,6 @@ namespace OfficePOS
         private System.Windows.Forms.Label lbl_product;
         private System.Windows.Forms.Label lbl_customer;
         private System.Windows.Forms.Label lbl_Employee;
+        private System.Windows.Forms.Label lbl_category;
     }
 }

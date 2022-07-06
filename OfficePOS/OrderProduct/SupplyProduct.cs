@@ -53,7 +53,7 @@ namespace OfficePOS
 
         private void LoadProductType()
         {
-            cmd = new SqlCommand("SELECT * FROM [product_types]", conn);
+            cmd = new SqlCommand("SELECT * FROM [product_categories]", conn);
             DataTable dt = new DataTable();
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             adp.Fill(dt);
