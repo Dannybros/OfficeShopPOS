@@ -52,7 +52,7 @@ namespace OfficePOS
                 item.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-            picCol = (DataGridViewImageColumn)dataGridView1.Columns[10];
+            picCol = (DataGridViewImageColumn)dataGridView1.Columns[11];
             picCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             picCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
         }

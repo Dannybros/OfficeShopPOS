@@ -38,6 +38,8 @@ namespace OfficePOS
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.product_Info = new System.Windows.Forms.Panel();
+            this.cmbCounters = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.txt_production_date = new System.Windows.Forms.DateTimePicker();
             this.txtExpire_date = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
@@ -75,7 +77,7 @@ namespace OfficePOS
             this.txt_Brand.BackColor = System.Drawing.Color.White;
             this.txt_Brand.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Brand.ForeColor = System.Drawing.Color.Black;
-            this.txt_Brand.Location = new System.Drawing.Point(880, 177);
+            this.txt_Brand.Location = new System.Drawing.Point(880, 111);
             this.txt_Brand.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Brand.Name = "txt_Brand";
             this.txt_Brand.Size = new System.Drawing.Size(212, 30);
@@ -159,6 +161,8 @@ namespace OfficePOS
             // product_Info
             // 
             this.product_Info.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.product_Info.Controls.Add(this.cmbCounters);
+            this.product_Info.Controls.Add(this.label9);
             this.product_Info.Controls.Add(this.txt_production_date);
             this.product_Info.Controls.Add(this.txtExpire_date);
             this.product_Info.Controls.Add(this.label8);
@@ -187,6 +191,31 @@ namespace OfficePOS
             this.product_Info.Name = "product_Info";
             this.product_Info.Size = new System.Drawing.Size(1143, 437);
             this.product_Info.TabIndex = 23;
+            // 
+            // cmbCounters
+            // 
+            this.cmbCounters.BackColor = System.Drawing.Color.White;
+            this.cmbCounters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCounters.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCounters.ForeColor = System.Drawing.Color.Black;
+            this.cmbCounters.FormattingEnabled = true;
+            this.cmbCounters.Location = new System.Drawing.Point(880, 176);
+            this.cmbCounters.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCounters.Name = "cmbCounters";
+            this.cmbCounters.Size = new System.Drawing.Size(212, 37);
+            this.cmbCounters.TabIndex = 70;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(748, 177);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 29);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "ຫົວໜ່ວຍ:";
             // 
             // txt_production_date
             // 
@@ -223,7 +252,7 @@ namespace OfficePOS
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(748, 180);
+            this.label5.Location = new System.Drawing.Point(748, 112);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 29);
@@ -272,7 +301,7 @@ namespace OfficePOS
             this.Label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.Label2.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.ForeColor = System.Drawing.Color.White;
-            this.Label2.Location = new System.Drawing.Point(344, 110);
+            this.Label2.Location = new System.Drawing.Point(748, 44);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(72, 29);
@@ -308,7 +337,7 @@ namespace OfficePOS
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.White;
-            this.Label3.Location = new System.Drawing.Point(748, 111);
+            this.Label3.Location = new System.Drawing.Point(347, 112);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(110, 29);
@@ -334,7 +363,7 @@ namespace OfficePOS
             this.combo_type.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_type.ForeColor = System.Drawing.Color.Black;
             this.combo_type.FormattingEnabled = true;
-            this.combo_type.Location = new System.Drawing.Point(880, 111);
+            this.combo_type.Location = new System.Drawing.Point(493, 111);
             this.combo_type.Margin = new System.Windows.Forms.Padding(4);
             this.combo_type.Name = "combo_type";
             this.combo_type.Size = new System.Drawing.Size(212, 30);
@@ -395,7 +424,7 @@ namespace OfficePOS
             this.txt_productName.BackColor = System.Drawing.Color.White;
             this.txt_productName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_productName.ForeColor = System.Drawing.Color.Black;
-            this.txt_productName.Location = new System.Drawing.Point(493, 107);
+            this.txt_productName.Location = new System.Drawing.Point(880, 44);
             this.txt_productName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_productName.Name = "txt_productName";
             this.txt_productName.Size = new System.Drawing.Size(212, 30);
@@ -448,5 +477,7 @@ namespace OfficePOS
         internal System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker txt_production_date;
         private System.Windows.Forms.DateTimePicker txtExpire_date;
+        internal System.Windows.Forms.Label label9;
+        internal System.Windows.Forms.ComboBox cmbCounters;
     }
 }

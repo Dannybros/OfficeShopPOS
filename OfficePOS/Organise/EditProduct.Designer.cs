@@ -35,6 +35,8 @@ namespace OfficePOS
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.product_Info = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbCounters = new System.Windows.Forms.ComboBox();
             this.txt_production_date = new System.Windows.Forms.DateTimePicker();
             this.txtExpire_date = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
@@ -142,6 +144,8 @@ namespace OfficePOS
             // product_Info
             // 
             this.product_Info.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.product_Info.Controls.Add(this.label9);
+            this.product_Info.Controls.Add(this.cmbCounters);
             this.product_Info.Controls.Add(this.txt_production_date);
             this.product_Info.Controls.Add(this.txtExpire_date);
             this.product_Info.Controls.Add(this.label8);
@@ -172,6 +176,31 @@ namespace OfficePOS
             this.product_Info.Name = "product_Info";
             this.product_Info.Size = new System.Drawing.Size(1143, 493);
             this.product_Info.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(745, 256);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 29);
+            this.label9.TabIndex = 70;
+            this.label9.Text = "ຫົວໜ່ວຍ:";
+            // 
+            // cmbCounters
+            // 
+            this.cmbCounters.BackColor = System.Drawing.Color.White;
+            this.cmbCounters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCounters.Font = new System.Drawing.Font("Phetsarath OT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCounters.ForeColor = System.Drawing.Color.Black;
+            this.cmbCounters.FormattingEnabled = true;
+            this.cmbCounters.Location = new System.Drawing.Point(877, 253);
+            this.cmbCounters.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCounters.Name = "cmbCounters";
+            this.cmbCounters.Size = new System.Drawing.Size(212, 37);
+            this.cmbCounters.TabIndex = 69;
             // 
             // txt_production_date
             // 
@@ -383,6 +412,7 @@ namespace OfficePOS
             this.product_image.Location = new System.Drawing.Point(52, 51);
             this.product_image.Name = "product_image";
             this.product_image.Size = new System.Drawing.Size(226, 183);
+            this.product_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.product_image.TabIndex = 43;
             this.product_image.TabStop = false;
             // 
@@ -495,5 +525,7 @@ namespace OfficePOS
         private System.Windows.Forms.DateTimePicker txtExpire_date;
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.Label lblExpire;
+        internal System.Windows.Forms.ComboBox cmbCounters;
+        internal System.Windows.Forms.Label label9;
     }
 }

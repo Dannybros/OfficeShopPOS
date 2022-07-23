@@ -31,6 +31,7 @@ namespace OfficePOS
             InitializeComponent();
             proID = id;
             LoadProductType();
+            LoadCounters();
             refresh();
             txt_production_date.CustomFormat = " dd-MM-yyyy";
             txtExpire_date.CustomFormat = " dd-MM-yyyy";
@@ -50,6 +51,20 @@ namespace OfficePOS
             }
         }
 
+        private void LoadCounters()
+        {
+            cmd = new SqlCommand("SELECT * FROM [counters]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
+            {
+                var dataRow = dt.Rows[i];
+                cmbCounters.Items.Add(dataRow["Counter_Name"].ToString());
+            }
+        }
+
         private void refresh()
         {
             cmd = new SqlCommand("SELECT * FROM [products] WHERE Product_ID='"+ proID + "'", conn);
@@ -60,6 +75,7 @@ namespace OfficePOS
             txt_productName.Text = dt.Rows[0]["Product_Name"].ToString();
             combo_type.Text = dt.Rows[0]["Product_Type_Name"].ToString();
             txt_weight.Text = dt.Rows[0]["Size"].ToString();
+            cmbCounters.Text = dt.Rows[0]["Counter_Name"].ToString();
             txt_Brand.Text = dt.Rows[0]["Product_Brand"].ToString();
             txt_amount.Text = dt.Rows[0]["Quantity"].ToString();
             txt_selling_price.Text = Convert.ToInt32(dt.Rows[0]["Selling_Price"]).ToString("#,##0");
@@ -68,8 +84,7 @@ namespace OfficePOS
             txtExpire_date.Text = dt.Rows[0]["Expiration_Date"].ToString();
 
             MemoryStream ms = new MemoryStream((byte[])dt.Rows[0]["Product_Img"]);
-            product_image.BackgroundImage = Image.FromStream(ms);
-            product_image.BackgroundImageLayout = ImageLayout.Stretch;
+            product_image.Image = Image.FromStream(ms);
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -110,20 +125,21 @@ namespace OfficePOS
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            cmd = new SqlCommand("UPDATE [products] SET Product_Name=@name, Product_Type_Name=@type, Product_Brand=@brand, Size=@size, Quantity=@quantity, Original_Price=@orgPrice, Selling_Price=@selPrice, Production_Date=@pDate, Expiration_Date=@eDate, Product_Img=@img WHERE Product_ID=@id", conn);
+            cmd = new SqlCommand("UPDATE [products] SET Product_Name=@name, Product_Type_Name=@type, Counter_Name=@counter, Product_Brand=@brand, Size=@size, Quantity=@quantity, Original_Price=@orgPrice, Selling_Price=@selPrice, Production_Date=@pDate, Expiration_Date=@eDate, Product_Img=@img WHERE Product_ID=@id", conn);
             cmd.Parameters.AddWithValue("@id", txt_id.Text);
             cmd.Parameters.AddWithValue("@name", txt_productName.Text);
             cmd.Parameters.AddWithValue("@type", combo_type.Text);
+            cmd.Parameters.AddWithValue("@counter", cmbCounters.Text);
             cmd.Parameters.AddWithValue("@brand", txt_Brand.Text);
-            cmd.Parameters.AddWithValue("@quantity", int.Parse(txt_amount.Text));
             cmd.Parameters.AddWithValue("@size", txt_weight.Text);
+            cmd.Parameters.AddWithValue("@quantity", int.Parse(txt_amount.Text));
             cmd.Parameters.AddWithValue("@orgPrice", double.Parse(txt_origin_price.Text));
             cmd.Parameters.AddWithValue("@selPrice", double.Parse(txt_selling_price.Text));
             cmd.Parameters.AddWithValue("@pDate", txt_production_date.Value.ToShortDateString());
             cmd.Parameters.AddWithValue("@eDate", txtExpire_date.Value.ToShortDateString());
 
             MemoryStream ms = new MemoryStream();
-            product_image.BackgroundImage.Save(ms, product_image.BackgroundImage.RawFormat);
+            product_image.Image.Save(ms, product_image.Image.RawFormat);
 
             cmd.Parameters.AddWithValue("@img", ms.ToArray());
 
@@ -134,6 +150,7 @@ namespace OfficePOS
 
                 if(result == DialogResult.OK)
                 {
+                    _inv.LoadProducts();
                     this.Close();
                 }
             }

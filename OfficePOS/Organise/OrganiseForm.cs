@@ -77,5 +77,11 @@ namespace OfficePOS
             CategoryInfo category = new CategoryInfo();
             switchForm(category);
         }
+
+        private void lbl_counter_Click(object sender, EventArgs e)
+        {
+            Counters count = new Counters();
+            switchForm(count);
+        }
     }
 }

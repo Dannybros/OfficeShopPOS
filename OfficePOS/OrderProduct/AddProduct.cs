@@ -34,6 +34,7 @@ namespace OfficePOS
             txt_production_date.CustomFormat = " dd-MM-yyyy";
             txtExpire_date.CustomFormat = " dd-MM-yyyy";
             LoadProductType();
+            LoadCounters();
         }
 
         private void LoadProductType()
@@ -47,6 +48,20 @@ namespace OfficePOS
             {
                 var dataRow = dt.Rows[i];
                 combo_type.Items.Add(dataRow["Product_Type_Name"].ToString());
+            }
+        }
+
+        private void LoadCounters()
+        {
+            cmd = new SqlCommand("SELECT * FROM [counters]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
+            {
+                var dataRow = dt.Rows[i];
+                cmbCounters.Items.Add(dataRow["Counter_Name"].ToString());
             }
         }
 
@@ -95,7 +110,7 @@ namespace OfficePOS
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if(txt_id.Text=="" || txt_productName.Text=="" || txt_weight.Text == "" || txt_Brand.Text == "" || combo_type.Text == "" || txt_selling_price.Text == "" || txt_origin_price.Text == "" || txt_production_date.Text == "" || txtExpire_date.Text == "")
+            if(txt_id.Text=="" || txt_productName.Text=="" || txt_weight.Text == "" || txt_Brand.Text == "" || combo_type.Text == "" || txt_selling_price.Text == "" || cmbCounters.Text=="" || txt_origin_price.Text == "" || txt_production_date.Text == "" || txtExpire_date.Text == "")
             {
                 MessageBox.Show("Please Fill In Every Textbox Fields To Save.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -107,13 +122,15 @@ namespace OfficePOS
 
         private void addProduct()
         {
-            cmd = new SqlCommand("INSERT INTO [products] (Product_ID, Product_Name, Product_Type_Name, Product_Brand, Size, Original_Price, Selling_Price, Production_Date, Expiration_Date, Product_Img) VALUES (@id, @name, @type, @brand, @size, @orgPrice, @selPrice, @pDate, @eDate, @img)", conn);
+            cmd = new SqlCommand("INSERT INTO [products] (Product_ID, Product_Name, Product_Type_Name, Counter_Name, Product_Brand, Size, Quantity, Original_Price, Selling_Price, Production_Date, Expiration_Date, Product_Img) VALUES (@id, @name, @type, @counter, @brand, @size, @qty, @orgPrice, @selPrice, @pDate, @eDate, @img)", conn);
 
             cmd.Parameters.AddWithValue("@id", txt_id.Text);
             cmd.Parameters.AddWithValue("@name", txt_productName.Text);
             cmd.Parameters.AddWithValue("@type", combo_type.Text);
+            cmd.Parameters.AddWithValue("@counter", cmbCounters.Text);
             cmd.Parameters.AddWithValue("@brand", txt_Brand.Text);
             cmd.Parameters.AddWithValue("@size", txt_weight.Text);
+            cmd.Parameters.AddWithValue("@qty", 0);
             cmd.Parameters.AddWithValue("@orgPrice", txt_origin_price.Text);
             cmd.Parameters.AddWithValue("@selPrice", txt_selling_price.Text);
             cmd.Parameters.AddWithValue("@pDate", txt_production_date.Value.ToShortDateString());

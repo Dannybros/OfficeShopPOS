@@ -55,3 +55,4 @@ D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\System.Data.SqlClient.dll
 D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\System.Data.SqlClient.xml
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CategoryInfo.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EditCategory.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Counters.resources

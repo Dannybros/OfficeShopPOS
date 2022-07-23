@@ -63,10 +63,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditCategory.cs">
+    <Compile Include="Organise\Counters.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditCategory.Designer.cs">
+    <Compile Include="Organise\Counters.Designer.cs">
+      <DependentUpon>Counters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Organise\EditCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organise\EditCategory.Designer.cs">
       <DependentUpon>EditCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Organise\CategoryInfo.cs">
@@ -225,7 +231,10 @@
     <Compile Include="Organise\SupplierInfos.Designer.cs">
       <DependentUpon>SupplierInfos.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EditCategory.resx">
+    <EmbeddedResource Include="Organise\Counters.resx">
+      <DependentUpon>Counters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organise\EditCategory.resx">
       <DependentUpon>EditCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\CategoryInfo.resx">

@@ -67,11 +67,11 @@ namespace OfficePOS
 
             PictureBox pb = new PictureBox();
             MemoryStream ms = new MemoryStream(picArray);
-            pb.BackgroundImage = Image.FromStream(ms);
+            pb.Image = Image.FromStream(ms);
             pb.Width = 80;
             pb.Height = 60;
             pb.BackColor = Color.White;
-            pb.BackgroundImageLayout  = ImageLayout.Stretch;
+            pb.SizeMode  = PictureBoxSizeMode.StretchImage;
             flp.Controls.Add(pb);
 
             Label id = new Label();
