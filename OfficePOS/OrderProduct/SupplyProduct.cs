@@ -112,6 +112,8 @@ namespace OfficePOS
 
         private void popItems(string name, string ID, double price, byte[] picArray)
         {
+            string allTag = ID + "/" + price.ToString() + "/" + name;
+
             PictureBox pic = new PictureBox();
             MemoryStream ms = new MemoryStream(picArray);
             pic.BackgroundImage = Image.FromStream(ms);
@@ -120,16 +122,28 @@ namespace OfficePOS
             pic.Height = 120;
             pic.BackgroundImageLayout = ImageLayout.Zoom;
             pic.Click += new EventHandler(picture_Click);
-            pic.Tag = ID + "/" + price.ToString() + "/" + name;
+            pic.Tag = allTag;
+
+            Label priceTag = new Label();
+            priceTag.Text = price.ToString("#,##0") + " K";
+            priceTag.Font = new Font("Times news Roman", 10, FontStyle.Regular);
+            priceTag.TextAlign = ContentAlignment.MiddleCenter;
+            priceTag.BackColor = Color.FromArgb(46, 125, 50);
+            priceTag.ForeColor = Color.White;
+            var marginPrice = priceTag.Margin;
+            marginPrice.Left = -10;
+            priceTag.Margin = marginPrice;
+            pic.Controls.Add(priceTag);
+
 
             Label title = new Label();
             title.Text = name;
-            title.Tag = ID + "/" + price.ToString() + "/" + name;
+            title.Tag = allTag;
             title.AutoSize = false;
             title.Dock = DockStyle.Bottom;
             title.Height = 30;
             title.TextAlign = ContentAlignment.MiddleCenter;
-            title.Font = new Font("Times news Roman", 12);
+            title.Font = new Font("Phetsarath OT", 12);
             title.BackColor = Color.FromArgb(50, 0, 166, 90);
             title.Click += new EventHandler(title_Click);
 
@@ -148,6 +162,13 @@ namespace OfficePOS
             panelSupplyItems.Controls.Add(product);
         }
 
+        public void addOrderListItem(string id, string name, double price, int amount)
+        {
+            OrderItemList.Add(new OrderItem(id, name, price, amount));
+            LoadOrderList();
+            disenableItem(name);
+        }
+
         private void picture_Click(object sender, EventArgs e)
         {
             string parameters = ((PictureBox)sender).Tag.ToString();
@@ -155,9 +176,8 @@ namespace OfficePOS
             double price = double.Parse(parameters.Split('/')[1]);
             string name = parameters.Split('/')[2];
 
-            OrderItemList.Add(new OrderItem(id, name, price, 1));
-            LoadOrderList();
-            disenableItem(name);
+            OrderAmount oa = new OrderAmount(id, name, price, this);
+            oa.Show();
         }
 
         private void title_Click(object sender, EventArgs e)

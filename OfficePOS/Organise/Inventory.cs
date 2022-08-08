@@ -107,7 +107,7 @@ namespace OfficePOS
             title.Dock = DockStyle.Bottom;
             title.Height = 30;
             title.TextAlign = ContentAlignment.MiddleCenter;
-            title.Font = new Font("Times news Roman", 12);
+            title.Font = new Font("Phetsarath OT", 12);
             title.BackColor = Color.FromArgb(50, 0, 166, 90);
             title.Click += new EventHandler(title_Click);
 

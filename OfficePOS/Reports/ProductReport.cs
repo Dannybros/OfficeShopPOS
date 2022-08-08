@@ -33,9 +33,11 @@ namespace OfficePOS
             string searchTerm = "";
             if (txtSearch.Text != "Search...") searchTerm = txtSearch.Text;
 
-            if (cmbType.SelectedIndex == 0) cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' ORDER BY Expiration_Date DESC", conn);
-            else if(cmbType.SelectedIndex ==1) cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%'  ORDER BY Quantity", conn);
-            else cmd = new SqlCommand("SELECT t1.* FROM [products] AS t1 INNER JOIN (SELECT Product_ID, sum(Amount) AS count from [sale_details] GROUP BY Product_ID) AS t2 ON t1.Product_ID = t2.Product_ID WHERE CONCAT (t1.Product_ID, Product_Name) LIKE '%" + searchTerm + "%'", conn);
+            if (cmbType.SelectedIndex == 0) cmd = new SqlCommand("SELECT Product_ID, Product_Name, Product_Type_Name, Quantity, Expiration_Date FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' AND Expiration_Date BETWEEN DATEADD(MONTH,-1,GETDATE()) AND EOMONTH(DATEADD(MONTH,1,GETDATE())) ORDER BY Expiration_Date", conn);
+
+            else if(cmbType.SelectedIndex ==1) cmd = new SqlCommand("SELECT Product_ID, Product_Name, Product_Type_Name, Quantity, Counter_Name FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' ORDER BY Quantity", conn);
+
+            else cmd = new SqlCommand("SELECT t1.Product_ID, t1.Product_Name, t1.Product_Type_Name, t1.Quantity, t1.Counter_Name, t2.Sold FROM [products] AS t1 INNER JOIN (SELECT Product_ID, sum(Amount) AS Sold from [sale_details] GROUP BY Product_ID) AS t2 ON t1.Product_ID = t2.Product_ID WHERE CONCAT (t1.Product_ID, Product_Name) LIKE '%" + searchTerm + "%' ORDER BY t2.Sold DESC", conn);
 
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
@@ -43,18 +45,16 @@ namespace OfficePOS
 
             dataGridView1.DataSource = tb;
             dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 80;
+            dataGridView1.RowTemplate.Height = 40;
             dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.DefaultCellStyle.Font = new Font("Times New Roman", 12);
+            dataGridView1.DefaultCellStyle.Font = new Font("Phetsarath OT", 12);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             foreach (DataGridViewColumn item in dataGridView1.Columns)
             {
                 item.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             DataGridViewImageColumn picCol = new DataGridViewImageColumn();
-            picCol = (DataGridViewImageColumn)dataGridView1.Columns[11];
-            picCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            picCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

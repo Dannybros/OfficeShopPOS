@@ -69,8 +69,7 @@ namespace OfficePOS
             picCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             picCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dataGridCustomer.AllowUserToAddRows = false;
-            dataGridCustomer.DefaultCellStyle.Font = new Font("Times New Roman", 15);
-            dataGridCustomer.Columns[3].DefaultCellStyle.Font = new Font("Times New Roman", 12);
+            dataGridCustomer.DefaultCellStyle.Font = new Font("Phetsarath OT", 12);
             dataGridCustomer.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             foreach (DataGridViewColumn item in dataGridCustomer.Columns)
             {

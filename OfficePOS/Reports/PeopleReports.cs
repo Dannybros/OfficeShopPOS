@@ -40,9 +40,9 @@ namespace OfficePOS
             if (cmbType.Text == "ພະນັກງານ") fillEmployee(searchTerm); 
 
             dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 40;
+            dataGridView1.RowTemplate.Height = 70;
             dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.DefaultCellStyle.Font = new Font("Times New Roman", 12);
+            dataGridView1.DefaultCellStyle.Font = new Font("Phetsarath OT", 12);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             foreach (DataGridViewColumn item in dataGridView1.Columns)
             {
@@ -58,7 +58,7 @@ namespace OfficePOS
             adp.Fill(tb);
 
             dataGridView1.DataSource = tb;
-            dataGridView1.Columns[3].DefaultCellStyle.Font = new Font("Times New Roman", 12);
+            dataGridView1.Columns[3].DefaultCellStyle.Font = new Font("Phetsarath OT", 10);
             dataGridView1.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
@@ -70,7 +70,7 @@ namespace OfficePOS
             adp.Fill(tb);
 
             dataGridView1.DataSource = tb;
-            dataGridView1.Columns[2].DefaultCellStyle.Font = new Font("Times New Roman", 12);
+            dataGridView1.Columns[3].DefaultCellStyle.Font = new Font("Phetsarath OT", 10);
             dataGridView1.Columns[2].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
@@ -82,7 +82,7 @@ namespace OfficePOS
             adp.Fill(tb);
 
             dataGridView1.DataSource = tb;
-            dataGridView1.Columns[2].DefaultCellStyle.Font = new Font("Times New Roman", 12);
+            dataGridView1.Columns[3].DefaultCellStyle.Font = new Font("Phetsarath OT", 10);
             dataGridView1.Columns[2].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 

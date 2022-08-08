@@ -45,7 +45,7 @@ namespace OfficePOS
             dgvCategory.ReadOnly = true;
             dgvCategory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCategory.AllowUserToAddRows = false;
-            dgvCategory.DefaultCellStyle.Font = new Font("Times New Roman", 12);
+            dgvCategory.DefaultCellStyle.Font = new Font("Phetsarath OT", 12);
         }
 
         private void txtSearch_Enter(object sender, EventArgs e)

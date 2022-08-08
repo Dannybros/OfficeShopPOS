@@ -35,9 +35,12 @@ namespace OfficePOS
         {
             LoadProductType();
             LoadCustomer();
+            LoadEmployee();
             LoadProducts();
             GenerateSaleID();
             cmbCategory.SelectedIndex = 0;
+            cmbEmployee.Text = "";
+            cmb_customer.Text = "";
         }
 
         private void GenerateSaleID()
@@ -66,6 +69,20 @@ namespace OfficePOS
             }
         }
 
+        private void LoadEmployee()
+        {
+            cmd = new SqlCommand("SELECT * FROM [employee]", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
+            {
+                var dataRow = dt.Rows[i];
+                cmbEmployee.Items.Add(dataRow["Employee_Name"].ToString());
+            }
+        }
+
         private void LoadCustomer()
         {
             cmd = new SqlCommand("SELECT Customer_Name FROM [customer]", conn);
@@ -77,6 +94,36 @@ namespace OfficePOS
             {
                 var dataRow = dt.Rows[i];
                 cmb_customer.Items.Add(dataRow["Customer_Name"].ToString());
+            }
+        }
+
+        public void LoadProducts()
+        {
+            panelItems.Controls.Clear();
+
+            string searchTerm = "";
+            if (txtSearch.Text != "Search...")
+            {
+                searchTerm = txtSearch.Text;
+            }
+            if (cmbCategory.Text == "ທັງໝົດ")
+            {
+                cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' AND Quantity > 0", conn);
+            }
+            else
+            {
+                cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' AND Product_Type_Name = @type AND Quantity > 0", conn);
+                cmd.Parameters.AddWithValue("@type", cmbCategory.Text);
+            }
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+            adp.Fill(dt);
+
+            for (var i = 0; i < dt.Rows.Count; i++)
+            {
+                var dataRow = dt.Rows[i];
+                popItems(dataRow["Product_ID"].ToString(), dataRow["Product_Name"].ToString(), dataRow["Quantity"].ToString(), dataRow["Counter_Name"].ToString(), (double)dataRow["Selling_Price"], (byte[])dataRow["Product_Img"]);
             }
         }
 
@@ -108,38 +155,10 @@ namespace OfficePOS
             }
         }
 
-        public void LoadProducts()
+        private void popItems(string id, string prodTitle, string totalAmount, string counter, double priceTag, byte[] picByte)
         {
-            panelItems.Controls.Clear();
+            string allTag = id + "/" + priceTag.ToString() + "/" + prodTitle + "/" + totalAmount + "/" + counter;
 
-            string searchTerm = "";
-            if (txtSearch.Text != "Search...")
-            {
-                searchTerm = txtSearch.Text;
-            }
-            if (cmbCategory.Text == "ທັງໝົດ")
-            {
-                cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' AND Quantity > 0", conn);
-            }
-            else
-            {
-                cmd = new SqlCommand("SELECT * FROM [products] WHERE CONCAT (Product_ID, Product_Name) LIKE '%" + searchTerm + "%' AND Product_Type_Name = @type AND Quantity > 0", conn);
-                cmd.Parameters.AddWithValue("@type", cmbCategory.Text);
-            }
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adp = new SqlDataAdapter(cmd);
-            adp.Fill(dt);
-
-            for (var i = 0; i < dt.Rows.Count; i++)
-            {
-                var dataRow = dt.Rows[i];
-                popItems(dataRow["Product_ID"].ToString(), dataRow["Product_Name"].ToString(), dataRow["Quantity"].ToString(), (double)dataRow["Selling_Price"], (byte[])dataRow["Product_Img"]);
-            }
-        }
-
-        private void popItems(string id, string prodTitle, string totalAmount, double priceTag, byte[] picByte)
-        {
             PictureBox pic = new PictureBox();
             MemoryStream ms = new MemoryStream(picByte);
             pic.BackgroundImage = Image.FromStream(ms);
@@ -148,28 +167,51 @@ namespace OfficePOS
             pic.Height = 120;
             pic.Cursor = Cursors.Hand;
             pic.BackgroundImageLayout = ImageLayout.Zoom;
-            pic.Click += new EventHandler(picture_Click);
-            pic.Tag = id + "/" + priceTag.ToString() + "/" + prodTitle + "/" + totalAmount;
+
+            FlowLayoutPanel header = new FlowLayoutPanel();
+            header.Width = 150;
+            header.Height = 120;
+            header.Dock = DockStyle.Top;
+            header.BackColor = Color.Transparent;
+            header.Click += new EventHandler(flowLayoutPanel_Click);
+            header.Tag = allTag;
+            pic.Controls.Add(header);
 
             Label price = new Label();
             price.Text = priceTag.ToString("#,##0") + " K";
             price.Font = new Font("Times news Roman", 10, FontStyle.Regular);
             price.TextAlign = ContentAlignment.MiddleCenter;
-            price.BackColor = Color.IndianRed;
+            price.BackColor = Color.FromArgb(36, 45, 55);
             price.ForeColor = Color.White;
-            pic.Controls.Add(price);
+            var marginPrice = price.Margin;
+            marginPrice.Left = -10;
+            price.Margin = marginPrice;
+            header.Controls.Add(price);
+
+            Label amount = new Label();
+            amount.Text = totalAmount + " " + counter;
+            var marginAmount = amount.Margin;
+            marginAmount.Left = -10;
+            amount.Margin = marginAmount;
+            amount.Width = 70;
+            amount.Font = new Font("Phetsarath OT", 10, FontStyle.Regular);
+            amount.TextAlign = ContentAlignment.MiddleCenter;
+            amount.BackColor = Color.FromArgb(46, 125, 50);
+            amount.ForeColor = Color.White;
+            header.Controls.Add(amount);
 
             Label title = new Label();
             title.Text = prodTitle;
-            title.Tag = id + "/" + priceTag.ToString() + "/" + prodTitle + "/" + totalAmount;
+            title.Tag = allTag;
             title.Cursor = Cursors.Hand;
             title.AutoSize = false;
             title.Dock = DockStyle.Bottom;
             title.Height = 30;
             title.TextAlign = ContentAlignment.MiddleCenter;
-            title.Font = new Font("Times news Roman", 12);
+            title.Font = new Font("Phetsarath OT", 12);
             title.BackColor = Color.FromArgb(50, 0, 166, 90);
             title.Click += new EventHandler(title_Click);
+           
 
             Panel product = new Panel();
             product.Width = 150;
@@ -186,17 +228,23 @@ namespace OfficePOS
             panelItems.Controls.Add(product);
         }
 
-        private void picture_Click(object sender, EventArgs e)
+        public void addSaleItem(string id, string name, double price, int amount, int total_quantity)
         {
-            string parameters = ((PictureBox)sender).Tag.ToString();
+            SaleItemList.Add(new SaleItem(id, name, price, amount, total_quantity));
+            LoadOrderList();
+            disenableItem(name);
+        }
+
+        private void flowLayoutPanel_Click(object sender, EventArgs e)
+        {
+            string parameters = ((FlowLayoutPanel)sender).Tag.ToString();
             string id = parameters.Split('/')[0];
             double price = double.Parse(parameters.Split('/')[1]);
             string name = parameters.Split('/')[2];
             int total_quantity = int.Parse(parameters.Split('/')[3]);
 
-            SaleItemList.Add(new SaleItem(id, name, price, 1, total_quantity));
-            LoadOrderList();
-            disenableItem(name);
+            SaleAmount sam = new SaleAmount(id, name, price, total_quantity, this);
+            sam.Show();
         }
 
         private void title_Click(object sender, EventArgs e)
@@ -207,12 +255,11 @@ namespace OfficePOS
             string name = parameters.Split('/')[2];
             int total_quantity = int.Parse(parameters.Split('/')[3]);
 
-            SaleItemList.Add(new SaleItem(id, name, price, 1, total_quantity));
-            LoadOrderList();
-            disenableItem(name);
+            SaleAmount sam = new SaleAmount(id, name, price, total_quantity, this);
+            sam.Show();
         }
 
-        private void addOrderListToPanel(string proID, string name, string quantity)
+        private void addOrderListToPanel(string proID, string name, double pricer, string quantity)
         {
             FlowLayoutPanel orderPanel = new FlowLayoutPanel();
             orderPanel.Width = panelOrderList.Width - 5;
@@ -221,25 +268,13 @@ namespace OfficePOS
             orderPanel.BorderStyle = BorderStyle.FixedSingle;
             orderPanel.Padding = new Padding(0, 0, 0, 0);
 
-            Label Id = new Label();
-            Id.Text = proID;
-            Id.Font = new Font("Times new Roman", 12, FontStyle.Regular);
-            Id.Height = 40;
-            Id.Width = (orderPanel.Width - 40) / 4;
-            var idMargin = Id.Margin;
-            idMargin.Left = 20;
-            idMargin.Right = 10;
-            Id.Margin = idMargin;
-            Id.TextAlign = ContentAlignment.MiddleCenter;
-            orderPanel.Controls.Add(Id);
-
             Label title = new Label();
             title.Text = name;
             title.Font = new Font("Phetsarath OT", 12, FontStyle.Regular);
-            title.AutoSize = false;
-            title.Width = (orderPanel.Width - 40) / 4;
+            title.Width = 140;
             title.Height = 40;
             var titleMargin = title.Margin;
+            titleMargin.Left = 20;
             titleMargin.Right = 10;
             title.Margin = titleMargin;
             title.TextAlign = ContentAlignment.MiddleCenter;
@@ -262,7 +297,7 @@ namespace OfficePOS
             amount.Text = quantity;
             amount.Font = new Font("Times new Roman", 14, FontStyle.Bold);
             amount.AutoSize = false;
-            amount.Width = (orderPanel.Width - 40) / 8;
+            amount.Width = (orderPanel.Width - 40) / 5;
             amount.Height = 20;
             var amountMargin = amount.Margin;
             amountMargin.Top = 10;
@@ -284,6 +319,17 @@ namespace OfficePOS
             picGreat.Click += new EventHandler(increase_amount_click);
             orderPanel.Controls.Add(picGreat);
 
+            Label total = new Label();
+            total.Text = (pricer * (int.Parse(quantity))).ToString("#,##0");
+            total.Font = new Font("Times new Roman", 12, FontStyle.Regular);
+            total.Height = 40;
+            total.Width = (orderPanel.Width - 40) / 4;
+            total.TextAlign = ContentAlignment.MiddleCenter;
+            var totalMargin = total.Margin;
+            totalMargin.Right = 10;
+            total.Margin = totalMargin;
+            orderPanel.Controls.Add(total);
+
             PictureBox picDel = new PictureBox();
             picDel.Cursor = Cursors.Hand;
             picDel.Size = new Size(20, 20);
@@ -291,7 +337,6 @@ namespace OfficePOS
             picDel.Dock = DockStyle.Right;
             var picDelMargin = picGreat.Margin;
             picDelMargin.Top = 10;
-            picDelMargin.Left = 40;
             picDelMargin.Bottom = 10;
             picDel.Margin = picDelMargin;
             picDel.BackgroundImage = OfficePOS.Properties.Resources.delete;
@@ -310,7 +355,7 @@ namespace OfficePOS
             foreach (var item in SaleItemList)
             {
                 Total += item.Total;
-                addOrderListToPanel(item.ProID, item.Name, item.Amount.ToString());
+                addOrderListToPanel(item.ProID, item.Name, item.Price, item.Amount.ToString());
             }
 
             txt_sum_supply.Text =" " + Total.ToString("#,##0");
@@ -403,14 +448,15 @@ namespace OfficePOS
             SaleItemList.Clear();
             LoadProducts();
             LoadOrderList();
-
+            cmbEmployee.Text = "";
+            cmb_customer.Text = "";
         }
 
         private void btn_Bill_Click(object sender, EventArgs e)
         {
-            if (cmb_customer.Text == "")
+            if (cmb_customer.Text == "" || cmbEmployee.Text == "")
             {
-                MessageBox.Show("Please Choose Customer!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please Choose Customer AND Employee!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -449,11 +495,13 @@ namespace OfficePOS
 
         private void insertSaleDB()
         {
-            cmd = new SqlCommand("INSERT INTO [sale](Sale_ID, Customer_Name, Total, Date) VALUES (@saleID, @name, @total, @date)", conn);
+            cmd = new SqlCommand("INSERT INTO [sale](Sale_ID, Customer_Name, Employee_Name, Total, Paid, Date) VALUES (@saleID, @name, @empName, @total, @paid, @date)", conn);
 
             cmd.Parameters.AddWithValue("@saleID", Sale_ID);
             cmd.Parameters.AddWithValue("@name", cmb_customer.Text);
+            cmd.Parameters.AddWithValue("@empName", cmbEmployee.Text);
             cmd.Parameters.AddWithValue("@total", double.Parse(txt_sum_supply.Text));
+            cmd.Parameters.AddWithValue("@paid", double.Parse(txtReceive.Text));
             cmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd"));
 
             if (cmd.ExecuteNonQuery() == 1)
@@ -462,12 +510,13 @@ namespace OfficePOS
 
                 if (result == DialogResult.OK)
                 {
-                    SaleBillViewer saleViewer = new SaleBillViewer(SaleItemList, Sale_ID, cmb_customer.Text);
+                    SaleBillViewer saleViewer = new SaleBillViewer(SaleItemList, Sale_ID, cmb_customer.Text, cmbEmployee.Text, txtChange.Text, txtReceive.Text);
                     saleViewer.Show();
 
                     SaleItemList.Clear();
                     LoadProducts();
                     LoadOrderList();
+                    cmbEmployee.Text = "";
                     cmb_customer.Text = "";
 
                 }
@@ -480,6 +529,35 @@ namespace OfficePOS
             foreach (var item in SaleItemList)
             {
                 disenableItem(item.Name);
+            }
+        }
+
+        private void txtReceive_TextChanged(object sender, EventArgs e)
+        {
+            if (txtReceive.Text != "")
+            {
+                double rec = double.Parse(txtReceive.Text);
+                txtChange.Text = (rec - Total).ToString("#,##0");
+            }
+            else
+            {
+                txtReceive.Text = "0";
+                txtChange.Text = "0";
+            }
+        }
+
+        private void txtReceive_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
     }

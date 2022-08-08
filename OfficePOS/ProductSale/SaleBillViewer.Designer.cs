@@ -30,7 +30,6 @@ namespace OfficePOS
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -47,25 +46,11 @@ namespace OfficePOS
             this.crystalReportViewer1.Size = new System.Drawing.Size(1363, 798);
             this.crystalReportViewer1.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(938, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(207, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Save as PDF";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // SaleBillViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1363, 798);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "SaleBillViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -79,6 +64,5 @@ namespace OfficePOS
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private System.Windows.Forms.Button button1;
     }
 }

@@ -45,7 +45,6 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.RevenueReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.PeopleReports.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrderBillViewer.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ImportProductList.resources
-D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleDetailReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CustomerInfos.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplierInfos.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EmployeeInfos.resources
@@ -56,3 +55,5 @@ D:\Visual 2017\OfficePOS\OfficePOS\bin\Debug\System.Data.SqlClient.xml
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CategoryInfo.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EditCategory.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Counters.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleAmount.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrderAmount.resources
