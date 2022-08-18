@@ -16,7 +16,6 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.AddProduct.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Inventory.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleReport.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.ProductReport.resources
-D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CheckImports.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SupplyProduct.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Sale.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrganiseForm.resources
@@ -57,3 +56,5 @@ D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.EditCategory.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Counters.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.SaleAmount.resources
 D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.OrderAmount.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.CheckImportItem.resources
+D:\Visual 2017\OfficePOS\OfficePOS\obj\Debug\OfficePOS.Reports.OrderReport.resources

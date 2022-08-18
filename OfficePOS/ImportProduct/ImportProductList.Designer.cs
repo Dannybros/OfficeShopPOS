@@ -37,7 +37,6 @@ namespace OfficePOS
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.DGV_orderList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.panelTop.SuspendLayout();
             this.panelSearcBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSearchIcon)).BeginInit();
@@ -49,7 +48,6 @@ namespace OfficePOS
             // 
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(57)))), ((int)(((byte)(77)))));
             this.panelTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelTop.Controls.Add(this.cmbCategory);
             this.panelTop.Controls.Add(this.lbl_title);
             this.panelTop.Controls.Add(this.panelSearcBox);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -75,9 +73,9 @@ namespace OfficePOS
             this.panelSearcBox.Controls.Add(this.picSearchIcon);
             this.panelSearcBox.Controls.Add(this.txtSearch);
             this.panelSearcBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSearcBox.Location = new System.Drawing.Point(985, 0);
+            this.panelSearcBox.Location = new System.Drawing.Point(846, 0);
             this.panelSearcBox.Name = "panelSearcBox";
-            this.panelSearcBox.Size = new System.Drawing.Size(282, 121);
+            this.panelSearcBox.Size = new System.Drawing.Size(421, 121);
             this.panelSearcBox.TabIndex = 2;
             // 
             // picSearchIcon
@@ -85,7 +83,7 @@ namespace OfficePOS
             this.picSearchIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picSearchIcon.BackColor = System.Drawing.Color.White;
             this.picSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("picSearchIcon.Image")));
-            this.picSearchIcon.Location = new System.Drawing.Point(218, 49);
+            this.picSearchIcon.Location = new System.Drawing.Point(357, 49);
             this.picSearchIcon.Name = "picSearchIcon";
             this.picSearchIcon.Size = new System.Drawing.Size(25, 25);
             this.picSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,10 +95,10 @@ namespace OfficePOS
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.Gray;
-            this.txtSearch.Location = new System.Drawing.Point(42, 44);
+            this.txtSearch.Location = new System.Drawing.Point(80, 44);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(211, 33);
+            this.txtSearch.Size = new System.Drawing.Size(312, 33);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.Text = "Search...";
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
@@ -130,26 +128,6 @@ namespace OfficePOS
             this.panel1.Padding = new System.Windows.Forms.Padding(30);
             this.panel1.Size = new System.Drawing.Size(1269, 631);
             this.panel1.TabIndex = 45;
-            // 
-            // cmbCategory
-            // 
-            this.cmbCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCategory.BackColor = System.Drawing.Color.White;
-            this.cmbCategory.DropDownHeight = 120;
-            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategory.Font = new System.Drawing.Font("Phetsarath OT", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCategory.ForeColor = System.Drawing.Color.Black;
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.IntegralHeight = false;
-            this.cmbCategory.Items.AddRange(new object[] {
-            "ຍັງບໍ່ກວດ",
-            "ກວດແລ້ວ"});
-            this.cmbCategory.Location = new System.Drawing.Point(781, 37);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbCategory.Size = new System.Drawing.Size(164, 42);
-            this.cmbCategory.TabIndex = 4;
-            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // ImportProductList
             // 
@@ -181,6 +159,5 @@ namespace OfficePOS
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView DGV_orderList;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox cmbCategory;
     }
 }

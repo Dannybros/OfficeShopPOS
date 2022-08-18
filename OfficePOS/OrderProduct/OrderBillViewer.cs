@@ -15,7 +15,6 @@ namespace OfficePOS
         List<OrderItem> items = new List<OrderItem>();
         string Bill_ID, Supplier;
 
-
         public OrderBillViewer(List<OrderItem> orderItems, string Bill_ID, string Supplier)
         {
             InitializeComponent();

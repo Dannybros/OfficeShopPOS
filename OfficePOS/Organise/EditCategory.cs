@@ -32,7 +32,9 @@ namespace OfficePOS
         
         private void addProductType()
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO [product_categories](Product_Type_ID, Product_Type_Name) VALUES ('" + id + "', '" + txt_category.Text + "')", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO [product_categories](Product_Type_ID, Product_Type_Name) VALUES (@id, @type)", conn);
+            cmd.Parameters.AddWithValue("@type", txt_category.Text);
+            cmd.Parameters.AddWithValue("@id", id);
 
             conn.Open();
 
@@ -47,7 +49,9 @@ namespace OfficePOS
 
         private void updateProductType()
         {
-            cmd = new SqlCommand("UPDATE [product_categories] SET Product_Type_Name='" + txt_category.Text + "' WHERE Product_Type_ID='" + id + "'", conn);
+            cmd = new SqlCommand("UPDATE [product_categories] SET Product_Type_Name=@type WHERE Product_Type_ID=@id", conn);
+            cmd.Parameters.AddWithValue("@type", txt_category.Text);
+            cmd.Parameters.AddWithValue("@id", id);
 
             conn.Open();
 
@@ -79,7 +83,8 @@ namespace OfficePOS
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("DELETE FROM [product_categories] WHERE Product_Type_ID ='" + id + "'", conn);
+                SqlCommand cmd = new SqlCommand("DELETE FROM [product_categories] WHERE Product_Type_ID =@id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
                 conn.Open();
 
                 if (cmd.ExecuteNonQuery() == 1)

@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImportProduct\CheckImportItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportProduct\CheckImportItem.Designer.cs">
+      <DependentUpon>CheckImportItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderProduct\OrderAmount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,12 @@
     </Compile>
     <Compile Include="Organise\CategoryInfo.Designer.cs">
       <DependentUpon>CategoryInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OrderReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\OrderReport.Designer.cs">
+      <DependentUpon>OrderReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\Revenue\MonthlyRevenue.cs" />
     <Compile Include="Reports\MonthCalendar.cs" />
@@ -130,12 +142,6 @@
     </Compile>
     <Compile Include="ImportProduct\ImportProductList.Designer.cs">
       <DependentUpon>ImportProductList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ImportProduct\CheckImports.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ImportProduct\CheckImports.Designer.cs">
-      <DependentUpon>CheckImports.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderProduct\OrderItem.cs" />
     <Compile Include="Organise\OrganiseForm.cs">
@@ -237,6 +243,9 @@
     <Compile Include="Organise\SupplierInfos.Designer.cs">
       <DependentUpon>SupplierInfos.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ImportProduct\CheckImportItem.resx">
+      <DependentUpon>CheckImportItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OrderProduct\OrderAmount.resx">
       <DependentUpon>OrderAmount.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\CategoryInfo.resx">
       <DependentUpon>CategoryInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OrderReport.resx">
+      <DependentUpon>OrderReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Revenue\MonthlyRevenueReport.resx">
       <DependentUpon>MonthlyRevenueReport.cs</DependentUpon>
@@ -270,9 +282,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImportProduct\ImportProductList.resx">
       <DependentUpon>ImportProductList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ImportProduct\CheckImports.resx">
-      <DependentUpon>CheckImports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Organise\OrganiseForm.resx">
       <DependentUpon>OrganiseForm.cs</DependentUpon>

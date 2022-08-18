@@ -25,7 +25,6 @@ namespace OfficePOS
         {
             InitializeComponent();
             fillData();
-            cmbCategory.SelectedIndex = 0;
         }
 
         public void fillData()
@@ -39,8 +38,8 @@ namespace OfficePOS
                 searchTerm = txtSearch.Text;
             }
 
-            cmd = new SqlCommand("SELECT * FROM [order_imports] WHERE CONCAT (Order_ID, Supplier_Name) LIKE '%" + searchTerm + "%' AND Checked = @status", conn);
-            cmd.Parameters.AddWithValue("@status", cmbCategory.Text);
+            cmd = new SqlCommand("SELECT Order_ID, Supplier_Name, FORMAT(Import_Date, 'MM/dd/yyyy') As Order_Date, Total, Checked FROM [order_imports] WHERE CONCAT (Order_ID, Supplier_Name) LIKE '%" + searchTerm + "%' AND Checked = @status ORDER BY Import_Date DESC", conn);
+            cmd.Parameters.AddWithValue("@status", "ຍັງບໍ່ກວດ");
 
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
@@ -58,6 +57,7 @@ namespace OfficePOS
             }
 
             DGV_orderList.Columns[4].DefaultCellStyle.Font = new Font("Phetsarath OT", 12, FontStyle.Bold);
+            DGV_orderList.Columns[1].DefaultCellStyle.Font = new Font("Phetsarath OT", 12, FontStyle.Bold);
 
         }
 
@@ -66,11 +66,9 @@ namespace OfficePOS
             if (DGV_orderList.RowCount > 0)
             {
                 string id = DGV_orderList.CurrentRow.Cells[0].Value.ToString();
-                string checkStatus = DGV_orderList.CurrentRow.Cells[4].Value.ToString();
-                string total = DGV_orderList.CurrentRow.Cells[3].Value.ToString();
 
-                CheckImports ci = new CheckImports(id, checkStatus, total, fillData);
-                ci.Show();
+                CheckImportItem cit = new CheckImportItem(id, this);
+                cit.Show();
             }
         }
 

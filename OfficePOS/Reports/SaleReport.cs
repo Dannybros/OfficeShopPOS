@@ -114,7 +114,7 @@ namespace OfficePOS
                 string employee_name = dgv_SaleItems.CurrentRow.Cells[2].Value.ToString();
                 string total = dgv_SaleItems.CurrentRow.Cells[3].Value.ToString();
                 string paid = dgv_SaleItems.CurrentRow.Cells[4].Value.ToString();
-                string change = (int.Parse(total) - int.Parse(paid)).ToString("#,##0");
+                string change = (int.Parse(paid) - int.Parse(total)).ToString("#,##0");
 
                 getAllSaleItems(id);
 

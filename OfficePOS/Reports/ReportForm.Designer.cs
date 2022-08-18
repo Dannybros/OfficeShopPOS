@@ -30,6 +30,7 @@ namespace OfficePOS
         private void InitializeComponent()
         {
             this.panelTop = new System.Windows.Forms.Panel();
+            this.lbl_report_order = new System.Windows.Forms.Label();
             this.lbl_report_revenue = new System.Windows.Forms.Label();
             this.lbl_report_products = new System.Windows.Forms.Label();
             this.lbl_report_customer = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@ namespace OfficePOS
             // 
             this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.panelTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTop.Controls.Add(this.lbl_report_order);
             this.panelTop.Controls.Add(this.lbl_report_revenue);
             this.panelTop.Controls.Add(this.lbl_report_products);
             this.panelTop.Controls.Add(this.lbl_report_customer);
@@ -52,12 +54,23 @@ namespace OfficePOS
             this.panelTop.Size = new System.Drawing.Size(1146, 100);
             this.panelTop.TabIndex = 19;
             // 
+            // lbl_report_order
+            // 
+            this.lbl_report_order.AutoSize = true;
+            this.lbl_report_order.Font = new System.Drawing.Font("Phetsarath OT", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_report_order.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_report_order.Location = new System.Drawing.Point(256, 33);
+            this.lbl_report_order.Name = "lbl_report_order";
+            this.lbl_report_order.Size = new System.Drawing.Size(51, 32);
+            this.lbl_report_order.TabIndex = 5;
+            this.lbl_report_order.Text = "ສັ່ງຊື້";
+            // 
             // lbl_report_revenue
             // 
             this.lbl_report_revenue.AutoSize = true;
             this.lbl_report_revenue.Font = new System.Drawing.Font("Phetsarath OT", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_report_revenue.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_report_revenue.Location = new System.Drawing.Point(267, 33);
+            this.lbl_report_revenue.Location = new System.Drawing.Point(410, 33);
             this.lbl_report_revenue.Name = "lbl_report_revenue";
             this.lbl_report_revenue.Size = new System.Drawing.Size(158, 32);
             this.lbl_report_revenue.TabIndex = 4;
@@ -69,7 +82,7 @@ namespace OfficePOS
             this.lbl_report_products.AutoSize = true;
             this.lbl_report_products.Font = new System.Drawing.Font("Phetsarath OT", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_report_products.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_report_products.Location = new System.Drawing.Point(707, 33);
+            this.lbl_report_products.Location = new System.Drawing.Point(850, 33);
             this.lbl_report_products.Name = "lbl_report_products";
             this.lbl_report_products.Size = new System.Drawing.Size(64, 32);
             this.lbl_report_products.TabIndex = 3;
@@ -81,7 +94,7 @@ namespace OfficePOS
             this.lbl_report_customer.AutoSize = true;
             this.lbl_report_customer.Font = new System.Drawing.Font("Phetsarath OT", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_report_customer.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_report_customer.Location = new System.Drawing.Point(545, 33);
+            this.lbl_report_customer.Location = new System.Drawing.Point(688, 33);
             this.lbl_report_customer.Name = "lbl_report_customer";
             this.lbl_report_customer.Size = new System.Drawing.Size(42, 32);
             this.lbl_report_customer.TabIndex = 1;
@@ -132,5 +145,6 @@ namespace OfficePOS
         private System.Windows.Forms.Label lbl_report_customer;
         private System.Windows.Forms.Label lbl_report_sale;
         private System.Windows.Forms.Panel panelContent;
+        private System.Windows.Forms.Label lbl_report_order;
     }
 }
